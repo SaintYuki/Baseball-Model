@@ -1,0 +1,3471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HR Board — 2026-08-20</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #14181A;
+    --panel: #1C2224;
+    --panel-2: #20272A;
+    --border: #2A3133;
+    --text: #EDEFE9;
+    --text-dim: #8B9490;
+    --amber: #FFA23C;
+    --amber-glow: rgba(255, 162, 60, 0.35);
+    --green: #6FCF97;
+    --green-glow: rgba(111, 207, 151, 0.30);
+    --red: #E8737A;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    background-image: radial-gradient(ellipse at top, #1A2022 0%, #14181A 60%);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    padding-bottom: 48px;
+  }
+  h1, h2, .parlay-title {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  header {
+    padding: 22px 16px 18px;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(20, 24, 26, 0.92);
+    backdrop-filter: blur(6px);
+  }
+  header h1 {
+    margin: 0 0 4px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--amber);
+    text-shadow: 0 0 18px var(--amber-glow);
+  }
+  header .meta {
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+  main { max-width: 640px; margin: 0 auto; padding: 0 12px; }
+  section { margin-top: 28px; }
+  h2 {
+    font-size: 15px;
+    color: var(--text-dim);
+    margin: 0 0 10px;
+    padding-left: 2px;
+  }
+  h2 .accent { color: var(--amber); }
+  h2 .accent-green { color: var(--green); }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 34px 1fr auto;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .row:last-child { border-bottom: none; }
+  .row .rank {
+    color: var(--text-dim);
+    font-weight: 600;
+    text-align: center;
+  }
+  .row.value .rank { color: var(--green); }
+  .name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14.5px;
+    letter-spacing: 0.01em;
+  }
+  .sub { color: var(--text-dim); font-size: 11px; margin-top: 1px; }
+  .tags { margin-top: 5px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag {
+    font-size: 10px;
+    color: var(--text-dim);
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+  }
+  .tag.boost { color: var(--green); border-color: rgba(111,207,151,0.35); }
+  .mu { font-size: 10px; padding: 1px 6px; border-radius: 4px; background: var(--panel-2); border: 1px solid var(--border); }
+  .mu.pos { color: var(--green); }
+  .mu.neg { color: var(--red); }
+  .mu.dim { color: var(--text-dim); }
+  .score {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--amber);
+    text-shadow: 0 0 10px var(--amber-glow);
+    min-width: 52px;
+    text-align: right;
+  }
+  .value-score { color: var(--green); text-shadow: 0 0 10px var(--green-glow); }
+  details { margin-top: 10px; }
+  summary {
+    cursor: pointer;
+    color: var(--text-dim);
+    font-size: 12px;
+    padding: 8px 2px;
+  }
+  summary:hover { color: var(--text); }
+  .parlay {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+  .parlay.value-parlay { border-color: rgba(111,207,151,0.35); }
+  .parlay-title { color: var(--amber); font-size: 12px; margin-bottom: 8px; }
+  .parlay.value-parlay .parlay-title { color: var(--green); }
+  .leg { display: grid; grid-template-columns: 1fr auto; gap: 4px 8px; padding: 5px 0; border-bottom: 1px dashed var(--border); font-size: 12.5px; }
+  .leg:last-child { border-bottom: none; }
+  .leg-name { font-family: 'Oswald', sans-serif; }
+  .leg-detail { grid-column: 1; color: var(--text-dim); font-size: 10.5px; }
+  .leg-score { grid-row: 1 / 3; align-self: center; color: var(--amber); font-weight: 600; }
+  .empty { color: var(--text-dim); padding: 14px; text-align: center; font-size: 12px; }
+  footer { max-width: 640px; margin: 28px auto 0; padding: 0 16px; color: var(--text-dim); font-size: 10.5px; text-align: center; }
+</style>
+</head>
+<body>
+<header>
+  <h1>&#9917; HR Board</h1>
+  <div class="meta">2026-08-20 &middot; generated 2026-08-20 11:35 UTC &middot; 234 batters</div>
+</header>
+<main>
+  <section>
+    <h2><span class="accent">&#9650;</span> Top Picks</h2>
+    <div class="panel">
+      <div class="row">
+        <div class="rank">1</div>
+        <div class="who">
+          <div class="name">Abimelec Ortiz</div>
+          <div class="sub">Washington Nationals &middot; Washington Nationals@Texas Rangers &middot; vs Jacob deGrom</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.058</span>
+          </div>
+        </div>
+        <div class="score">1.173</div>
+      </div>
+      <div class="row">
+        <div class="rank">2</div>
+        <div class="who">
+          <div class="name">Matt Olson</div>
+          <div class="sub">Atlanta Braves &middot; Atlanta Braves@Chicago White Sox &middot; vs Anthony Kay</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.025</span>
+          </div>
+        </div>
+        <div class="score">1.075</div>
+      </div>
+      <div class="row">
+        <div class="rank">3</div>
+        <div class="who">
+          <div class="name">Munetaka Murakami</div>
+          <div class="sub">Chicago White Sox &middot; Atlanta Braves@Chicago White Sox &middot; vs Grant Holmes</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.019</span>
+          </div>
+        </div>
+        <div class="score">1.057</div>
+      </div>
+      <div class="row">
+        <div class="rank">4</div>
+        <div class="who">
+          <div class="name">Trent Grisham</div>
+          <div class="sub">New York Yankees &middot; New York Yankees@Baltimore Orioles &middot; vs Kyle Bradish</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.041</span>
+          </div>
+        </div>
+        <div class="score">0.998</div>
+      </div>
+      <div class="row">
+        <div class="rank">5</div>
+        <div class="who">
+          <div class="name">Alec Burleson</div>
+          <div class="sub">St. Louis Cardinals &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Brady Singer</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.050</span>
+          </div>
+        </div>
+        <div class="score">0.983</div>
+      </div>
+      <div class="row">
+        <div class="rank">6</div>
+        <div class="who">
+          <div class="name">Junior Caminero</div>
+          <div class="sub">Tampa Bay Rays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Shane Bieber</div>
+          <div class="tags">
+            <span class="tag">park +25%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.023</span>
+          </div>
+        </div>
+        <div class="score">0.976</div>
+      </div>
+      <div class="row">
+        <div class="rank">7</div>
+        <div class="who">
+          <div class="name">Tyler Stephenson</div>
+          <div class="sub">Cincinnati Reds &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Michael McGreevy</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.007</span>
+          </div>
+        </div>
+        <div class="score">0.951</div>
+      </div>
+      <div class="row">
+        <div class="rank">8</div>
+        <div class="who">
+          <div class="name">Pete Alonso</div>
+          <div class="sub">Baltimore Orioles &middot; New York Yankees@Baltimore Orioles &middot; vs Gerrit Cole</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.015</span>
+          </div>
+        </div>
+        <div class="score">0.947</div>
+      </div>
+      <div class="row">
+        <div class="rank">9</div>
+        <div class="who">
+          <div class="name">Joc Pederson</div>
+          <div class="sub">Texas Rangers &middot; Washington Nationals@Texas Rangers &middot; vs Andrew Alvarez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.019</span>
+          </div>
+        </div>
+        <div class="score">0.944</div>
+      </div>
+      <div class="row">
+        <div class="rank">10</div>
+        <div class="who">
+          <div class="name">Samuel Basallo</div>
+          <div class="sub">Baltimore Orioles &middot; New York Yankees@Baltimore Orioles &middot; vs Gerrit Cole</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.932</div>
+      </div>
+      <div class="row">
+        <div class="rank">11</div>
+        <div class="who">
+          <div class="name">Brandon Valenzuela</div>
+          <div class="sub">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Ian Seymour</div>
+          <div class="tags">
+            <span class="tag">park +25%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.016</span>
+          </div>
+        </div>
+        <div class="score">0.914</div>
+      </div>
+      <div class="row">
+        <div class="rank">12</div>
+        <div class="who">
+          <div class="name">Miguel Vargas</div>
+          <div class="sub">Chicago White Sox &middot; Atlanta Braves@Chicago White Sox &middot; vs Grant Holmes</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.021</span>
+          </div>
+        </div>
+        <div class="score">0.908</div>
+      </div>
+      <div class="row">
+        <div class="rank">13</div>
+        <div class="who">
+          <div class="name">Jac Caglianone</div>
+          <div class="sub">Kansas City Royals &middot; Athletics@Kansas City Royals &middot; vs Gage Jump</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.101</span>
+          </div>
+        </div>
+        <div class="score">0.874</div>
+      </div>
+      <div class="row">
+        <div class="rank">14</div>
+        <div class="who">
+          <div class="name">Cam Smith</div>
+          <div class="sub">Houston Astros &middot; Los Angeles Angels@Houston Astros &middot; vs Grayson Rodriguez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.035</span>
+          </div>
+        </div>
+        <div class="score">0.850</div>
+      </div>
+      <div class="row">
+        <div class="rank">15</div>
+        <div class="who">
+          <div class="name">Ronald Acuña Jr.</div>
+          <div class="sub">Atlanta Braves &middot; Atlanta Braves@Chicago White Sox &middot; vs Anthony Kay</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.019</span>
+          </div>
+        </div>
+        <div class="score">0.842</div>
+      </div>
+      <div class="row">
+        <div class="rank">16</div>
+        <div class="who">
+          <div class="name">Zack Gelof</div>
+          <div class="sub">Athletics &middot; Athletics@Kansas City Royals &middot; vs Randy Dobnak</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.037</span>
+          </div>
+        </div>
+        <div class="score">0.839</div>
+      </div>
+      <div class="row">
+        <div class="rank">17</div>
+        <div class="who">
+          <div class="name">Lawrence Butler</div>
+          <div class="sub">Athletics &middot; Athletics@Kansas City Royals &middot; vs Randy Dobnak</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.018</span>
+          </div>
+        </div>
+        <div class="score">0.779</div>
+      </div>
+      <div class="row">
+        <div class="rank">18</div>
+        <div class="who">
+          <div class="name">Eugenio Suárez</div>
+          <div class="sub">Cincinnati Reds &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Michael McGreevy</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.011</span>
+          </div>
+        </div>
+        <div class="score">0.744</div>
+      </div>
+      <div class="row">
+        <div class="rank">19</div>
+        <div class="who">
+          <div class="name">Jake Bauers</div>
+          <div class="sub">Milwaukee Brewers &middot; Seattle Mariners@Milwaukee Brewers &middot; vs George Kirby</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.036</span>
+          </div>
+        </div>
+        <div class="score">0.741</div>
+      </div>
+      <div class="row">
+        <div class="rank">20</div>
+        <div class="who">
+          <div class="name">Tyler O&#x27;Neill</div>
+          <div class="sub">Baltimore Orioles &middot; New York Yankees@Baltimore Orioles &middot; vs Gerrit Cole</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.006</span>
+          </div>
+        </div>
+        <div class="score">0.734</div>
+      </div>
+      <div class="row">
+        <div class="rank">21</div>
+        <div class="who">
+          <div class="name">Donovan Walton</div>
+          <div class="sub">Athletics &middot; Athletics@Kansas City Royals &middot; vs Randy Dobnak</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.009</span>
+          </div>
+        </div>
+        <div class="score">0.725</div>
+      </div>
+      <div class="row">
+        <div class="rank">22</div>
+        <div class="who">
+          <div class="name">Patrick Bailey</div>
+          <div class="sub">Cleveland Guardians &middot; San Francisco Giants@Cleveland Guardians &middot; vs Landen Roupp</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.025</span>
+          </div>
+        </div>
+        <div class="score">0.687</div>
+      </div>
+      <div class="row">
+        <div class="rank">23</div>
+        <div class="who">
+          <div class="name">Victor Bericoto</div>
+          <div class="sub">San Francisco Giants &middot; San Francisco Giants@Cleveland Guardians &middot; vs Gavin Williams</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.036</span>
+          </div>
+        </div>
+        <div class="score">0.664</div>
+      </div>
+      <div class="row">
+        <div class="rank">24</div>
+        <div class="who">
+          <div class="name">Andrew Benintendi</div>
+          <div class="sub">Chicago White Sox &middot; Atlanta Braves@Chicago White Sox &middot; vs Grant Holmes</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.004</span>
+          </div>
+        </div>
+        <div class="score">0.650</div>
+      </div>
+      <div class="row">
+        <div class="rank">25</div>
+        <div class="who">
+          <div class="name">Max Muncy</div>
+          <div class="sub">Athletics &middot; Athletics@Kansas City Royals &middot; vs Randy Dobnak</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.007</span>
+          </div>
+        </div>
+        <div class="score">0.645</div>
+      </div>
+      <div class="row">
+        <div class="rank">26</div>
+        <div class="who">
+          <div class="name">Mike Yastrzemski</div>
+          <div class="sub">Atlanta Braves &middot; Atlanta Braves@Chicago White Sox &middot; vs Anthony Kay</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.010</span>
+          </div>
+        </div>
+        <div class="score">0.640</div>
+      </div>
+      <div class="row">
+        <div class="rank">27</div>
+        <div class="who">
+          <div class="name">Jackson Chourio</div>
+          <div class="sub">Milwaukee Brewers &middot; Seattle Mariners@Milwaukee Brewers &middot; vs George Kirby</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.020</span>
+          </div>
+        </div>
+        <div class="score">0.640</div>
+      </div>
+      <div class="row">
+        <div class="rank">28</div>
+        <div class="who">
+          <div class="name">Alejandro Kirk</div>
+          <div class="sub">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Ian Seymour</div>
+          <div class="tags">
+            <span class="tag">park +25%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.048</span>
+          </div>
+        </div>
+        <div class="score">0.635</div>
+      </div>
+      <div class="row">
+        <div class="rank">29</div>
+        <div class="who">
+          <div class="name">Spencer Jones</div>
+          <div class="sub">New York Yankees &middot; New York Yankees@Baltimore Orioles &middot; vs Kyle Bradish</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.030</span>
+          </div>
+        </div>
+        <div class="score">0.629</div>
+      </div>
+      <div class="row">
+        <div class="rank">30</div>
+        <div class="who">
+          <div class="name">Matt McLain</div>
+          <div class="sub">Cincinnati Reds &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Michael McGreevy</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.027</span>
+          </div>
+        </div>
+        <div class="score">0.624</div>
+      </div></div>
+    <details><summary>Show remaining 204 batters</summary><div class="panel">
+      <div class="row">
+        <div class="rank">31</div>
+        <div class="who">
+          <div class="name">Lane Thomas</div>
+          <div class="sub">Atlanta Braves &middot; Atlanta Braves@Chicago White Sox &middot; vs Anthony Kay</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.015</span>
+          </div>
+        </div>
+        <div class="score">0.619</div>
+      </div>
+      <div class="row">
+        <div class="rank">32</div>
+        <div class="who">
+          <div class="name">Daylen Lile</div>
+          <div class="sub">Washington Nationals &middot; Washington Nationals@Texas Rangers &middot; vs Jacob deGrom</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.018</span>
+          </div>
+        </div>
+        <div class="score">0.600</div>
+      </div>
+      <div class="row">
+        <div class="rank">33</div>
+        <div class="who">
+          <div class="name">Randy Arozarena</div>
+          <div class="sub">Seattle Mariners &middot; Seattle Mariners@Milwaukee Brewers &middot; vs Robert Gasser</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.023</span>
+          </div>
+        </div>
+        <div class="score">0.597</div>
+      </div>
+      <div class="row">
+        <div class="rank">34</div>
+        <div class="who">
+          <div class="name">Nick Fortes</div>
+          <div class="sub">Tampa Bay Rays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Shane Bieber</div>
+          <div class="tags">
+            <span class="tag">park +25%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.012</span>
+          </div>
+        </div>
+        <div class="score">0.597</div>
+      </div>
+      <div class="row">
+        <div class="rank">35</div>
+        <div class="who">
+          <div class="name">Austin Riley</div>
+          <div class="sub">Atlanta Braves &middot; Atlanta Braves@Chicago White Sox &middot; vs Anthony Kay</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.007</span>
+          </div>
+        </div>
+        <div class="score">0.595</div>
+      </div>
+      <div class="row">
+        <div class="rank">36</div>
+        <div class="who">
+          <div class="name">Yandy Díaz</div>
+          <div class="sub">Tampa Bay Rays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Shane Bieber</div>
+          <div class="tags">
+            <span class="tag">park +25%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.016</span>
+          </div>
+        </div>
+        <div class="score">0.584</div>
+      </div>
+      <div class="row">
+        <div class="rank">37</div>
+        <div class="who">
+          <div class="name">Coby Mayo</div>
+          <div class="sub">Baltimore Orioles &middot; New York Yankees@Baltimore Orioles &middot; vs Gerrit Cole</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.017</span>
+          </div>
+        </div>
+        <div class="score">0.576</div>
+      </div>
+      <div class="row">
+        <div class="rank">38</div>
+        <div class="who">
+          <div class="name">Christian Encarnacion-Strand</div>
+          <div class="sub">Baltimore Orioles &middot; New York Yankees@Baltimore Orioles &middot; vs Gerrit Cole</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.005</span>
+          </div>
+        </div>
+        <div class="score">0.569</div>
+      </div>
+      <div class="row">
+        <div class="rank">39</div>
+        <div class="who">
+          <div class="name">Jonny DeLuca</div>
+          <div class="sub">Tampa Bay Rays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Shane Bieber</div>
+          <div class="tags">
+            <span class="tag">park +25%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.002</span>
+          </div>
+        </div>
+        <div class="score">0.568</div>
+      </div>
+      <div class="row">
+        <div class="rank">40</div>
+        <div class="who">
+          <div class="name">Ryan Vilade</div>
+          <div class="sub">Tampa Bay Rays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Shane Bieber</div>
+          <div class="tags">
+            <span class="tag">park +25%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.004</span>
+          </div>
+        </div>
+        <div class="score">0.559</div>
+      </div>
+      <div class="row">
+        <div class="rank">41</div>
+        <div class="who">
+          <div class="name">Sal Stewart</div>
+          <div class="sub">Cincinnati Reds &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Michael McGreevy</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.004</span>
+          </div>
+        </div>
+        <div class="score">0.524</div>
+      </div>
+      <div class="row">
+        <div class="rank">42</div>
+        <div class="who">
+          <div class="name">Tyler Tolbert</div>
+          <div class="sub">Kansas City Royals &middot; Athletics@Kansas City Royals &middot; vs Gage Jump</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.027</span>
+          </div>
+        </div>
+        <div class="score">0.520</div>
+      </div>
+      <div class="row">
+        <div class="rank">43</div>
+        <div class="who">
+          <div class="name">Osleivis Basabe</div>
+          <div class="sub">San Francisco Giants &middot; San Francisco Giants@Cleveland Guardians &middot; vs Gavin Williams</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.021</span>
+          </div>
+        </div>
+        <div class="score">0.511</div>
+      </div>
+      <div class="row">
+        <div class="rank">44</div>
+        <div class="who">
+          <div class="name">Taylor Trammell</div>
+          <div class="sub">Houston Astros &middot; Los Angeles Angels@Houston Astros &middot; vs Grayson Rodriguez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.007</span>
+          </div>
+        </div>
+        <div class="score">0.502</div>
+      </div>
+      <div class="row">
+        <div class="rank">45</div>
+        <div class="who">
+          <div class="name">Chase Meidroth</div>
+          <div class="sub">Chicago White Sox &middot; Atlanta Braves@Chicago White Sox &middot; vs Grant Holmes</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.028</span>
+          </div>
+        </div>
+        <div class="score">0.500</div>
+      </div>
+      <div class="row">
+        <div class="rank">46</div>
+        <div class="who">
+          <div class="name">Josh Lowe</div>
+          <div class="sub">Los Angeles Angels &middot; Los Angeles Angels@Houston Astros &middot; vs Peter Lambert</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.003</span>
+          </div>
+        </div>
+        <div class="score">0.500</div>
+      </div>
+      <div class="row">
+        <div class="rank">47</div>
+        <div class="who">
+          <div class="name">George Lombard Jr.</div>
+          <div class="sub">New York Yankees &middot; New York Yankees@Baltimore Orioles &middot; vs Kyle Bradish</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.003</span>
+          </div>
+        </div>
+        <div class="score">0.500</div>
+      </div>
+      <div class="row">
+        <div class="rank">48</div>
+        <div class="who">
+          <div class="name">Joey Ortiz</div>
+          <div class="sub">Milwaukee Brewers &middot; Seattle Mariners@Milwaukee Brewers &middot; vs George Kirby</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.001</span>
+          </div>
+        </div>
+        <div class="score">0.495</div>
+      </div>
+      <div class="row">
+        <div class="rank">49</div>
+        <div class="who">
+          <div class="name">Bryce Eldridge</div>
+          <div class="sub">San Francisco Giants &middot; San Francisco Giants@Cleveland Guardians &middot; vs Gavin Williams</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.005</span>
+          </div>
+        </div>
+        <div class="score">0.494</div>
+      </div>
+      <div class="row">
+        <div class="rank">50</div>
+        <div class="who">
+          <div class="name">Julio Rodríguez</div>
+          <div class="sub">Seattle Mariners &middot; Seattle Mariners@Milwaukee Brewers &middot; vs Robert Gasser</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.012</span>
+          </div>
+        </div>
+        <div class="score">0.488</div>
+      </div>
+      <div class="row">
+        <div class="rank">51</div>
+        <div class="who">
+          <div class="name">Andrés Chaparro</div>
+          <div class="sub">Washington Nationals &middot; Washington Nationals@Texas Rangers &middot; vs Jacob deGrom</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.074</span>
+          </div>
+        </div>
+        <div class="score">0.481</div>
+      </div>
+      <div class="row">
+        <div class="rank">52</div>
+        <div class="who">
+          <div class="name">Henry Bolte</div>
+          <div class="sub">Athletics &middot; Athletics@Kansas City Royals &middot; vs Randy Dobnak</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.000</span>
+          </div>
+        </div>
+        <div class="score">0.462</div>
+      </div>
+      <div class="row">
+        <div class="rank">53</div>
+        <div class="who">
+          <div class="name">Jo Adell</div>
+          <div class="sub">Cleveland Guardians &middot; San Francisco Giants@Cleveland Guardians &middot; vs Landen Roupp</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.024</span>
+          </div>
+        </div>
+        <div class="score">0.458</div>
+      </div>
+      <div class="row">
+        <div class="rank">54</div>
+        <div class="who">
+          <div class="name">Colton Cowser</div>
+          <div class="sub">Baltimore Orioles &middot; New York Yankees@Baltimore Orioles &middot; vs Gerrit Cole</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.023</span>
+          </div>
+        </div>
+        <div class="score">0.447</div>
+      </div>
+      <div class="row">
+        <div class="rank">55</div>
+        <div class="who">
+          <div class="name">Bryan Torres</div>
+          <div class="sub">St. Louis Cardinals &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Brady Singer</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.024</span>
+          </div>
+        </div>
+        <div class="score">0.447</div>
+      </div>
+      <div class="row">
+        <div class="rank">56</div>
+        <div class="who">
+          <div class="name">Amed Rosario</div>
+          <div class="sub">New York Yankees &middot; New York Yankees@Baltimore Orioles &middot; vs Kyle Bradish</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.046</span>
+          </div>
+        </div>
+        <div class="score">0.443</div>
+      </div>
+      <div class="row">
+        <div class="rank">57</div>
+        <div class="who">
+          <div class="name">Jeremy Peña</div>
+          <div class="sub">Houston Astros &middot; Los Angeles Angels@Houston Astros &middot; vs Grayson Rodriguez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.014</span>
+          </div>
+        </div>
+        <div class="score">0.443</div>
+      </div>
+      <div class="row">
+        <div class="rank">58</div>
+        <div class="who">
+          <div class="name">Michael Massey</div>
+          <div class="sub">Kansas City Royals &middot; Athletics@Kansas City Royals &middot; vs Gage Jump</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.002</span>
+          </div>
+        </div>
+        <div class="score">0.442</div>
+      </div>
+      <div class="row">
+        <div class="rank">59</div>
+        <div class="who">
+          <div class="name">Rafael Devers</div>
+          <div class="sub">San Francisco Giants &middot; San Francisco Giants@Cleveland Guardians &middot; vs Gavin Williams</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.016</span>
+          </div>
+        </div>
+        <div class="score">0.440</div>
+      </div>
+      <div class="row">
+        <div class="rank">60</div>
+        <div class="who">
+          <div class="name">Jorge Mateo</div>
+          <div class="sub">Tampa Bay Rays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Shane Bieber</div>
+          <div class="tags">
+            <span class="tag">park +25%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.439</div>
+      </div>
+      <div class="row">
+        <div class="rank">61</div>
+        <div class="who">
+          <div class="name">Jose Siri</div>
+          <div class="sub">Los Angeles Angels &middot; Los Angeles Angels@Houston Astros &middot; vs Peter Lambert</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.007</span>
+          </div>
+        </div>
+        <div class="score">0.430</div>
+      </div>
+      <div class="row">
+        <div class="rank">62</div>
+        <div class="who">
+          <div class="name">Charles McAdoo</div>
+          <div class="sub">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Ian Seymour</div>
+          <div class="tags">
+            <span class="tag">park +25%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.020</span>
+          </div>
+        </div>
+        <div class="score">0.428</div>
+      </div>
+      <div class="row">
+        <div class="rank">63</div>
+        <div class="who">
+          <div class="name">Daz Cameron</div>
+          <div class="sub">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Ian Seymour</div>
+          <div class="tags">
+            <span class="tag">park +25%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.425</div>
+      </div>
+      <div class="row">
+        <div class="rank">64</div>
+        <div class="who">
+          <div class="name">Yainer Diaz</div>
+          <div class="sub">Houston Astros &middot; Los Angeles Angels@Houston Astros &middot; vs Grayson Rodriguez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.004</span>
+          </div>
+        </div>
+        <div class="score">0.422</div>
+      </div>
+      <div class="row">
+        <div class="rank">65</div>
+        <div class="who">
+          <div class="name">Randal Grichuk</div>
+          <div class="sub">Chicago White Sox &middot; Atlanta Braves@Chicago White Sox &middot; vs Grant Holmes</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.021</span>
+          </div>
+        </div>
+        <div class="score">0.418</div>
+      </div>
+      <div class="row">
+        <div class="rank">66</div>
+        <div class="who">
+          <div class="name">Brandon Nimmo</div>
+          <div class="sub">Texas Rangers &middot; Washington Nationals@Texas Rangers &middot; vs Andrew Alvarez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.005</span>
+          </div>
+        </div>
+        <div class="score">0.406</div>
+      </div>
+      <div class="row">
+        <div class="rank">67</div>
+        <div class="who">
+          <div class="name">Cal Raleigh</div>
+          <div class="sub">Seattle Mariners &middot; Seattle Mariners@Milwaukee Brewers &middot; vs Robert Gasser</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.034</span>
+          </div>
+        </div>
+        <div class="score">0.406</div>
+      </div>
+      <div class="row">
+        <div class="rank">68</div>
+        <div class="who">
+          <div class="name">Bobby Witt Jr.</div>
+          <div class="sub">Kansas City Royals &middot; Athletics@Kansas City Royals &middot; vs Gage Jump</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.036</span>
+          </div>
+        </div>
+        <div class="score">0.406</div>
+      </div>
+      <div class="row">
+        <div class="rank">69</div>
+        <div class="who">
+          <div class="name">Nathaniel Lowe</div>
+          <div class="sub">Cleveland Guardians &middot; San Francisco Giants@Cleveland Guardians &middot; vs Landen Roupp</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.042</span>
+          </div>
+        </div>
+        <div class="score">0.403</div>
+      </div>
+      <div class="row">
+        <div class="rank">70</div>
+        <div class="who">
+          <div class="name">Brady House</div>
+          <div class="sub">Washington Nationals &middot; Washington Nationals@Texas Rangers &middot; vs Jacob deGrom</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.013</span>
+          </div>
+        </div>
+        <div class="score">0.400</div>
+      </div>
+      <div class="row">
+        <div class="rank">71</div>
+        <div class="who">
+          <div class="name">Everson Pereira</div>
+          <div class="sub">St. Louis Cardinals &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Brady Singer</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.040</span>
+          </div>
+        </div>
+        <div class="score">0.398</div>
+      </div>
+      <div class="row">
+        <div class="rank">72</div>
+        <div class="who">
+          <div class="name">Drew Gilbert</div>
+          <div class="sub">San Francisco Giants &middot; San Francisco Giants@Cleveland Guardians &middot; vs Gavin Williams</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.025</span>
+          </div>
+        </div>
+        <div class="score">0.395</div>
+      </div>
+      <div class="row">
+        <div class="rank">73</div>
+        <div class="who">
+          <div class="name">Carter Jensen</div>
+          <div class="sub">Kansas City Royals &middot; Athletics@Kansas City Royals &middot; vs Gage Jump</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.023</span>
+          </div>
+        </div>
+        <div class="score">0.392</div>
+      </div>
+      <div class="row">
+        <div class="rank">74</div>
+        <div class="who">
+          <div class="name">Joshua Báez</div>
+          <div class="sub">St. Louis Cardinals &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Brady Singer</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.013</span>
+          </div>
+        </div>
+        <div class="score">0.390</div>
+      </div>
+      <div class="row">
+        <div class="rank">75</div>
+        <div class="who">
+          <div class="name">Nelson Velázquez</div>
+          <div class="sub">Houston Astros &middot; Los Angeles Angels@Houston Astros &middot; vs Grayson Rodriguez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.384</div>
+      </div>
+      <div class="row">
+        <div class="rank">76</div>
+        <div class="who">
+          <div class="name">Kenny Piper</div>
+          <div class="sub">Tampa Bay Rays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Shane Bieber</div>
+          <div class="tags">
+            <span class="tag">park +25%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.372</div>
+      </div>
+      <div class="row">
+        <div class="rank">77</div>
+        <div class="who">
+          <div class="name">Dane Myers</div>
+          <div class="sub">Cincinnati Reds &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Michael McGreevy</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.003</span>
+          </div>
+        </div>
+        <div class="score">0.371</div>
+      </div>
+      <div class="row">
+        <div class="rank">78</div>
+        <div class="who">
+          <div class="name">Leody Taveras</div>
+          <div class="sub">Baltimore Orioles &middot; New York Yankees@Baltimore Orioles &middot; vs Gerrit Cole</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.013</span>
+          </div>
+        </div>
+        <div class="score">0.370</div>
+      </div>
+      <div class="row">
+        <div class="rank">79</div>
+        <div class="who">
+          <div class="name">Corey Seager</div>
+          <div class="sub">Texas Rangers &middot; Washington Nationals@Texas Rangers &middot; vs Andrew Alvarez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.007</span>
+          </div>
+        </div>
+        <div class="score">0.366</div>
+      </div>
+      <div class="row">
+        <div class="rank">80</div>
+        <div class="who">
+          <div class="name">Christian Yelich</div>
+          <div class="sub">Milwaukee Brewers &middot; Seattle Mariners@Milwaukee Brewers &middot; vs George Kirby</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.010</span>
+          </div>
+        </div>
+        <div class="score">0.364</div>
+      </div>
+      <div class="row">
+        <div class="rank">81</div>
+        <div class="who">
+          <div class="name">Travis d&#x27;Arnaud</div>
+          <div class="sub">Los Angeles Angels &middot; Los Angeles Angels@Houston Astros &middot; vs Peter Lambert</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.016</span>
+          </div>
+        </div>
+        <div class="score">0.363</div>
+      </div>
+      <div class="row">
+        <div class="rank">82</div>
+        <div class="who">
+          <div class="name">Colson Montgomery</div>
+          <div class="sub">Chicago White Sox &middot; Atlanta Braves@Chicago White Sox &middot; vs Grant Holmes</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.021</span>
+          </div>
+        </div>
+        <div class="score">0.352</div>
+      </div>
+      <div class="row">
+        <div class="rank">83</div>
+        <div class="who">
+          <div class="name">Cooper Pratt</div>
+          <div class="sub">Milwaukee Brewers &middot; Seattle Mariners@Milwaukee Brewers &middot; vs George Kirby</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.010</span>
+          </div>
+        </div>
+        <div class="score">0.347</div>
+      </div>
+      <div class="row">
+        <div class="rank">84</div>
+        <div class="who">
+          <div class="name">Jung Hoo Lee</div>
+          <div class="sub">San Francisco Giants &middot; San Francisco Giants@Cleveland Guardians &middot; vs Gavin Williams</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.008</span>
+          </div>
+        </div>
+        <div class="score">0.347</div>
+      </div>
+      <div class="row">
+        <div class="rank">85</div>
+        <div class="who">
+          <div class="name">Ben Rice</div>
+          <div class="sub">New York Yankees &middot; New York Yankees@Baltimore Orioles &middot; vs Kyle Bradish</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.019</span>
+          </div>
+        </div>
+        <div class="score">0.345</div>
+      </div>
+      <div class="row">
+        <div class="rank">86</div>
+        <div class="who">
+          <div class="name">Wyatt Langford</div>
+          <div class="sub">Texas Rangers &middot; Washington Nationals@Texas Rangers &middot; vs Andrew Alvarez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.014</span>
+          </div>
+        </div>
+        <div class="score">0.340</div>
+      </div>
+      <div class="row">
+        <div class="rank">87</div>
+        <div class="who">
+          <div class="name">Brock Rodden</div>
+          <div class="sub">Seattle Mariners &middot; Seattle Mariners@Milwaukee Brewers &middot; vs Robert Gasser</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.004</span>
+          </div>
+        </div>
+        <div class="score">0.337</div>
+      </div>
+      <div class="row">
+        <div class="rank">88</div>
+        <div class="who">
+          <div class="name">Jake Burger</div>
+          <div class="sub">Texas Rangers &middot; Washington Nationals@Texas Rangers &middot; vs Andrew Alvarez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.005</span>
+          </div>
+        </div>
+        <div class="score">0.337</div>
+      </div>
+      <div class="row">
+        <div class="rank">89</div>
+        <div class="who">
+          <div class="name">Josh Naylor</div>
+          <div class="sub">Seattle Mariners &middot; Seattle Mariners@Milwaukee Brewers &middot; vs Robert Gasser</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.029</span>
+          </div>
+        </div>
+        <div class="score">0.335</div>
+      </div>
+      <div class="row">
+        <div class="rank">90</div>
+        <div class="who">
+          <div class="name">CJ Abrams</div>
+          <div class="sub">Washington Nationals &middot; Washington Nationals@Texas Rangers &middot; vs Jacob deGrom</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.007</span>
+          </div>
+        </div>
+        <div class="score">0.334</div>
+      </div>
+      <div class="row">
+        <div class="rank">91</div>
+        <div class="who">
+          <div class="name">Mike Trout</div>
+          <div class="sub">Los Angeles Angels &middot; Los Angeles Angels@Houston Astros &middot; vs Peter Lambert</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.017</span>
+          </div>
+        </div>
+        <div class="score">0.332</div>
+      </div>
+      <div class="row">
+        <div class="rank">92</div>
+        <div class="who">
+          <div class="name">JJ Bleday</div>
+          <div class="sub">Cincinnati Reds &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Michael McGreevy</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.014</span>
+          </div>
+        </div>
+        <div class="score">0.327</div>
+      </div>
+      <div class="row">
+        <div class="rank">93</div>
+        <div class="who">
+          <div class="name">Jake Rogers</div>
+          <div class="sub">Chicago White Sox &middot; Atlanta Braves@Chicago White Sox &middot; vs Grant Holmes</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.014</span>
+          </div>
+        </div>
+        <div class="score">0.327</div>
+      </div>
+      <div class="row">
+        <div class="rank">94</div>
+        <div class="who">
+          <div class="name">Brian Serven</div>
+          <div class="sub">Athletics &middot; Athletics@Kansas City Royals &middot; vs Randy Dobnak</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.022</span>
+          </div>
+        </div>
+        <div class="score">0.324</div>
+      </div>
+      <div class="row">
+        <div class="rank">95</div>
+        <div class="who">
+          <div class="name">Andrew Pinckney</div>
+          <div class="sub">Washington Nationals &middot; Washington Nationals@Texas Rangers &middot; vs Jacob deGrom</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.324</div>
+      </div>
+      <div class="row">
+        <div class="rank">96</div>
+        <div class="who">
+          <div class="name">Christian Walker</div>
+          <div class="sub">Houston Astros &middot; Los Angeles Angels@Houston Astros &middot; vs Grayson Rodriguez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.005</span>
+          </div>
+        </div>
+        <div class="score">0.322</div>
+      </div>
+      <div class="row">
+        <div class="rank">97</div>
+        <div class="who">
+          <div class="name">Jeff McNeil</div>
+          <div class="sub">Athletics &middot; Athletics@Kansas City Royals &middot; vs Randy Dobnak</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.003</span>
+          </div>
+        </div>
+        <div class="score">0.318</div>
+      </div>
+      <div class="row">
+        <div class="rank">98</div>
+        <div class="who">
+          <div class="name">Liam Hicks</div>
+          <div class="sub">Tampa Bay Rays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Shane Bieber</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.003</span>
+          </div>
+        </div>
+        <div class="score">0.317</div>
+      </div>
+      <div class="row">
+        <div class="rank">99</div>
+        <div class="who">
+          <div class="name">José Tena</div>
+          <div class="sub">Washington Nationals &middot; Washington Nationals@Texas Rangers &middot; vs Jacob deGrom</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.008</span>
+          </div>
+        </div>
+        <div class="score">0.315</div>
+      </div>
+      <div class="row">
+        <div class="rank">100</div>
+        <div class="who">
+          <div class="name">Harry Ford</div>
+          <div class="sub">Washington Nationals &middot; Washington Nationals@Texas Rangers &middot; vs Jacob deGrom</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.012</span>
+          </div>
+        </div>
+        <div class="score">0.311</div>
+      </div>
+      <div class="row">
+        <div class="rank">101</div>
+        <div class="who">
+          <div class="name">Luke Maile</div>
+          <div class="sub">Kansas City Royals &middot; Athletics@Kansas City Royals &middot; vs Gage Jump</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.310</div>
+      </div>
+      <div class="row">
+        <div class="rank">102</div>
+        <div class="who">
+          <div class="name">Taylor Walls</div>
+          <div class="sub">Tampa Bay Rays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Shane Bieber</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.017</span>
+          </div>
+        </div>
+        <div class="score">0.305</div>
+      </div>
+      <div class="row">
+        <div class="rank">103</div>
+        <div class="who">
+          <div class="name">Christian Franklin</div>
+          <div class="sub">Baltimore Orioles &middot; New York Yankees@Baltimore Orioles &middot; vs Gerrit Cole</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.013</span>
+          </div>
+        </div>
+        <div class="score">0.302</div>
+      </div>
+      <div class="row">
+        <div class="rank">104</div>
+        <div class="who">
+          <div class="name">Andrew Knizner</div>
+          <div class="sub">San Francisco Giants &middot; San Francisco Giants@Cleveland Guardians &middot; vs Gavin Williams</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.301</div>
+      </div>
+      <div class="row">
+        <div class="rank">105</div>
+        <div class="who">
+          <div class="name">Will Banfield</div>
+          <div class="sub">Cincinnati Reds &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Michael McGreevy</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.300</div>
+      </div>
+      <div class="row">
+        <div class="rank">106</div>
+        <div class="who">
+          <div class="name">Jonah Cox</div>
+          <div class="sub">San Francisco Giants &middot; San Francisco Giants@Cleveland Guardians &middot; vs Gavin Williams</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.035</span>
+          </div>
+        </div>
+        <div class="score">0.296</div>
+      </div>
+      <div class="row">
+        <div class="rank">107</div>
+        <div class="who">
+          <div class="name">Turner Hill</div>
+          <div class="sub">San Francisco Giants &middot; San Francisco Giants@Cleveland Guardians &middot; vs Gavin Williams</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.295</div>
+      </div>
+      <div class="row">
+        <div class="rank">108</div>
+        <div class="who">
+          <div class="name">Petey Halpin</div>
+          <div class="sub">Cleveland Guardians &middot; San Francisco Giants@Cleveland Guardians &middot; vs Landen Roupp</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.029</span>
+          </div>
+        </div>
+        <div class="score">0.293</div>
+      </div>
+      <div class="row">
+        <div class="rank">109</div>
+        <div class="who">
+          <div class="name">Elly De La Cruz</div>
+          <div class="sub">Cincinnati Reds &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Michael McGreevy</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.004</span>
+          </div>
+        </div>
+        <div class="score">0.292</div>
+      </div>
+      <div class="row">
+        <div class="rank">110</div>
+        <div class="who">
+          <div class="name">Luis García Jr.</div>
+          <div class="sub">New York Yankees &middot; New York Yankees@Baltimore Orioles &middot; vs Kyle Bradish</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.013</span>
+          </div>
+        </div>
+        <div class="score">0.291</div>
+      </div>
+      <div class="row">
+        <div class="rank">111</div>
+        <div class="who">
+          <div class="name">Drew Romo</div>
+          <div class="sub">Chicago White Sox &middot; Atlanta Braves@Chicago White Sox &middot; vs Grant Holmes</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.005</span>
+          </div>
+        </div>
+        <div class="score">0.290</div>
+      </div>
+      <div class="row">
+        <div class="rank">112</div>
+        <div class="who">
+          <div class="name">Jimmy Crooks</div>
+          <div class="sub">St. Louis Cardinals &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Brady Singer</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.047</span>
+          </div>
+        </div>
+        <div class="score">0.289</div>
+      </div>
+      <div class="row">
+        <div class="rank">113</div>
+        <div class="who">
+          <div class="name">David Fry</div>
+          <div class="sub">Cleveland Guardians &middot; San Francisco Giants@Cleveland Guardians &middot; vs Landen Roupp</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.286</div>
+      </div>
+      <div class="row">
+        <div class="rank">114</div>
+        <div class="who">
+          <div class="name">William Contreras</div>
+          <div class="sub">Milwaukee Brewers &middot; Seattle Mariners@Milwaukee Brewers &middot; vs George Kirby</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.016</span>
+          </div>
+        </div>
+        <div class="score">0.282</div>
+      </div>
+      <div class="row">
+        <div class="rank">115</div>
+        <div class="who">
+          <div class="name">Danny Jansen</div>
+          <div class="sub">Texas Rangers &middot; Washington Nationals@Texas Rangers &middot; vs Andrew Alvarez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.278</div>
+      </div>
+      <div class="row">
+        <div class="rank">116</div>
+        <div class="who">
+          <div class="name">Chase DeLauter</div>
+          <div class="sub">Cleveland Guardians &middot; San Francisco Giants@Cleveland Guardians &middot; vs Landen Roupp</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.013</span>
+          </div>
+        </div>
+        <div class="score">0.276</div>
+      </div>
+      <div class="row">
+        <div class="rank">117</div>
+        <div class="who">
+          <div class="name">Jonathan Ornelas</div>
+          <div class="sub">Milwaukee Brewers &middot; Seattle Mariners@Milwaukee Brewers &middot; vs George Kirby</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.010</span>
+          </div>
+        </div>
+        <div class="score">0.275</div>
+      </div>
+      <div class="row">
+        <div class="rank">118</div>
+        <div class="who">
+          <div class="name">Buddy Kennedy</div>
+          <div class="sub">San Francisco Giants &middot; San Francisco Giants@Cleveland Guardians &middot; vs Gavin Williams</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.023</span>
+          </div>
+        </div>
+        <div class="score">0.272</div>
+      </div>
+      <div class="row">
+        <div class="rank">119</div>
+        <div class="who">
+          <div class="name">Jordan Walker</div>
+          <div class="sub">St. Louis Cardinals &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Brady Singer</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.013</span>
+          </div>
+        </div>
+        <div class="score">0.271</div>
+      </div>
+      <div class="row">
+        <div class="rank">120</div>
+        <div class="who">
+          <div class="name">Weston Wilson</div>
+          <div class="sub">Seattle Mariners &middot; Seattle Mariners@Milwaukee Brewers &middot; vs Robert Gasser</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.015</span>
+          </div>
+        </div>
+        <div class="score">0.269</div>
+      </div>
+      <div class="row">
+        <div class="rank">121</div>
+        <div class="who">
+          <div class="name">Gunnar Henderson</div>
+          <div class="sub">Baltimore Orioles &middot; New York Yankees@Baltimore Orioles &middot; vs Gerrit Cole</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.031</span>
+          </div>
+        </div>
+        <div class="score">0.268</div>
+      </div>
+      <div class="row">
+        <div class="rank">122</div>
+        <div class="who">
+          <div class="name">Michael Toglia</div>
+          <div class="sub">Cincinnati Reds &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Michael McGreevy</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.025</span>
+          </div>
+        </div>
+        <div class="score">0.268</div>
+      </div>
+      <div class="row">
+        <div class="rank">123</div>
+        <div class="who">
+          <div class="name">Isaac Paredes</div>
+          <div class="sub">Houston Astros &middot; Los Angeles Angels@Houston Astros &middot; vs Grayson Rodriguez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.009</span>
+          </div>
+        </div>
+        <div class="score">0.268</div>
+      </div>
+      <div class="row">
+        <div class="rank">124</div>
+        <div class="who">
+          <div class="name">Tommy White</div>
+          <div class="sub">Athletics &middot; Athletics@Kansas City Royals &middot; vs Randy Dobnak</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.038</span>
+          </div>
+        </div>
+        <div class="score">0.268</div>
+      </div>
+      <div class="row">
+        <div class="rank">125</div>
+        <div class="who">
+          <div class="name">Jesús Sánchez</div>
+          <div class="sub">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Ian Seymour</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.018</span>
+          </div>
+        </div>
+        <div class="score">0.261</div>
+      </div>
+      <div class="row">
+        <div class="rank">126</div>
+        <div class="who">
+          <div class="name">Cody Freeman</div>
+          <div class="sub">Texas Rangers &middot; Washington Nationals@Texas Rangers &middot; vs Andrew Alvarez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.007</span>
+          </div>
+        </div>
+        <div class="score">0.260</div>
+      </div>
+      <div class="row">
+        <div class="rank">127</div>
+        <div class="who">
+          <div class="name">Cole Young</div>
+          <div class="sub">Seattle Mariners &middot; Seattle Mariners@Milwaukee Brewers &middot; vs Robert Gasser</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.006</span>
+          </div>
+        </div>
+        <div class="score">0.257</div>
+      </div>
+      <div class="row">
+        <div class="rank">128</div>
+        <div class="who">
+          <div class="name">Pedro Pagés</div>
+          <div class="sub">St. Louis Cardinals &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Brady Singer</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.256</div>
+      </div>
+      <div class="row">
+        <div class="rank">129</div>
+        <div class="who">
+          <div class="name">Ha-Seong Kim</div>
+          <div class="sub">Atlanta Braves &middot; Atlanta Braves@Chicago White Sox &middot; vs Anthony Kay</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.255</div>
+      </div>
+      <div class="row">
+        <div class="rank">130</div>
+        <div class="who">
+          <div class="name">Brenton Doyle</div>
+          <div class="sub">Chicago White Sox &middot; Atlanta Braves@Chicago White Sox &middot; vs Grant Holmes</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.005</span>
+          </div>
+        </div>
+        <div class="score">0.254</div>
+      </div>
+      <div class="row">
+        <div class="rank">131</div>
+        <div class="who">
+          <div class="name">Sean Murphy</div>
+          <div class="sub">Atlanta Braves &middot; Atlanta Braves@Chicago White Sox &middot; vs Anthony Kay</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.011</span>
+          </div>
+        </div>
+        <div class="score">0.254</div>
+      </div>
+      <div class="row">
+        <div class="rank">132</div>
+        <div class="who">
+          <div class="name">Justin Foscue</div>
+          <div class="sub">Texas Rangers &middot; Washington Nationals@Texas Rangers &middot; vs Andrew Alvarez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.003</span>
+          </div>
+        </div>
+        <div class="score">0.254</div>
+      </div>
+      <div class="row">
+        <div class="rank">133</div>
+        <div class="who">
+          <div class="name">Kyle Isbel</div>
+          <div class="sub">Kansas City Royals &middot; Athletics@Kansas City Royals &middot; vs Gage Jump</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.004</span>
+          </div>
+        </div>
+        <div class="score">0.253</div>
+      </div>
+      <div class="row">
+        <div class="rank">134</div>
+        <div class="who">
+          <div class="name">Héctor Rodríguez</div>
+          <div class="sub">Cincinnati Reds &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Michael McGreevy</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.020</span>
+          </div>
+        </div>
+        <div class="score">0.249</div>
+      </div>
+      <div class="row">
+        <div class="rank">135</div>
+        <div class="who">
+          <div class="name">Yohel Pozo</div>
+          <div class="sub">Baltimore Orioles &middot; New York Yankees@Baltimore Orioles &middot; vs Gerrit Cole</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.247</div>
+      </div>
+      <div class="row">
+        <div class="rank">136</div>
+        <div class="who">
+          <div class="name">Jarred Kelenic</div>
+          <div class="sub">Texas Rangers &middot; Washington Nationals@Texas Rangers &middot; vs Andrew Alvarez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.002</span>
+          </div>
+        </div>
+        <div class="score">0.247</div>
+      </div>
+      <div class="row">
+        <div class="rank">137</div>
+        <div class="who">
+          <div class="name">Iván Herrera</div>
+          <div class="sub">St. Louis Cardinals &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Brady Singer</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.002</span>
+          </div>
+        </div>
+        <div class="score">0.246</div>
+      </div>
+      <div class="row">
+        <div class="rank">138</div>
+        <div class="who">
+          <div class="name">Ali Sánchez</div>
+          <div class="sub">New York Yankees &middot; New York Yankees@Baltimore Orioles &middot; vs Kyle Bradish</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.006</span>
+          </div>
+        </div>
+        <div class="score">0.246</div>
+      </div>
+      <div class="row">
+        <div class="rank">139</div>
+        <div class="who">
+          <div class="name">Austin Wells</div>
+          <div class="sub">New York Yankees &middot; New York Yankees@Baltimore Orioles &middot; vs Kyle Bradish</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.014</span>
+          </div>
+        </div>
+        <div class="score">0.245</div>
+      </div>
+      <div class="row">
+        <div class="rank">140</div>
+        <div class="who">
+          <div class="name">Ozzie Albies</div>
+          <div class="sub">Atlanta Braves &middot; Atlanta Braves@Chicago White Sox &middot; vs Anthony Kay</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.014</span>
+          </div>
+        </div>
+        <div class="score">0.245</div>
+      </div>
+      <div class="row">
+        <div class="rank">141</div>
+        <div class="who">
+          <div class="name">Elias Díaz</div>
+          <div class="sub">Texas Rangers &middot; Washington Nationals@Texas Rangers &middot; vs Andrew Alvarez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.016</span>
+          </div>
+        </div>
+        <div class="score">0.243</div>
+      </div>
+      <div class="row">
+        <div class="rank">142</div>
+        <div class="who">
+          <div class="name">John Rave</div>
+          <div class="sub">Kansas City Royals &middot; Athletics@Kansas City Royals &middot; vs Gage Jump</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.004</span>
+          </div>
+        </div>
+        <div class="score">0.243</div>
+      </div>
+      <div class="row">
+        <div class="rank">143</div>
+        <div class="who">
+          <div class="name">Jazz Chisholm Jr.</div>
+          <div class="sub">New York Yankees &middot; New York Yankees@Baltimore Orioles &middot; vs Kyle Bradish</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.001</span>
+          </div>
+        </div>
+        <div class="score">0.241</div>
+      </div>
+      <div class="row">
+        <div class="rank">144</div>
+        <div class="who">
+          <div class="name">José Caballero</div>
+          <div class="sub">New York Yankees &middot; New York Yankees@Baltimore Orioles &middot; vs Kyle Bradish</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.004</span>
+          </div>
+        </div>
+        <div class="score">0.236</div>
+      </div>
+      <div class="row">
+        <div class="rank">145</div>
+        <div class="who">
+          <div class="name">Austin Hedges</div>
+          <div class="sub">Cleveland Guardians &middot; San Francisco Giants@Cleveland Guardians &middot; vs Landen Roupp</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.002</span>
+          </div>
+        </div>
+        <div class="score">0.231</div>
+      </div>
+      <div class="row">
+        <div class="rank">146</div>
+        <div class="who">
+          <div class="name">Richie Palacios</div>
+          <div class="sub">Tampa Bay Rays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Shane Bieber</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.008</span>
+          </div>
+        </div>
+        <div class="score">0.228</div>
+      </div>
+      <div class="row">
+        <div class="rank">147</div>
+        <div class="who">
+          <div class="name">TJ Friedl</div>
+          <div class="sub">Cincinnati Reds &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Michael McGreevy</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.018</span>
+          </div>
+        </div>
+        <div class="score">0.227</div>
+      </div>
+      <div class="row">
+        <div class="rank">148</div>
+        <div class="who">
+          <div class="name">Jose Trevino</div>
+          <div class="sub">Cincinnati Reds &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Michael McGreevy</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.009</span>
+          </div>
+        </div>
+        <div class="score">0.226</div>
+      </div>
+      <div class="row">
+        <div class="rank">149</div>
+        <div class="who">
+          <div class="name">Drew Cavanaugh</div>
+          <div class="sub">San Francisco Giants &middot; San Francisco Giants@Cleveland Guardians &middot; vs Gavin Williams</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.026</span>
+          </div>
+        </div>
+        <div class="score">0.226</div>
+      </div>
+      <div class="row">
+        <div class="rank">150</div>
+        <div class="who">
+          <div class="name">Jhonny Pereda</div>
+          <div class="sub">Seattle Mariners &middot; Seattle Mariners@Milwaukee Brewers &middot; vs Robert Gasser</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.220</div>
+      </div>
+      <div class="row">
+        <div class="rank">151</div>
+        <div class="who">
+          <div class="name">Dylan Beavers</div>
+          <div class="sub">Baltimore Orioles &middot; New York Yankees@Baltimore Orioles &middot; vs Gerrit Cole</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.038</span>
+          </div>
+        </div>
+        <div class="score">0.220</div>
+      </div>
+      <div class="row">
+        <div class="rank">152</div>
+        <div class="who">
+          <div class="name">Tristan Peters</div>
+          <div class="sub">Chicago White Sox &middot; Atlanta Braves@Chicago White Sox &middot; vs Grant Holmes</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.017</span>
+          </div>
+        </div>
+        <div class="score">0.219</div>
+      </div>
+      <div class="row">
+        <div class="rank">153</div>
+        <div class="who">
+          <div class="name">Andrew Vaughn</div>
+          <div class="sub">Milwaukee Brewers &middot; Seattle Mariners@Milwaukee Brewers &middot; vs George Kirby</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.003</span>
+          </div>
+        </div>
+        <div class="score">0.218</div>
+      </div>
+      <div class="row">
+        <div class="rank">154</div>
+        <div class="who">
+          <div class="name">Angel Genao</div>
+          <div class="sub">Cleveland Guardians &middot; San Francisco Giants@Cleveland Guardians &middot; vs Landen Roupp</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.014</span>
+          </div>
+        </div>
+        <div class="score">0.217</div>
+      </div>
+      <div class="row">
+        <div class="rank">155</div>
+        <div class="who">
+          <div class="name">Ke&#x27;Bryan Hayes</div>
+          <div class="sub">Cincinnati Reds &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Michael McGreevy</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.002</span>
+          </div>
+        </div>
+        <div class="score">0.215</div>
+      </div>
+      <div class="row">
+        <div class="rank">156</div>
+        <div class="who">
+          <div class="name">Carlos Narváez</div>
+          <div class="sub">Baltimore Orioles &middot; New York Yankees@Baltimore Orioles &middot; vs Gerrit Cole</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.046</span>
+          </div>
+        </div>
+        <div class="score">0.214</div>
+      </div>
+      <div class="row">
+        <div class="rank">157</div>
+        <div class="who">
+          <div class="name">Ryan McMahon</div>
+          <div class="sub">New York Yankees &middot; New York Yankees@Baltimore Orioles &middot; vs Kyle Bradish</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.024</span>
+          </div>
+        </div>
+        <div class="score">0.209</div>
+      </div>
+      <div class="row">
+        <div class="rank">158</div>
+        <div class="who">
+          <div class="name">Kazuma Okamoto</div>
+          <div class="sub">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Ian Seymour</div>
+          <div class="tags">
+            <span class="tag">park +25%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.011</span>
+          </div>
+        </div>
+        <div class="score">0.206</div>
+      </div>
+      <div class="row">
+        <div class="rank">159</div>
+        <div class="who">
+          <div class="name">Jacob Young</div>
+          <div class="sub">Washington Nationals &middot; Washington Nationals@Texas Rangers &middot; vs Jacob deGrom</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.050</span>
+          </div>
+        </div>
+        <div class="score">0.206</div>
+      </div>
+      <div class="row">
+        <div class="rank">160</div>
+        <div class="who">
+          <div class="name">Angel Martínez</div>
+          <div class="sub">Cleveland Guardians &middot; San Francisco Giants@Cleveland Guardians &middot; vs Landen Roupp</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.007</span>
+          </div>
+        </div>
+        <div class="score">0.198</div>
+      </div>
+      <div class="row">
+        <div class="rank">161</div>
+        <div class="who">
+          <div class="name">Adam Frazier</div>
+          <div class="sub">Los Angeles Angels &middot; Los Angeles Angels@Houston Astros &middot; vs Peter Lambert</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.015</span>
+          </div>
+        </div>
+        <div class="score">0.197</div>
+      </div>
+      <div class="row">
+        <div class="rank">162</div>
+        <div class="who">
+          <div class="name">Willy Adames</div>
+          <div class="sub">San Francisco Giants &middot; San Francisco Giants@Cleveland Guardians &middot; vs Gavin Williams</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.004</span>
+          </div>
+        </div>
+        <div class="score">0.195</div>
+      </div>
+      <div class="row">
+        <div class="rank">163</div>
+        <div class="who">
+          <div class="name">Denzer Guzman</div>
+          <div class="sub">Los Angeles Angels &middot; Los Angeles Angels@Houston Astros &middot; vs Peter Lambert</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.043</span>
+          </div>
+        </div>
+        <div class="score">0.192</div>
+      </div>
+      <div class="row">
+        <div class="rank">164</div>
+        <div class="who">
+          <div class="name">Brice Turang</div>
+          <div class="sub">Milwaukee Brewers &middot; Seattle Mariners@Milwaukee Brewers &middot; vs George Kirby</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.006</span>
+          </div>
+        </div>
+        <div class="score">0.189</div>
+      </div>
+      <div class="row">
+        <div class="rank">165</div>
+        <div class="who">
+          <div class="name">Paul Goldschmidt</div>
+          <div class="sub">New York Yankees &middot; New York Yankees@Baltimore Orioles &middot; vs Kyle Bradish</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.019</span>
+          </div>
+        </div>
+        <div class="score">0.185</div>
+      </div>
+      <div class="row">
+        <div class="rank">166</div>
+        <div class="who">
+          <div class="name">Blaze Jordan</div>
+          <div class="sub">St. Louis Cardinals &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Brady Singer</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.009</span>
+          </div>
+        </div>
+        <div class="score">0.184</div>
+      </div>
+      <div class="row">
+        <div class="rank">167</div>
+        <div class="who">
+          <div class="name">Nick Allen</div>
+          <div class="sub">Houston Astros &middot; Los Angeles Angels@Houston Astros &middot; vs Grayson Rodriguez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.033</span>
+          </div>
+        </div>
+        <div class="score">0.183</div>
+      </div>
+      <div class="row">
+        <div class="rank">168</div>
+        <div class="who">
+          <div class="name">Braden Montgomery</div>
+          <div class="sub">Chicago White Sox &middot; Atlanta Braves@Chicago White Sox &middot; vs Grant Holmes</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.008</span>
+          </div>
+        </div>
+        <div class="score">0.179</div>
+      </div>
+      <div class="row">
+        <div class="rank">169</div>
+        <div class="who">
+          <div class="name">Luis Lara</div>
+          <div class="sub">Milwaukee Brewers &middot; Seattle Mariners@Milwaukee Brewers &middot; vs George Kirby</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.030</span>
+          </div>
+        </div>
+        <div class="score">0.175</div>
+      </div>
+      <div class="row">
+        <div class="rank">170</div>
+        <div class="who">
+          <div class="name">Cedric Mullins</div>
+          <div class="sub">Tampa Bay Rays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Shane Bieber</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.017</span>
+          </div>
+        </div>
+        <div class="score">0.174</div>
+      </div>
+      <div class="row">
+        <div class="rank">171</div>
+        <div class="who">
+          <div class="name">Carlos Cortes</div>
+          <div class="sub">Athletics &middot; Athletics@Kansas City Royals &middot; vs Randy Dobnak</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.037</span>
+          </div>
+        </div>
+        <div class="score">0.171</div>
+      </div>
+      <div class="row">
+        <div class="rank">172</div>
+        <div class="who">
+          <div class="name">Yordan Alvarez</div>
+          <div class="sub">Houston Astros &middot; Los Angeles Angels@Houston Astros &middot; vs Grayson Rodriguez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.023</span>
+          </div>
+        </div>
+        <div class="score">0.165</div>
+      </div>
+      <div class="row">
+        <div class="rank">173</div>
+        <div class="who">
+          <div class="name">Masyn Winn</div>
+          <div class="sub">St. Louis Cardinals &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Brady Singer</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.001</span>
+          </div>
+        </div>
+        <div class="score">0.165</div>
+      </div>
+      <div class="row">
+        <div class="rank">174</div>
+        <div class="who">
+          <div class="name">Jose Altuve</div>
+          <div class="sub">Houston Astros &middot; Los Angeles Angels@Houston Astros &middot; vs Grayson Rodriguez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.022</span>
+          </div>
+        </div>
+        <div class="score">0.161</div>
+      </div>
+      <div class="row">
+        <div class="rank">175</div>
+        <div class="who">
+          <div class="name">Dylan Crews</div>
+          <div class="sub">Washington Nationals &middot; Washington Nationals@Texas Rangers &middot; vs Jacob deGrom</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.001</span>
+          </div>
+        </div>
+        <div class="score">0.159</div>
+      </div>
+      <div class="row">
+        <div class="rank">176</div>
+        <div class="who">
+          <div class="name">Zach Neto</div>
+          <div class="sub">Los Angeles Angels &middot; Los Angeles Angels@Houston Astros &middot; vs Peter Lambert</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.026</span>
+          </div>
+        </div>
+        <div class="score">0.158</div>
+      </div>
+      <div class="row">
+        <div class="rank">177</div>
+        <div class="who">
+          <div class="name">Andrés Giménez</div>
+          <div class="sub">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Ian Seymour</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.017</span>
+          </div>
+        </div>
+        <div class="score">0.155</div>
+      </div>
+      <div class="row">
+        <div class="rank">178</div>
+        <div class="who">
+          <div class="name">Tyler Heineman</div>
+          <div class="sub">Los Angeles Angels &middot; Los Angeles Angels@Houston Astros &middot; vs Peter Lambert</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.017</span>
+          </div>
+        </div>
+        <div class="score">0.155</div>
+      </div>
+      <div class="row">
+        <div class="rank">179</div>
+        <div class="who">
+          <div class="name">Ezequiel Duran</div>
+          <div class="sub">Texas Rangers &middot; Washington Nationals@Texas Rangers &middot; vs Andrew Alvarez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.011</span>
+          </div>
+        </div>
+        <div class="score">0.155</div>
+      </div>
+      <div class="row">
+        <div class="rank">180</div>
+        <div class="who">
+          <div class="name">Sam Antonacci</div>
+          <div class="sub">Chicago White Sox &middot; Atlanta Braves@Chicago White Sox &middot; vs Grant Holmes</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.002</span>
+          </div>
+        </div>
+        <div class="score">0.152</div>
+      </div>
+      <div class="row">
+        <div class="rank">181</div>
+        <div class="who">
+          <div class="name">Jackson Holliday</div>
+          <div class="sub">Baltimore Orioles &middot; New York Yankees@Baltimore Orioles &middot; vs Gerrit Cole</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.014</span>
+          </div>
+        </div>
+        <div class="score">0.150</div>
+      </div>
+      <div class="row">
+        <div class="rank">182</div>
+        <div class="who">
+          <div class="name">Daulton Varsho</div>
+          <div class="sub">Houston Astros &middot; Los Angeles Angels@Houston Astros &middot; vs Grayson Rodriguez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.034</span>
+          </div>
+        </div>
+        <div class="score">0.150</div>
+      </div>
+      <div class="row">
+        <div class="rank">183</div>
+        <div class="who">
+          <div class="name">Brayan Rocchio</div>
+          <div class="sub">Cleveland Guardians &middot; San Francisco Giants@Cleveland Guardians &middot; vs Landen Roupp</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.022</span>
+          </div>
+        </div>
+        <div class="score">0.149</div>
+      </div>
+      <div class="row">
+        <div class="rank">184</div>
+        <div class="who">
+          <div class="name">Salvador Perez</div>
+          <div class="sub">Kansas City Royals &middot; Athletics@Kansas City Royals &middot; vs Gage Jump</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.001</span>
+          </div>
+        </div>
+        <div class="score">0.149</div>
+      </div>
+      <div class="row">
+        <div class="rank">185</div>
+        <div class="who">
+          <div class="name">Wade Meckler</div>
+          <div class="sub">Los Angeles Angels &middot; Los Angeles Angels@Houston Astros &middot; vs Peter Lambert</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.032</span>
+          </div>
+        </div>
+        <div class="score">0.148</div>
+      </div>
+      <div class="row">
+        <div class="rank">186</div>
+        <div class="who">
+          <div class="name">Dominic Canzone</div>
+          <div class="sub">Seattle Mariners &middot; Seattle Mariners@Milwaukee Brewers &middot; vs Robert Gasser</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.013</span>
+          </div>
+        </div>
+        <div class="score">0.142</div>
+      </div>
+      <div class="row">
+        <div class="rank">187</div>
+        <div class="who">
+          <div class="name">Jonah Heim</div>
+          <div class="sub">Athletics &middot; Athletics@Kansas City Royals &middot; vs Randy Dobnak</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.014</span>
+          </div>
+        </div>
+        <div class="score">0.142</div>
+      </div>
+      <div class="row">
+        <div class="rank">188</div>
+        <div class="who">
+          <div class="name">Nolan Schanuel</div>
+          <div class="sub">Los Angeles Angels &middot; Los Angeles Angels@Houston Astros &middot; vs Peter Lambert</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.003</span>
+          </div>
+        </div>
+        <div class="score">0.141</div>
+      </div>
+      <div class="row">
+        <div class="rank">189</div>
+        <div class="who">
+          <div class="name">Steven Kwan</div>
+          <div class="sub">Cleveland Guardians &middot; San Francisco Giants@Cleveland Guardians &middot; vs Landen Roupp</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.005</span>
+          </div>
+        </div>
+        <div class="score">0.139</div>
+      </div>
+      <div class="row">
+        <div class="rank">190</div>
+        <div class="who">
+          <div class="name">Ernie Clement</div>
+          <div class="sub">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Ian Seymour</div>
+          <div class="tags">
+            <span class="tag">park +25%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.038</span>
+          </div>
+        </div>
+        <div class="score">0.137</div>
+      </div>
+      <div class="row">
+        <div class="rank">191</div>
+        <div class="who">
+          <div class="name">Nathan Church</div>
+          <div class="sub">St. Louis Cardinals &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Brady Singer</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.042</span>
+          </div>
+        </div>
+        <div class="score">0.135</div>
+      </div>
+      <div class="row">
+        <div class="rank">192</div>
+        <div class="who">
+          <div class="name">Vinnie Pasquantino</div>
+          <div class="sub">Kansas City Royals &middot; Athletics@Kansas City Royals &middot; vs Gage Jump</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.038</span>
+          </div>
+        </div>
+        <div class="score">0.134</div>
+      </div>
+      <div class="row">
+        <div class="rank">193</div>
+        <div class="who">
+          <div class="name">JJ Wetherholt</div>
+          <div class="sub">St. Louis Cardinals &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Brady Singer</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.002</span>
+          </div>
+        </div>
+        <div class="score">0.132</div>
+      </div>
+      <div class="row">
+        <div class="rank">194</div>
+        <div class="who">
+          <div class="name">Michael Harris II</div>
+          <div class="sub">Atlanta Braves &middot; Atlanta Braves@Chicago White Sox &middot; vs Anthony Kay</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.002</span>
+          </div>
+        </div>
+        <div class="score">0.129</div>
+      </div>
+      <div class="row">
+        <div class="rank">195</div>
+        <div class="who">
+          <div class="name">Nathan Lukes</div>
+          <div class="sub">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Ian Seymour</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.029</span>
+          </div>
+        </div>
+        <div class="score">0.125</div>
+      </div>
+      <div class="row">
+        <div class="rank">196</div>
+        <div class="who">
+          <div class="name">Jonathan Aranda</div>
+          <div class="sub">Tampa Bay Rays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Shane Bieber</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.004</span>
+          </div>
+        </div>
+        <div class="score">0.124</div>
+      </div>
+      <div class="row">
+        <div class="rank">197</div>
+        <div class="who">
+          <div class="name">Drake Baldwin</div>
+          <div class="sub">Atlanta Braves &middot; Atlanta Braves@Chicago White Sox &middot; vs Anthony Kay</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.015</span>
+          </div>
+        </div>
+        <div class="score">0.108</div>
+      </div>
+      <div class="row">
+        <div class="rank">198</div>
+        <div class="who">
+          <div class="name">José Fermín</div>
+          <div class="sub">St. Louis Cardinals &middot; St. Louis Cardinals@Cincinnati Reds &middot; vs Brady Singer</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.031</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">199</div>
+        <div class="who">
+          <div class="name">José Ramírez</div>
+          <div class="sub">Cleveland Guardians &middot; San Francisco Giants@Cleveland Guardians &middot; vs Landen Roupp</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.001</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">200</div>
+        <div class="who">
+          <div class="name">Travis Bazzana</div>
+          <div class="sub">Cleveland Guardians &middot; San Francisco Giants@Cleveland Guardians &middot; vs Landen Roupp</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.020</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">201</div>
+        <div class="who">
+          <div class="name">Christian Koss</div>
+          <div class="sub">San Francisco Giants &middot; San Francisco Giants@Cleveland Guardians &middot; vs Gavin Williams</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.025</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">202</div>
+        <div class="who">
+          <div class="name">Chandler Simpson</div>
+          <div class="sub">Tampa Bay Rays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Shane Bieber</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.015</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">203</div>
+        <div class="who">
+          <div class="name">Brett Bateman</div>
+          <div class="sub">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Ian Seymour</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.004</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">204</div>
+        <div class="who">
+          <div class="name">George Springer</div>
+          <div class="sub">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Ian Seymour</div>
+          <div class="tags">
+            <span class="tag">park +25%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.001</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">205</div>
+        <div class="who">
+          <div class="name">Josh Smith</div>
+          <div class="sub">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Ian Seymour</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">206</div>
+        <div class="who">
+          <div class="name">Myles Straw</div>
+          <div class="sub">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays &middot; vs Ian Seymour</div>
+          <div class="tags">
+            <span class="tag">park +25%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.012</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">207</div>
+        <div class="who">
+          <div class="name">Isaac Collins</div>
+          <div class="sub">Kansas City Royals &middot; Athletics@Kansas City Royals &middot; vs Gage Jump</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.006</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">208</div>
+        <div class="who">
+          <div class="name">Maikel Garcia</div>
+          <div class="sub">Kansas City Royals &middot; Athletics@Kansas City Royals &middot; vs Gage Jump</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.041</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">209</div>
+        <div class="who">
+          <div class="name">Nick Loftin</div>
+          <div class="sub">Kansas City Royals &middot; Athletics@Kansas City Royals &middot; vs Gage Jump</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.009</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">210</div>
+        <div class="who">
+          <div class="name">Alika Williams</div>
+          <div class="sub">Athletics &middot; Athletics@Kansas City Royals &middot; vs Randy Dobnak</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.014</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">211</div>
+        <div class="who">
+          <div class="name">Darell Hernaiz</div>
+          <div class="sub">Athletics &middot; Athletics@Kansas City Royals &middot; vs Randy Dobnak</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">212</div>
+        <div class="who">
+          <div class="name">Jacob Wilson</div>
+          <div class="sub">Athletics &middot; Athletics@Kansas City Royals &middot; vs Randy Dobnak</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.017</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">213</div>
+        <div class="who">
+          <div class="name">Luisangel Acuña</div>
+          <div class="sub">Chicago White Sox &middot; Atlanta Braves@Chicago White Sox &middot; vs Grant Holmes</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.020</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">214</div>
+        <div class="who">
+          <div class="name">Dominic Smith</div>
+          <div class="sub">Atlanta Braves &middot; Atlanta Braves@Chicago White Sox &middot; vs Anthony Kay</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.017</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">215</div>
+        <div class="who">
+          <div class="name">Jim Jarvis</div>
+          <div class="sub">Atlanta Braves &middot; Atlanta Braves@Chicago White Sox &middot; vs Anthony Kay</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.023</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">216</div>
+        <div class="who">
+          <div class="name">Mauricio Dubón</div>
+          <div class="sub">Atlanta Braves &middot; Atlanta Braves@Chicago White Sox &middot; vs Anthony Kay</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.016</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">217</div>
+        <div class="who">
+          <div class="name">David Hamilton</div>
+          <div class="sub">Milwaukee Brewers &middot; Seattle Mariners@Milwaukee Brewers &middot; vs George Kirby</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.028</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">218</div>
+        <div class="who">
+          <div class="name">Garrett Mitchell</div>
+          <div class="sub">Milwaukee Brewers &middot; Seattle Mariners@Milwaukee Brewers &middot; vs George Kirby</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.004</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">219</div>
+        <div class="who">
+          <div class="name">Gary Sánchez</div>
+          <div class="sub">Milwaukee Brewers &middot; Seattle Mariners@Milwaukee Brewers &middot; vs George Kirby</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.046</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">220</div>
+        <div class="who">
+          <div class="name">Brendan Donovan</div>
+          <div class="sub">Seattle Mariners &middot; Seattle Mariners@Milwaukee Brewers &middot; vs Robert Gasser</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.004</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">221</div>
+        <div class="who">
+          <div class="name">Leo Rivas</div>
+          <div class="sub">Seattle Mariners &middot; Seattle Mariners@Milwaukee Brewers &middot; vs Robert Gasser</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu dim">n/a</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">222</div>
+        <div class="who">
+          <div class="name">Taylor Ward</div>
+          <div class="sub">Seattle Mariners &middot; Seattle Mariners@Milwaukee Brewers &middot; vs Robert Gasser</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.017</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">223</div>
+        <div class="who">
+          <div class="name">Victor Robles</div>
+          <div class="sub">Seattle Mariners &middot; Seattle Mariners@Milwaukee Brewers &middot; vs Robert Gasser</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.005</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">224</div>
+        <div class="who">
+          <div class="name">Heliot Ramos</div>
+          <div class="sub">New York Yankees &middot; New York Yankees@Baltimore Orioles &middot; vs Kyle Bradish</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.021</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">225</div>
+        <div class="who">
+          <div class="name">Evan Carter</div>
+          <div class="sub">Texas Rangers &middot; Washington Nationals@Texas Rangers &middot; vs Andrew Alvarez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.026</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">226</div>
+        <div class="who">
+          <div class="name">Nicky Lopez</div>
+          <div class="sub">Texas Rangers &middot; Washington Nationals@Texas Rangers &middot; vs Andrew Alvarez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.026</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">227</div>
+        <div class="who">
+          <div class="name">Jorbit Vivas</div>
+          <div class="sub">Washington Nationals &middot; Washington Nationals@Texas Rangers &middot; vs Jacob deGrom</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.003</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">228</div>
+        <div class="who">
+          <div class="name">Keibert Ruiz</div>
+          <div class="sub">Washington Nationals &middot; Washington Nationals@Texas Rangers &middot; vs Jacob deGrom</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.042</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">229</div>
+        <div class="who">
+          <div class="name">Nasim Nuñez</div>
+          <div class="sub">Washington Nationals &middot; Washington Nationals@Texas Rangers &middot; vs Jacob deGrom</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.023</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">230</div>
+        <div class="who">
+          <div class="name">Christian Vázquez</div>
+          <div class="sub">Houston Astros &middot; Los Angeles Angels@Houston Astros &middot; vs Grayson Rodriguez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.047</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">231</div>
+        <div class="who">
+          <div class="name">LaMonte Wade Jr.</div>
+          <div class="sub">Houston Astros &middot; Los Angeles Angels@Houston Astros &middot; vs Grayson Rodriguez</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu pos">+0.001</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">232</div>
+        <div class="who">
+          <div class="name">Moisés Ballesteros</div>
+          <div class="sub">Los Angeles Angels &middot; Los Angeles Angels@Houston Astros &middot; vs Peter Lambert</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.049</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">233</div>
+        <div class="who">
+          <div class="name">Oswald Peraza</div>
+          <div class="sub">Los Angeles Angels &middot; Los Angeles Angels@Houston Astros &middot; vs Peter Lambert</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.043</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div>
+      <div class="row">
+        <div class="rank">234</div>
+        <div class="who">
+          <div class="name">Vaughn Grissom</div>
+          <div class="sub">Los Angeles Angels &middot; Los Angeles Angels@Houston Astros &middot; vs Peter Lambert</div>
+          <div class="tags">
+            <span class="tag">park 0%</span>
+            <span class="tag">wx neutral</span>
+            <span class="mu neg">-0.030</span>
+          </div>
+        </div>
+        <div class="score">0.000</div>
+      </div></div></details>
+  </section>
+
+  <section>
+    <h2><span class="accent">&#9650;</span> Parlay Lays</h2>
+    <div class="parlay "><div class="parlay-title">Lay 1</div>
+          <div class="leg">
+            <span class="leg-name">Abimelec Ortiz</span>
+            <span class="leg-detail">Washington Nationals &middot; Washington Nationals@Texas Rangers</span>
+            <span class="leg-score">1.173</span>
+          </div>
+          <div class="leg">
+            <span class="leg-name">Matt Olson</span>
+            <span class="leg-detail">Atlanta Braves &middot; Atlanta Braves@Chicago White Sox</span>
+            <span class="leg-score">1.075</span>
+          </div>
+          <div class="leg">
+            <span class="leg-name">Trent Grisham</span>
+            <span class="leg-detail">New York Yankees &middot; New York Yankees@Baltimore Orioles</span>
+            <span class="leg-score">0.998</span>
+          </div></div><div class="parlay "><div class="parlay-title">Lay 2</div>
+          <div class="leg">
+            <span class="leg-name">Munetaka Murakami</span>
+            <span class="leg-detail">Chicago White Sox &middot; Atlanta Braves@Chicago White Sox</span>
+            <span class="leg-score">1.057</span>
+          </div>
+          <div class="leg">
+            <span class="leg-name">Alec Burleson</span>
+            <span class="leg-detail">St. Louis Cardinals &middot; St. Louis Cardinals@Cincinnati Reds</span>
+            <span class="leg-score">0.983</span>
+          </div>
+          <div class="leg">
+            <span class="leg-name">Junior Caminero</span>
+            <span class="leg-detail">Tampa Bay Rays &middot; Toronto Blue Jays@Tampa Bay Rays</span>
+            <span class="leg-score">0.976</span>
+          </div></div><div class="parlay "><div class="parlay-title">Lay 3</div>
+          <div class="leg">
+            <span class="leg-name">Tyler Stephenson</span>
+            <span class="leg-detail">Cincinnati Reds &middot; St. Louis Cardinals@Cincinnati Reds</span>
+            <span class="leg-score">0.951</span>
+          </div>
+          <div class="leg">
+            <span class="leg-name">Pete Alonso</span>
+            <span class="leg-detail">Baltimore Orioles &middot; New York Yankees@Baltimore Orioles</span>
+            <span class="leg-score">0.947</span>
+          </div>
+          <div class="leg">
+            <span class="leg-name">Joc Pederson</span>
+            <span class="leg-detail">Texas Rangers &middot; Washington Nationals@Texas Rangers</span>
+            <span class="leg-score">0.944</span>
+          </div></div>
+  </section>
+
+  <section>
+    <h2><span class="accent-green">&#9670;</span> Value Board — under the radar</h2>
+    <div class="panel">
+      <div class="row value">
+        <div class="rank">#28</div>
+        <div class="who">
+          <div class="name">Alejandro Kirk</div>
+          <div class="sub">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays</div>
+          <div class="tags">
+            <span class="tag boost">boost +43%</span>
+            <span class="tag">power 0.44</span>
+          </div>
+        </div>
+        <div class="score value-score">0.635</div>
+      </div>
+      <div class="row value">
+        <div class="rank">#62</div>
+        <div class="who">
+          <div class="name">Charles McAdoo</div>
+          <div class="sub">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays</div>
+          <div class="tags">
+            <span class="tag boost">boost +32%</span>
+            <span class="tag">power 0.32</span>
+          </div>
+        </div>
+        <div class="score value-score">0.428</div>
+      </div>
+      <div class="row value">
+        <div class="rank">#51</div>
+        <div class="who">
+          <div class="name">Andrés Chaparro</div>
+          <div class="sub">Washington Nationals &middot; Washington Nationals@Texas Rangers</div>
+          <div class="tags">
+            <span class="tag boost">boost +22%</span>
+            <span class="tag">power 0.39</span>
+          </div>
+        </div>
+        <div class="score value-score">0.481</div>
+      </div>
+      <div class="row value">
+        <div class="rank">#69</div>
+        <div class="who">
+          <div class="name">Nathaniel Lowe</div>
+          <div class="sub">Cleveland Guardians &middot; San Francisco Giants@Cleveland Guardians</div>
+          <div class="tags">
+            <span class="tag boost">boost +13%</span>
+            <span class="tag">power 0.36</span>
+          </div>
+        </div>
+        <div class="score value-score">0.403</div>
+      </div>
+      <div class="row value">
+        <div class="rank">#68</div>
+        <div class="who">
+          <div class="name">Bobby Witt Jr.</div>
+          <div class="sub">Kansas City Royals &middot; Athletics@Kansas City Royals</div>
+          <div class="tags">
+            <span class="tag boost">boost +11%</span>
+            <span class="tag">power 0.37</span>
+          </div>
+        </div>
+        <div class="score value-score">0.406</div>
+      </div>
+      <div class="row value">
+        <div class="rank">#29</div>
+        <div class="who">
+          <div class="name">Spencer Jones</div>
+          <div class="sub">New York Yankees &middot; New York Yankees@Baltimore Orioles</div>
+          <div class="tags">
+            <span class="tag boost">boost +9%</span>
+            <span class="tag">power 0.58</span>
+          </div>
+        </div>
+        <div class="score value-score">0.629</div>
+      </div>
+      <div class="row value">
+        <div class="rank">#89</div>
+        <div class="who">
+          <div class="name">Josh Naylor</div>
+          <div class="sub">Seattle Mariners &middot; Seattle Mariners@Milwaukee Brewers</div>
+          <div class="tags">
+            <span class="tag boost">boost +9%</span>
+            <span class="tag">power 0.31</span>
+          </div>
+        </div>
+        <div class="score value-score">0.335</div>
+      </div>
+      <div class="row value">
+        <div class="rank">#45</div>
+        <div class="who">
+          <div class="name">Chase Meidroth</div>
+          <div class="sub">Chicago White Sox &middot; Atlanta Braves@Chicago White Sox</div>
+          <div class="tags">
+            <span class="tag boost">boost +8%</span>
+            <span class="tag">power 0.46</span>
+          </div>
+        </div>
+        <div class="score value-score">0.500</div>
+      </div>
+      <div class="row value">
+        <div class="rank">#30</div>
+        <div class="who">
+          <div class="name">Matt McLain</div>
+          <div class="sub">Cincinnati Reds &middot; St. Louis Cardinals@Cincinnati Reds</div>
+          <div class="tags">
+            <span class="tag boost">boost +8%</span>
+            <span class="tag">power 0.58</span>
+          </div>
+        </div>
+        <div class="score value-score">0.624</div>
+      </div>
+      <div class="row value">
+        <div class="rank">#42</div>
+        <div class="who">
+          <div class="name">Tyler Tolbert</div>
+          <div class="sub">Kansas City Royals &middot; Athletics@Kansas City Royals</div>
+          <div class="tags">
+            <span class="tag boost">boost +8%</span>
+            <span class="tag">power 0.48</span>
+          </div>
+        </div>
+        <div class="score value-score">0.520</div>
+      </div>
+      <div class="row value">
+        <div class="rank">#53</div>
+        <div class="who">
+          <div class="name">Jo Adell</div>
+          <div class="sub">Cleveland Guardians &middot; San Francisco Giants@Cleveland Guardians</div>
+          <div class="tags">
+            <span class="tag boost">boost +7%</span>
+            <span class="tag">power 0.43</span>
+          </div>
+        </div>
+        <div class="score value-score">0.458</div>
+      </div>
+      <div class="row value">
+        <div class="rank">#33</div>
+        <div class="who">
+          <div class="name">Randy Arozarena</div>
+          <div class="sub">Seattle Mariners &middot; Seattle Mariners@Milwaukee Brewers</div>
+          <div class="tags">
+            <span class="tag boost">boost +7%</span>
+            <span class="tag">power 0.56</span>
+          </div>
+        </div>
+        <div class="score value-score">0.597</div>
+      </div>
+      <div class="row value">
+        <div class="rank">#65</div>
+        <div class="who">
+          <div class="name">Randal Grichuk</div>
+          <div class="sub">Chicago White Sox &middot; Atlanta Braves@Chicago White Sox</div>
+          <div class="tags">
+            <span class="tag boost">boost +6%</span>
+            <span class="tag">power 0.39</span>
+          </div>
+        </div>
+        <div class="score value-score">0.418</div>
+      </div>
+      <div class="row value">
+        <div class="rank">#32</div>
+        <div class="who">
+          <div class="name">Daylen Lile</div>
+          <div class="sub">Washington Nationals &middot; Washington Nationals@Texas Rangers</div>
+          <div class="tags">
+            <span class="tag boost">boost +5%</span>
+            <span class="tag">power 0.57</span>
+          </div>
+        </div>
+        <div class="score value-score">0.600</div>
+      </div>
+      <div class="row value">
+        <div class="rank">#119</div>
+        <div class="who">
+          <div class="name">Jordan Walker</div>
+          <div class="sub">St. Louis Cardinals &middot; St. Louis Cardinals@Cincinnati Reds</div>
+          <div class="tags">
+            <span class="tag boost">boost +4%</span>
+            <span class="tag">power 0.26</span>
+          </div>
+        </div>
+        <div class="score value-score">0.271</div>
+      </div></div>
+  </section>
+
+  <section>
+    <h2><span class="accent-green">&#9670;</span> Value Parlays</h2>
+    <div class="parlay value-parlay"><div class="parlay-title">Lay 1</div>
+          <div class="leg">
+            <span class="leg-name">Alejandro Kirk</span>
+            <span class="leg-detail">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays</span>
+            <span class="leg-score">0.635</span>
+          </div>
+          <div class="leg">
+            <span class="leg-name">Andrés Chaparro</span>
+            <span class="leg-detail">Washington Nationals &middot; Washington Nationals@Texas Rangers</span>
+            <span class="leg-score">0.481</span>
+          </div>
+          <div class="leg">
+            <span class="leg-name">Nathaniel Lowe</span>
+            <span class="leg-detail">Cleveland Guardians &middot; San Francisco Giants@Cleveland Guardians</span>
+            <span class="leg-score">0.403</span>
+          </div></div><div class="parlay value-parlay"><div class="parlay-title">Lay 2</div>
+          <div class="leg">
+            <span class="leg-name">Charles McAdoo</span>
+            <span class="leg-detail">Toronto Blue Jays &middot; Toronto Blue Jays@Tampa Bay Rays</span>
+            <span class="leg-score">0.428</span>
+          </div>
+          <div class="leg">
+            <span class="leg-name">Bobby Witt Jr.</span>
+            <span class="leg-detail">Kansas City Royals &middot; Athletics@Kansas City Royals</span>
+            <span class="leg-score">0.406</span>
+          </div>
+          <div class="leg">
+            <span class="leg-name">Spencer Jones</span>
+            <span class="leg-detail">New York Yankees &middot; New York Yankees@Baltimore Orioles</span>
+            <span class="leg-score">0.629</span>
+          </div></div>
+  </section>
+</main>
+<footer>hr-model &middot; not financial advice &middot; scores are a relative index, not a literal probability</footer>
+</body>
+</html>

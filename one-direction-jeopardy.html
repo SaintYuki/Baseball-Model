@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1D Jeopardy!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1130;
+    --ink-2:#171B44;
+    --tile:#1D2354;
+    --tile-hover:#262C68;
+    --gold:#F2B705;
+    --gold-dim:#B8890A;
+    --coral:#FF6584;
+    --lavender:#9691C4;
+    --paper:#F5F3ED;
+    --used:#0B0D24;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0;
+    padding:0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(242,183,5,0.14), transparent),
+      radial-gradient(ellipse 60% 40% at 85% 100%, rgba(255,101,132,0.10), transparent),
+      var(--ink);
+    color:var(--paper);
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:28px 20px 60px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    text-align:center;
+    margin-bottom:26px;
+    position:relative;
+  }
+  .eyebrow{
+    font-size:11px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--lavender);
+    margin-bottom:6px;
+  }
+  h1{
+    font-family:'Anton',sans-serif;
+    font-weight:400;
+    font-size:clamp(38px,7vw,68px);
+    letter-spacing:.02em;
+    margin:0;
+    line-height:.95;
+    background:linear-gradient(180deg,#FFF6D9 0%, var(--gold) 55%, var(--gold-dim) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:0 0 40px rgba(242,183,5,0.25);
+  }
+  h1 span{color:var(--coral);-webkit-text-fill-color:var(--coral);}
+  .sub{
+    margin-top:8px;
+    font-size:13.5px;
+    color:var(--lavender);
+    font-weight:500;
+  }
+  .beam{
+    position:absolute;
+    top:-40px; left:50%;
+    width:900px; height:280px;
+    transform:translateX(-50%);
+    background:conic-gradient(from 180deg at 50% 0%, transparent 0deg, rgba(242,183,5,.10) 18deg, transparent 40deg, transparent 320deg, rgba(255,101,132,.08) 342deg, transparent 360deg);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* ---------- Board ---------- */
+  .board{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:6px;
+    margin-top:10px;
+  }
+  .cat{
+    background:linear-gradient(180deg,var(--ink-2),#12153B);
+    border:1px solid rgba(242,183,5,0.18);
+    border-radius:8px 8px 0 0;
+    padding:14px 8px;
+    text-align:center;
+    font-family:'Anton',sans-serif;
+    font-weight:400;
+    font-size:clamp(11px,1.7vw,15px);
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    color:var(--paper);
+    min-height:64px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    line-height:1.15;
+  }
+  .tile{
+    background:var(--tile);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:6px;
+    aspect-ratio:1.5/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Anton',sans-serif;
+    font-size:clamp(20px,3.4vw,32px);
+    color:var(--gold);
+    cursor:pointer;
+    transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
+    user-select:none;
+  }
+  .tile:hover{
+    background:var(--tile-hover);
+    transform:translateY(-2px);
+    box-shadow:0 8px 22px rgba(242,183,5,0.15);
+  }
+  .tile.used{
+    background:var(--used);
+    color:#333866;
+    cursor:default;
+    box-shadow:none;
+    transform:none;
+  }
+  .tile.used:hover{transform:none;background:var(--used);box-shadow:none;}
+
+  /* ---------- Scoreboard ---------- */
+  .scoreboard{
+    margin-top:34px;
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .team{
+    background:var(--ink-2);
+    border:1px solid rgba(242,183,5,0.18);
+    border-radius:12px;
+    padding:14px 20px;
+    min-width:190px;
+    text-align:center;
+  }
+  .team .name{
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--lavender);
+    margin-bottom:4px;
+  }
+  .team .score{
+    font-family:'Anton',sans-serif;
+    font-size:34px;
+    color:var(--paper);
+  }
+  .team.t1 .score{color:var(--gold);}
+  .team.t2 .score{color:var(--coral);}
+  .team .ctrls{margin-top:8px;display:flex;gap:8px;justify-content:center;}
+  .team button{
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.18);
+    color:var(--paper);
+    width:30px;height:30px;
+    border-radius:50%;
+    font-size:16px;
+    cursor:pointer;
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .team button:hover{background:rgba(255,255,255,0.08);border-color:var(--gold);}
+
+  .reset-row{
+    text-align:center;
+    margin-top:22px;
+  }
+  .reset-row button{
+    background:none;
+    border:1px solid rgba(255,255,255,0.2);
+    color:var(--lavender);
+    padding:9px 18px;
+    border-radius:999px;
+    font-family:'Poppins',sans-serif;
+    font-size:12.5px;
+    letter-spacing:.05em;
+    cursor:pointer;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .reset-row button:hover{border-color:var(--gold);color:var(--gold);}
+
+  /* ---------- Modal ---------- */
+  .overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(4,5,18,0.82);
+    backdrop-filter:blur(3px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:10;
+    padding:20px;
+  }
+  .overlay.show{display:flex;}
+  .card{
+    width:100%;
+    max-width:620px;
+    background:linear-gradient(180deg,#171B44,#0F1235);
+    border:1px solid rgba(242,183,5,0.3);
+    border-radius:16px;
+    padding:38px 34px 30px;
+    text-align:center;
+    position:relative;
+    box-shadow:0 30px 80px rgba(0,0,0,0.55), 0 0 60px rgba(242,183,5,0.08);
+    animation:pop .28s ease;
+  }
+  @keyframes pop{
+    from{opacity:0;transform:scale(.94) translateY(8px);}
+    to{opacity:1;transform:scale(1) translateY(0);}
+  }
+  .card .val{
+    font-family:'Anton',sans-serif;
+    color:var(--gold-dim);
+    font-size:14px;
+    letter-spacing:.15em;
+    margin-bottom:14px;
+  }
+  .card .clue{
+    font-size:clamp(17px,2.6vw,22px);
+    line-height:1.5;
+    font-weight:600;
+    color:var(--paper);
+    min-height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .card .answer{
+    margin-top:18px;
+    font-family:'Anton',sans-serif;
+    font-size:clamp(19px,3vw,26px);
+    color:var(--gold);
+    display:none;
+  }
+  .card .answer.show{display:block;animation:pop .3s ease;}
+  .card .divider{
+    width:60px;height:2px;
+    background:linear-gradient(90deg,transparent,var(--coral),transparent);
+    margin:18px auto;
+    display:none;
+  }
+  .card .divider.show{display:block;}
+  .card-actions{
+    margin-top:24px;
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    font-size:13px;
+    padding:11px 20px;
+    border-radius:999px;
+    border:none;
+    cursor:pointer;
+    transition:transform .12s ease, opacity .12s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-reveal{background:var(--gold);color:#241B02;}
+  .btn-award{background:rgba(255,255,255,0.08);color:var(--paper);border:1px solid rgba(255,255,255,0.18);}
+  .btn-award.t1:hover{border-color:var(--gold);}
+  .btn-award.t2:hover{border-color:var(--coral);}
+  .btn-close{background:transparent;color:var(--lavender);border:1px solid rgba(255,255,255,0.15);}
+  .btn-close:hover{color:var(--paper);}
+
+  @media (max-width:720px){
+    .board{gap:4px;}
+    .cat{padding:8px 4px;font-size:9.5px;min-height:48px;}
+    .tile{font-size:16px;}
+    .card{padding:28px 20px 24px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="beam"></div>
+    <div class="eyebrow">Five lads · One category board</div>
+    <h1>1D JEOPARDY<span>!</span></h1>
+    <div class="sub">Pick a category, call your value, answer in the form of a question.</div>
+  </header>
+
+  <div class="board" id="board"></div>
+
+  <div class="scoreboard">
+    <div class="team t1">
+      <div class="name">Team Niall</div>
+      <div class="score" id="score1">0</div>
+      <div class="ctrls">
+        <button onclick="bump(1,-100)">–</button>
+        <button onclick="bump(1,100)">+</button>
+      </div>
+    </div>
+    <div class="team t2">
+      <div class="name">Team Louis</div>
+      <div class="score" id="score2">0</div>
+      <div class="ctrls">
+        <button onclick="bump(2,-100)">–</button>
+        <button onclick="bump(2,100)">+</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="reset-row">
+    <button onclick="resetGame()">Reset board &amp; scores</button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="card">
+    <div class="val" id="cardVal"></div>
+    <div class="clue" id="cardClue"></div>
+    <div class="divider" id="cardDivider"></div>
+    <div class="answer" id="cardAnswer"></div>
+    <div class="card-actions" id="cardActions">
+      <button class="btn btn-reveal" id="revealBtn" onclick="revealAnswer()">Reveal Answer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA = [
+  {
+    cat: "Bootcamp to Band",
+    clues: [
+      { v:100, clue:"This mogul and eventual mentor put the five soloists together as a group during Bootcamp in 2010.", ans:"Who is Simon Cowell?" },
+      { v:200, clue:"The exact date in 2010 that One Direction was officially formed, after the boys were sent home and then called back.", ans:"What is July 23, 2010?" },
+      { v:300, clue:"The place One Direction finished on the seventh series of The X Factor UK.", ans:"What is third place?" },
+      { v:400, clue:"This guest judge on the 2010 panel is credited with first suggesting the five boys be put together as a band.", ans:"Who is Nicole Scherzinger?" },
+      { v:500, clue:"This singer won the 2010 series of The X Factor UK, finishing ahead of One Direction.", ans:"Who is Matt Cardle?" }
+    ]
+  },
+  {
+    cat: "Album Era",
+    clues: [
+      { v:100, clue:"One Direction's debut studio album, released in November 2011.", ans:"What is Up All Night?" },
+      { v:200, clue:"This 2012 sophomore album topped the charts in over 30 countries and features \"Live While We're Young.\"", ans:"What is Take Me Home?" },
+      { v:300, clue:"Released for the 2013 holiday season, this third album hit #1 in seven countries and features \"Story of My Life.\"", ans:"What is Midnight Memories?" },
+      { v:400, clue:"With this 2014 album, One Direction became the first band to have their first four albums all debut at #1 in the US.", ans:"What is Four?" },
+      { v:500, clue:"One Direction's fifth and final studio album, released as a four-piece in November 2015.", ans:"What is Made in the A.M.?" }
+    ]
+  },
+  {
+    cat: "Meet the Boys",
+    clues: [
+      { v:100, clue:"Born in Mullingar, County Westmeath on September 13, 1993, he's the group's only Irishman.", ans:"Who is Niall Horan?" },
+      { v:200, clue:"Born December 24, 1991 in Doncaster, England, he's the oldest of the five original members.", ans:"Who is Louis Tomlinson?" },
+      { v:300, clue:"Born in Bradford, England, this member became the first to leave One Direction, departing in March 2015.", ans:"Who is Zayn Malik?" },
+      { v:400, clue:"Born February 1, 1994 and raised in Cheshire, England, he's the youngest of the original five members.", ans:"Who is Harry Styles?" },
+      { v:500, clue:"This member auditioned for The X Factor twice, in 2008 and 2010, and was singled out by judges as the group's natural leader during formation.", ans:"Who is Liam Payne?" }
+    ]
+  },
+  {
+    cat: "On the Road",
+    clues: [
+      { v:100, clue:"One Direction's debut headlining tour, launched in December 2011 in support of their first album.", ans:"What is the Up All Night Tour?" },
+      { v:200, clue:"This 2013 tour, in support of the band's second album, was documented in the concert film \"This Is Us.\"", ans:"What is the Take Me Home Tour?" },
+      { v:300, clue:"This 2014 stadium tour became the highest-grossing concert tour of the year and the highest-grossing tour ever by a vocal group.", ans:"What is the Where We Are Tour?" },
+      { v:400, clue:"One Direction's fourth and final tour, running through most of 2015, during which Zayn Malik departed partway through.", ans:"What is the On the Road Again Tour?" },
+      { v:500, clue:"This 2013 documentary, directed by Morgan Spurlock, followed the band on the road during the Take Me Home Tour.", ans:"What is \"One Direction: This Is Us\"?" }
+    ]
+  },
+  {
+    cat: "Chart-Toppers",
+    clues: [
+      { v:100, clue:"Released in September 2011, this was One Direction's debut single and first UK #1.", ans:"What is \"What Makes You Beautiful\"?" },
+      { v:200, clue:"This lead single from Take Me Home, alongside \"Little Things,\" hit #1 in numerous countries in 2012.", ans:"What is \"Live While We're Young\"?" },
+      { v:300, clue:"This single from Midnight Memories pokes fun at boy-band clichés and became one of the group's signature anthems.", ans:"What is \"Best Song Ever\"?" },
+      { v:400, clue:"This ballad from Made in the A.M. served as the group's emotional farewell performance at the 2015 X Factor final.", ans:"What is \"History\"?" },
+      { v:500, clue:"One of two singles from Four alongside \"Steal My Girl,\" this moody track deals with a fading relationship.", ans:"What is \"Night Changes\"?" }
+    ]
+  }
+];
+
+const board = document.getElementById('board');
+const overlay = document.getElementById('overlay');
+const cardVal = document.getElementById('cardVal');
+const cardClue = document.getElementById('cardClue');
+const cardAnswer = document.getElementById('cardAnswer');
+const cardDivider = document.getElementById('cardDivider');
+const cardActions = document.getElementById('cardActions');
+
+let scores = {1:0, 2:0};
+let activeTile = null;
+
+function buildBoard(){
+  board.innerHTML = '';
+  DATA.forEach(col => {
+    const catEl = document.createElement('div');
+    catEl.className = 'cat';
+    catEl.textContent = col.cat;
+    board.appendChild(catEl);
+  });
+  for(let row=0; row<5; row++){
+    DATA.forEach((col, ci) => {
+      const clueObj = col.clues[row];
+      const tile = document.createElement('div');
+      tile.className = 'tile';
+      tile.textContent = '$' + clueObj.v;
+      tile.dataset.cat = ci;
+      tile.dataset.row = row;
+      tile.onclick = () => openClue(tile, clueObj, col.cat);
+      board.appendChild(tile);
+    });
+  }
+}
+
+function openClue(tileEl, clueObj, catName){
+  if(tileEl.classList.contains('used')) return;
+  activeTile = tileEl;
+  cardVal.textContent = catName.toUpperCase() + ' · $' + clueObj.v;
+  cardClue.textContent = clueObj.clue;
+  cardAnswer.textContent = clueObj.ans;
+  cardAnswer.classList.remove('show');
+  cardDivider.classList.remove('show');
+  cardActions.innerHTML = '<button class="btn btn-reveal" id="revealBtn" onclick="revealAnswer()">Reveal Answer</button>';
+  overlay.classList.add('show');
+}
+
+function revealAnswer(){
+  cardAnswer.classList.add('show');
+  cardDivider.classList.add('show');
+  const v = parseInt(cardVal.textContent.split('$')[1]);
+  cardActions.innerHTML = `
+    <button class="btn btn-award t1" onclick="award(1, ${v})">+$${v} Team Niall</button>
+    <button class="btn btn-award t2" onclick="award(2, ${v})">+$${v} Team Louis</button>
+    <button class="btn btn-close" onclick="closeClue()">No one got it</button>
+  `;
+}
+
+function award(team, amount){
+  scores[team] += amount;
+  document.getElementById('score' + team).textContent = scores[team];
+  closeClue();
+}
+
+function closeClue(){
+  overlay.classList.remove('show');
+  if(activeTile){
+    activeTile.classList.add('used');
+    activeTile.textContent = '';
+    activeTile = null;
+  }
+}
+
+function bump(team, amount){
+  scores[team] += amount;
+  document.getElementById('score' + team).textContent = scores[team];
+}
+
+function resetGame(){
+  scores = {1:0, 2:0};
+  document.getElementById('score1').textContent = 0;
+  document.getElementById('score2').textContent = 0;
+  buildBoard();
+}
+
+overlay.addEventListener('click', (e) => {
+  if(e.target === overlay) {
+    // clicking outside just closes without forcing an award choice
+    overlay.classList.remove('show');
+  }
+});
+
+buildBoard();
+</script>
+</body>
+</html>
