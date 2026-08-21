@@ -73,6 +73,26 @@ def _value_row_html(r: dict) -> str:
       </div>"""
 
 
+def _value_row_html_hits(r: dict) -> str:
+    """Same layout as _value_row_html, but reads hit_rate (not power_score)
+    and labels it 'contact' — hits_scanner.py's rank_slate() output uses a
+    different field name deliberately (see that file's Batter class
+    docstring), so this can't just reuse the HR version with a relabel."""
+    return f"""
+      <div class="row value">
+        <div class="rank">#{r['rank']}</div>
+        <div class="who">
+          <div class="name">{_esc(r['player'])}</div>
+          <div class="sub">{_esc(r['team'])} &middot; {_esc(r['game'])}</div>
+          <div class="tags">
+            <span class="tag boost">boost {_pct(r['situational_boost'])}</span>
+            <span class="tag">contact {r['hit_rate']:.2f}</span>
+          </div>
+        </div>
+        <div class="score value-score">{r['score']:.3f}</div>
+      </div>"""
+
+
 def _parlay_html(parlays: list, css_class: str = "") -> str:
     if not parlays:
         return '<p class="empty">No parlays available for this slate.</p>'
@@ -90,18 +110,65 @@ def _parlay_html(parlays: list, css_class: str = "") -> str:
 
 def render_html(ranked: list[dict], parlays: list[list[dict]],
                  value_plays: list[dict], value_parlays: list[list[dict]],
-                 target_date: str, top_n_shown: int = 30) -> str:
+                 target_date: str, top_n_shown: int = 30,
+                 hits_ranked: list[dict] | None = None,
+                 hits_parlays: list[list[dict]] | None = None,
+                 hits_value_plays: list[dict] | None = None,
+                 hits_value_parlays: list[list[dict]] | None = None) -> str:
+    """hits_* params are all optional and default to None — pass nothing and
+    this renders exactly the HR-only page it always has. Pass hits data too
+    (as hr_scanner_auto.py now does) and a second, separately-anchored board
+    renders below the HR one, reusing _row_html/_parlay_html (already
+    prop-agnostic) and the new _value_row_html_hits for correct labeling."""
     generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     top_rows = "".join(_row_html(r) for r in ranked[:top_n_shown])
     rest_rows = "".join(_row_html(r) for r in ranked[top_n_shown:])
     value_rows = "".join(_value_row_html(r) for r in value_plays) if value_plays else '<p class="empty">No value plays surfaced today.</p>'
+
+    has_hits = hits_ranked is not None
+    if has_hits:
+        hits_top_rows = "".join(_row_html(r) for r in hits_ranked[:top_n_shown])
+        hits_rest_rows = "".join(_row_html(r) for r in hits_ranked[top_n_shown:])
+        hits_value_rows = "".join(_value_row_html_hits(r) for r in hits_value_plays) if hits_value_plays else '<p class="empty">No value plays surfaced today.</p>'
+
+    nav_html = f"""
+  <nav class="board-nav">
+    <a href="#hr-board" class="nav-pill nav-hr">&#9917; HR</a>
+    {f'<a href="#hits-board" class="nav-pill nav-hits">&#127959; Hits</a>' if has_hits else ''}
+  </nav>""" if has_hits else ""
+
+    hits_section_html = f"""
+  <section id="hits-board" class="board-section">
+    <div class="board-divider"><span class="accent-blue">&#127959; HITS BOARD</span></div>
+
+    <section>
+      <h2><span class="accent-blue">&#9650;</span> Top Picks</h2>
+      <div class="panel">{hits_top_rows if hits_top_rows else '<p class="empty">No slate loaded.</p>'}</div>
+      {f'<details><summary>Show remaining {len(hits_ranked)-top_n_shown} batters</summary><div class="panel">{hits_rest_rows}</div></details>' if hits_rest_rows else ''}
+    </section>
+
+    <section>
+      <h2><span class="accent-blue">&#9650;</span> Parlay Lays</h2>
+      {_parlay_html(hits_parlays, css_class="hits-parlay")}
+    </section>
+
+    <section>
+      <h2><span class="accent-green">&#9670;</span> Value Board — under the radar</h2>
+      <div class="panel">{hits_value_rows}</div>
+    </section>
+
+    <section>
+      <h2><span class="accent-green">&#9670;</span> Value Parlays</h2>
+      {_parlay_html(hits_value_parlays, css_class="value-parlay")}
+    </section>
+  </section>""" if has_hits else ""
 
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HR Board — {_esc(target_date)}</title>
+<title>{"HR + Hits Board" if has_hits else "HR Board"} — {_esc(target_date)}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -118,6 +185,8 @@ def render_html(ranked: list[dict], parlays: list[list[dict]],
     --green: #6FCF97;
     --green-glow: rgba(111, 207, 151, 0.30);
     --red: #E8737A;
+    --blue: #5DA9E9;
+    --blue-glow: rgba(93, 169, 233, 0.30);
   }}
   * {{ box-sizing: border-box; }}
   body {{
@@ -153,8 +222,33 @@ def render_html(ranked: list[dict], parlays: list[list[dict]],
     color: var(--text-dim);
     font-size: 12px;
   }}
+  .board-nav {{ display: flex; gap: 8px; margin-top: 10px; }}
+  .nav-pill {{
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--panel-2);
+  }}
+  .nav-pill.nav-hr {{ color: var(--amber); border-color: rgba(255,162,60,0.35); }}
+  .nav-pill.nav-hits {{ color: var(--blue); border-color: rgba(93,169,233,0.35); }}
   main {{ max-width: 640px; margin: 0 auto; padding: 0 12px; }}
   section {{ margin-top: 28px; }}
+  .board-section {{ margin-top: 40px; }}
+  .board-divider {{
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    padding: 10px 0;
+    margin-bottom: 8px;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+  }}
   h2 {{
     font-size: 15px;
     color: var(--text-dim);
@@ -163,6 +257,7 @@ def render_html(ranked: list[dict], parlays: list[list[dict]],
   }}
   h2 .accent {{ color: var(--amber); }}
   h2 .accent-green {{ color: var(--green); }}
+  h2 .accent-blue {{ color: var(--blue); }}
   .panel {{
     background: var(--panel);
     border: 1px solid var(--border);
@@ -229,8 +324,10 @@ def render_html(ranked: list[dict], parlays: list[list[dict]],
     margin-bottom: 10px;
   }}
   .parlay.value-parlay {{ border-color: rgba(111,207,151,0.35); }}
+  .parlay.hits-parlay {{ border-color: rgba(93,169,233,0.35); }}
   .parlay-title {{ color: var(--amber); font-size: 12px; margin-bottom: 8px; }}
   .parlay.value-parlay .parlay-title {{ color: var(--green); }}
+  .parlay.hits-parlay .parlay-title {{ color: var(--blue); }}
   .leg {{ display: grid; grid-template-columns: 1fr auto; gap: 4px 8px; padding: 5px 0; border-bottom: 1px dashed var(--border); font-size: 12.5px; }}
   .leg:last-child {{ border-bottom: none; }}
   .leg-name {{ font-family: 'Oswald', sans-serif; }}
@@ -242,10 +339,13 @@ def render_html(ranked: list[dict], parlays: list[list[dict]],
 </head>
 <body>
 <header>
-  <h1>&#9917; HR Board</h1>
-  <div class="meta">{_esc(target_date)} &middot; generated {_esc(generated_at)} &middot; {len(ranked)} batters</div>
+  <h1>&#9917; {"HR + Hits Board" if has_hits else "HR Board"}</h1>
+  <div class="meta">{_esc(target_date)} &middot; generated {_esc(generated_at)} &middot; {len(ranked)} batters{f' &middot; {len(hits_ranked)} batters (hits)' if has_hits else ''}</div>
+  {nav_html}
 </header>
 <main>
+  <section id="hr-board">
+  <div class="board-divider"><span class="accent">&#9917; HR BOARD</span></div>
   <section>
     <h2><span class="accent">&#9650;</span> Top Picks</h2>
     <div class="panel">{top_rows if top_rows else '<p class="empty">No slate loaded.</p>'}</div>
@@ -266,6 +366,8 @@ def render_html(ranked: list[dict], parlays: list[list[dict]],
     <h2><span class="accent-green">&#9670;</span> Value Parlays</h2>
     {_parlay_html(value_parlays, css_class="value-parlay")}
   </section>
+  </section>
+  {hits_section_html}
 </main>
 <footer>hr-model &middot; not financial advice &middot; scores are a relative index, not a literal probability</footer>
 </body>
@@ -284,7 +386,35 @@ if __name__ == "__main__":
     value_plays = ranked[20:25]
     parlays = [ranked[0:3], ranked[3:6]]
     value_parlays = [value_plays[0:3]]
-    out = render_html(ranked, parlays, value_plays, value_parlays, "2026-08-12")
-    with open("/tmp/test_report.html", "w", encoding="utf-8") as f:
-        f.write(out)
-    print(f"wrote {len(out)} chars to /tmp/test_report.html")
+
+    # Backward-compat check: HR-only call, no hits args at all
+    out_hr_only = render_html(ranked, parlays, value_plays, value_parlays, "2026-08-12")
+    assert "hits-board" not in out_hr_only, "hits section should not appear when no hits data is passed"
+    assert '<nav class="board-nav">' not in out_hr_only, "nav element should not render with no hits data"
+    with open("/tmp/test_report_hr_only.html", "w", encoding="utf-8") as f:
+        f.write(out_hr_only)
+    print(f"HR-only: wrote {len(out_hr_only)} chars, correctly has no hits section")
+
+    # HR + hits call
+    hits_ranked = [{
+        "player": f"Hits Player {i}", "team": "TST", "game": "AAA@BBB",
+        "opp_pitcher": "Some Pitcher", "park_factor": 0.05 if i % 6 == 0 else 0.0,
+        "weather_adj": 0.0, "matchup_adjustment": 0.01 if i < 30 else 0.0,
+        "hit_rate": max(0.15, 0.45 - i * 0.005), "situational_boost": 0.08 if i % 4 == 0 else 0.0,
+        "score": round(max(0.1, 0.5 - i * 0.005), 3), "rank": i + 1, "mlbam_id": 2000 + i,
+    } for i in range(50)]
+    hits_value_plays = hits_ranked[20:25]
+    hits_parlays = [hits_ranked[0:3], hits_ranked[3:6]]
+    hits_value_parlays = [hits_value_plays[0:3]]
+
+    out_both = render_html(ranked, parlays, value_plays, value_parlays, "2026-08-12",
+                            hits_ranked=hits_ranked, hits_parlays=hits_parlays,
+                            hits_value_plays=hits_value_plays, hits_value_parlays=hits_value_parlays)
+    assert "hits-board" in out_both, "hits section should appear when hits data is passed"
+    assert '<nav class="board-nav">' in out_both, "nav element should render with hits data"
+    assert "power 0." not in out_both.split('id="hits-board"')[1].split("Value Parlays")[0], \
+        "hits Value Board should never show a 'power' label"
+    assert "contact 0." in out_both, "hits Value Board should show 'contact', not 'power'"
+    with open("/tmp/test_report_hr_and_hits.html", "w", encoding="utf-8") as f:
+        f.write(out_both)
+    print(f"HR+hits: wrote {len(out_both)} chars, hits section present with correct 'contact' labeling")

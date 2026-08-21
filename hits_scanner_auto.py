@@ -53,7 +53,7 @@ from historical_features import load_batted_balls, add_batter_hit_rate, MIN_PRIO
 from hits_scanner import (
     Batter, Game, rank_slate, rank_value_plays, build_parlays, print_report, is_known_venue,
 )
-from hr_scanner_auto import (
+from mlb_live_data import (
     load_todays_games, load_weather, load_person_details, effective_bats,
     apply_matchup_layer, TOP_K_FOR_MATCHUP,
 )

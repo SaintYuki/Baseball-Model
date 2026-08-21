@@ -84,7 +84,6 @@ RUN:
 import glob
 import os
 import sys
-import time
 from datetime import date
 from typing import Optional
 
@@ -98,21 +97,13 @@ from historical_features import load_batted_balls, add_batter_power
 from hr_scanner import (
     Batter, Game, rank_slate, rank_value_plays, build_parlays, print_report, is_known_venue,
 )
-from pitch_matchup import (
-    get_batter_pitch_profile, get_pitcher_pitch_profile, matchup_score,
+from mlb_live_data import (
+    load_todays_games, load_weather, load_person_details, effective_bats,
+    apply_matchup_layer, TOP_K_FOR_MATCHUP,
 )
+import hits_scanner
+from hits_scanner_auto import load_hit_rates, load_team_batters_hits, log_predictions_hits
 
-TOP_K_FOR_MATCHUP = None    # None = pull matchup data for every batter on the slate (not just
-                             # the top N by base score). Was capped at 60 originally to keep the
-                             # per-player Savant pulls manageable, but that cap meant the Value
-                             # Board could only ever surface someone already in the top 60 by raw
-                             # score — a real matchup edge sitting at rank 90 was structurally
-                             # invisible. Pitcher-side calls are cached per starter regardless
-                             # (bounded by ~15-30 starters/day, not by how many batters we score),
-                             # so uncapping this only scales the batter-side pull, roughly 60->~390
-                             # for a full slate. Set back to an int (e.g. 60) if this turns out to
-                             # be too slow or trips a Savant rate limit on a real run.
-REQUEST_DELAY_SEC = 0.4     # be polite to Savant between per-player pulls
 TRAILING_HR_RATE_ELITE = 0.13  # trailing HR-rate-per-batted-ball treated as "maxed out" (~1.0)
                                 # on the power_score dial. Raised from an initial 0.09 after
                                 # multiple unrelated players independently hit that cap in the
@@ -205,90 +196,6 @@ def load_power_scores(year: int) -> tuple[dict, dict]:
     return trailing_by_id, season_by_name
 
 
-def load_todays_games(target_date: str) -> list[dict]:
-    """Raw schedule call instead of statsapi.schedule() — the wrapper drops
-    probable-pitcher IDs and only keeps names, and we need the IDs for the
-    matchup pull."""
-    hydrate = "probablePitcher,linescore"
-    r = statsapi.get("schedule", {"sportId": 1, "date": target_date, "hydrate": hydrate})
-    games = []
-    for d in r.get("dates", []):
-        for g in d.get("games", []):
-            home = g["teams"]["home"]
-            away = g["teams"]["away"]
-            home_p = home.get("probablePitcher", {}) or {}
-            away_p = away.get("probablePitcher", {}) or {}
-            games.append({
-                "game_pk": g["gamePk"],
-                "home_team": home["team"].get("name", "???"),
-                "away_team": away["team"].get("name", "???"),
-                "home_id": home["team"]["id"],
-                "away_id": away["team"]["id"],
-                "venue": g.get("venue", {}).get("name", ""),
-                "home_pitcher_id": home_p.get("id"),
-                "home_pitcher_name": home_p.get("fullName", ""),
-                "away_pitcher_id": away_p.get("id"),
-                "away_pitcher_name": away_p.get("fullName", ""),
-            })
-    return games
-
-
-def load_weather(game_pk: int) -> dict:
-    try:
-        feed = statsapi.get("game", {"gamePk": game_pk})
-        wx = feed.get("gameData", {}).get("weather", {})
-        return {"condition": wx.get("condition", ""), "temp": wx.get("temp"), "wind": wx.get("wind", "")}
-    except Exception as e:
-        print(f"  (weather unavailable for game {game_pk}: {e})")
-        return {}
-
-
-def load_person_details(person_ids: list[int]) -> dict:
-    """Batch-fetches real bat side + throwing hand for a list of MLBAM person
-    ids in ONE call, instead of one request per player. Uses the 'people'
-    endpoint (plural) — NOT 'person' (singular), which requires a single
-    personId as a path parameter and can't batch. 'people' takes personIds
-    as a comma-separated query parameter instead. Returns
-    {id: {'bats': 'L'/'R'/'S', 'throws': 'L'/'R'}}. Falls back to an empty
-    dict on failure so callers degrade to the 'R' default rather than crash.
-
-    SANITY CHECK THIS ONCE LIVE: I can't hit the Stats API from my sandbox,
-    so the first real run is the first time this exact batched-personIds
-    call has actually been exercised — glance at a couple of known lefties
-    (Ohtani, Freeman) in the printed slate and confirm they come back 'L'."""
-    if not person_ids:
-        return {}
-    ids_param = ",".join(str(i) for i in sorted(set(person_ids)))
-    try:
-        r = statsapi.get("people", {"personIds": ids_param})
-    except Exception as e:
-        print(f"  (batch handedness pull failed: {e} — defaulting affected players to bats='R')")
-        return {}
-    details = {}
-    for person in r.get("people", []):
-        details[person["id"]] = {
-            "bats": person.get("batSide", {}).get("code", "R"),
-            "throws": person.get("pitchHand", {}).get("code", "R"),
-        }
-    return details
-
-
-def effective_bats(bat_side: str, opp_throws: str) -> str:
-    """Resolves a batter's effective handedness for scoring purposes.
-    Switch hitters ('S') take the standard platoon side: left against a
-    right-handed pitcher, right against a left-handed pitcher. Non-switch
-    hitters just use their real side. Unknown pitcher hand falls back to
-    'R' — same default the old hardcoded version used, but now only for
-    the genuinely-unknown case instead of for every single batter."""
-    if bat_side != "S":
-        return "L" if bat_side == "L" else "R"
-    if opp_throws == "L":
-        return "R"
-    if opp_throws == "R":
-        return "L"
-    return "R"
-
-
 def load_team_batters(team_id: int, team_abbr: str, trailing_by_id: dict, season_by_name: dict,
                        opp_pitcher_id: Optional[int], opp_pitcher_name: str) -> list[Batter]:
     roster = statsapi.get("team_roster", {"teamId": team_id, "rosterType": "active"})
@@ -315,58 +222,6 @@ def load_team_batters(team_id: int, team_abbr: str, trailing_by_id: dict, season
             opp_pitcher_id=opp_pitcher_id, opp_pitcher_name=opp_pitcher_name,
         ))
     return batters
-
-
-def apply_matchup_layer(ranked: list[dict], all_batters_by_id: dict,
-                         top_k: Optional[int] = TOP_K_FOR_MATCHUP):
-    """Mutates matchup_adjustment on the top_k Batter objects in place (or
-    on everyone, if top_k is None), using real pitch-by-pitch data. Pitcher
-    profiles are cached so a starter facing 13 opposing batters only gets
-    pulled once, not 13 times — this cache is what keeps an uncapped run
-    from scaling anywhere near as badly as "one call per batter" sounds;
-    it's really "one call per batter, plus ~15-30 calls total for the
-    day's starters," not multiplicatively worse per batter added.
-
-    Looks batters up by mlbam_id, not name — name collisions are real (MLB
-    currently has two active players named Max Muncy, on different teams).
-    A name-keyed dict would silently merge them into one entry, so the
-    later-loaded one is the only one reachable, its pull runs twice for no
-    reason, and the other player's real matchup data never gets applied."""
-    pitcher_cache: dict[int, object] = {}
-    top_rows = ranked if top_k is None else ranked[:top_k]
-
-    scope = f"all {len(top_rows)} batters" if top_k is None else f"the top {len(top_rows)} batters"
-    print(f"\nPulling pitch-level matchup data for {scope} "
-          f"(this is the slow part — one Savant call per batter, cached per pitcher)...")
-
-    for i, row in enumerate(top_rows, 1):
-        b = all_batters_by_id.get(row["mlbam_id"])
-        if b is None or b.mlbam_id is None or b.opp_pitcher_id is None:
-            continue
-
-        if b.opp_pitcher_id not in pitcher_cache:
-            try:
-                pitcher_cache[b.opp_pitcher_id] = get_pitcher_pitch_profile(b.opp_pitcher_id)
-            except Exception as e:
-                print(f"  ({b.opp_pitcher_name} pitcher pull failed: {e})")
-                pitcher_cache[b.opp_pitcher_id] = None
-            time.sleep(REQUEST_DELAY_SEC)
-        pitcher_profile = pitcher_cache[b.opp_pitcher_id]
-        if pitcher_profile is None or pitcher_profile.empty:
-            continue
-
-        try:
-            batter_profile = get_batter_pitch_profile(b.mlbam_id)
-        except Exception as e:
-            print(f"  ({b.name} batter pull failed: {e})")
-            continue
-        time.sleep(REQUEST_DELAY_SEC)
-
-        result = matchup_score(batter_profile, pitcher_profile)
-        b.matchup_adjustment = result["adjustment"]
-
-        print(f"  [{i}/{len(top_rows)}] {b.name:<22} vs {b.opp_pitcher_name:<20} "
-              f"matchup {result['adjustment']:+.3f}")
 
 
 PREDICTIONS_LOG_PATH = "data/predictions_log.csv"
@@ -430,24 +285,39 @@ if __name__ == "__main__":
     print(f"Loaded trailing (recent-form) power scores for {len(trailing_by_id)} batters, "
           f"season-aggregate fallback for {len(season_by_name)} batters.\n")
 
+    hits_trailing_by_id = load_hit_rates()
+    print(f"Loaded trailing hit rates for {len(hits_trailing_by_id)} batters "
+          f"(everyone else uses the league-average placeholder).\n")
+
     todays_games = load_todays_games(target)
     print(f"Found {len(todays_games)} games.\n")
 
+    # Both HR and hits need the exact same schedule + weather for today — pulled ONCE per game
+    # here and reused for both Game objects, rather than pulling twice. Roster/handedness and
+    # the matchup layer, by contrast, DO run twice (once per prop) since they build genuinely
+    # separate Batter populations (power_score vs hit_rate) — a known, accepted cost, not
+    # something worth the coupling risk of merging right now. See hits_scanner_auto.py's
+    # docstring for the same tradeoff, made the same way.
     slate = []
     all_batters_by_id = {}
+    hits_slate = []
+    hits_all_batters_by_id = {}
     for g in todays_games:
         wx = load_weather(g["game_pk"])
         speed, wind_dir = categorize_wind(wx.get("wind", ""))
         temp = wx.get("temp")
         is_dome = wx.get("condition", "").lower() in ("roof closed", "dome")
 
-        game = Game(
+        game_kwargs = dict(
             home_team=g["home_team"], away_team=g["away_team"], park=g["venue"],
             is_dome=is_dome, wind_speed_mph=speed, wind_dir=wind_dir, temp=temp,
             home_pitcher_id=g["home_pitcher_id"], home_pitcher_name=g["home_pitcher_name"],
             away_pitcher_id=g["away_pitcher_id"], away_pitcher_name=g["away_pitcher_name"],
             game_pk=g["game_pk"],
         )
+        game = Game(**game_kwargs)
+        hits_game = hits_scanner.Game(**game_kwargs)
+
         # home batters face the AWAY pitcher, away batters face the HOME pitcher
         home_batters = load_team_batters(g["home_id"], g["home_team"], trailing_by_id, season_by_name,
                                           g["away_pitcher_id"], g["away_pitcher_name"])
@@ -458,6 +328,15 @@ if __name__ == "__main__":
             all_batters_by_id[b.mlbam_id] = b
         slate.append(game)
 
+        hits_home_batters = load_team_batters_hits(g["home_id"], g["home_team"], hits_trailing_by_id,
+                                                     g["away_pitcher_id"], g["away_pitcher_name"])
+        hits_away_batters = load_team_batters_hits(g["away_id"], g["away_team"], hits_trailing_by_id,
+                                                     g["home_pitcher_id"], g["home_pitcher_name"])
+        hits_game.batters = hits_home_batters + hits_away_batters
+        for b in hits_game.batters:
+            hits_all_batters_by_id[b.mlbam_id] = b
+        hits_slate.append(hits_game)
+
         venue_note = "" if is_known_venue(game.park) else \
             "  *** VENUE NOT IN park_factors_live.json — check for a name mismatch/rename, " \
             "currently scoring as neutral ***"
@@ -467,22 +346,35 @@ if __name__ == "__main__":
 
     print()
     ranked = rank_slate(slate)  # Stage 1: fast base score for everyone
+    hits_ranked = hits_scanner.rank_slate(hits_slate)
 
-    apply_matchup_layer(ranked, all_batters_by_id, top_k=TOP_K_FOR_MATCHUP)  # Stage 2: whole slate by default now
+    apply_matchup_layer(ranked, all_batters_by_id, top_k=TOP_K_FOR_MATCHUP)
+    apply_matchup_layer(hits_ranked, hits_all_batters_by_id, top_k=TOP_K_FOR_MATCHUP)
 
-    ranked = rank_slate(slate)  # re-score now that matchup_adjustment is filled in on the top K
+    ranked = rank_slate(slate)  # re-score now that matchup_adjustment is filled in
+    hits_ranked = hits_scanner.rank_slate(hits_slate)
 
     parlays = build_parlays(ranked, n_parlays=3, legs=3)
+    hits_parlays = build_parlays(hits_ranked, n_parlays=3, legs=3)
 
     value_plays = rank_value_plays(ranked, exclude_top_n=20, min_power_score=0.25, top_n=15)
     value_parlays = build_parlays(value_plays, n_parlays=2, legs=3)
 
+    hits_value_plays = hits_scanner.rank_value_plays(hits_ranked, exclude_top_n=20, min_hit_rate=0.25, top_n=15)
+    hits_value_parlays = build_parlays(hits_value_plays, n_parlays=2, legs=3)
+
     print_report(ranked, parlays, value_plays, value_parlays)
+    hits_scanner.print_report(hits_ranked, hits_parlays, hits_value_plays, hits_value_parlays)
 
     log_predictions(ranked, target)
+    log_predictions_hits(hits_ranked, target)
 
     os.makedirs("docs", exist_ok=True)
-    html_out = render_html(ranked, parlays, value_plays, value_parlays, target)
+    html_out = render_html(
+        ranked, parlays, value_plays, value_parlays, target,
+        hits_ranked=hits_ranked, hits_parlays=hits_parlays,
+        hits_value_plays=hits_value_plays, hits_value_parlays=hits_value_parlays,
+    )
     with open("docs/index.html", "w", encoding="utf-8") as f:
         f.write(html_out)
-    print(f"\nWrote mobile-friendly report to docs/index.html ({len(html_out)} chars).")
+    print(f"\nWrote mobile-friendly report (HR + hits) to docs/index.html ({len(html_out)} chars).")
