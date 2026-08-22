@@ -1,6 +1,6 @@
 {
   "Wrigley Field": {
-    "L": 0.4474,
+    "L": 0.4313,
     "R": 0.0
   },
   "Yankee Stadium": {
@@ -23,31 +23,27 @@
     "L": 0.0,
     "R": 0.0
   },
-  "Citizens Bank Park": {
-    "L": 0.0,
-    "R": 0.0
-  },
   "Rogers Centre": {
     "L": 0.0,
     "R": 0.0
   },
   "PNC Park": {
     "L": 0.0,
-    "R": -0.4505
+    "R": -0.4554
+  },
+  "Citizens Bank Park": {
+    "L": 0.0,
+    "R": 0.0
   },
   "Daikin Park": {
     "L": 0.0,
     "R": 0.0
   },
+  "Tropicana Field": {
+    "L": 0.0,
+    "R": 0.8745
+  },
   "Oriole Park at Camden Yards": {
-    "L": 0.0,
-    "R": 0.0
-  },
-  "Coors Field": {
-    "L": 0.0,
-    "R": 0.0
-  },
-  "American Family Field": {
     "L": 0.0,
     "R": 0.0
   },
@@ -59,11 +55,15 @@
     "L": 0.0,
     "R": 0.0
   },
-  "Tropicana Field": {
-    "L": 0.0,
-    "R": 0.853
-  },
   "Globe Life Field": {
+    "L": 0.0,
+    "R": 0.0
+  },
+  "Coors Field": {
+    "L": 0.0,
+    "R": 0.0
+  },
+  "American Family Field": {
     "L": 0.0,
     "R": 0.0
   },
@@ -71,11 +71,11 @@
     "L": 0.0,
     "R": 0.0
   },
-  "Citi Field": {
+  "Chase Field": {
     "L": 0.0,
     "R": 0.0
   },
-  "Chase Field": {
+  "Citi Field": {
     "L": 0.0,
     "R": 0.0
   },
@@ -83,11 +83,11 @@
     "L": 0.0,
     "R": 0.0
   },
-  "Rate Field": {
+  "Fenway Park": {
     "L": 0.0,
     "R": 0.0
   },
-  "Fenway Park": {
+  "Rate Field": {
     "L": 0.0,
     "R": 0.0
   },
@@ -103,20 +103,20 @@
     "L": 0.0,
     "R": 0.0
   },
-  "Petco Park": {
-    "L": 0.0,
-    "R": 0.0
-  },
   "Kauffman Stadium": {
     "L": 0.0,
     "R": 0.0
   },
+  "Petco Park": {
+    "L": 0.0,
+    "R": 0.0
+  },
   "Busch Stadium": {
-    "L": -0.3485,
+    "L": -0.3482,
     "R": -0.5371
   },
   "Angel Stadium": {
-    "L": -0.4087,
-    "R": -0.3444
+    "L": -0.4047,
+    "R": -0.3421
   }
 }

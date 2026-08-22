@@ -3223,237 +3223,237 @@ date,mlbam_id,game_pk,player,team,game,opp_pitcher,park,park_factor,weather_adj,
 2026-08-19,687859,824318,Troy Johnston,Colorado Rockies,Los Angeles Dodgers@Colorado Rockies,Roki Sasaki,Coors Field,0.0,0.0,0.0011,0.0,0.0,0.0,388,0.0,0.0,True
 2026-08-19,669743,824318,Alex Call,Los Angeles Dodgers,Los Angeles Dodgers@Colorado Rockies,Kyle Freeland,Coors Field,0.0,0.0,0.0203,0.0,0.0,0.0,389,0.0,0.0,True
 2026-08-19,518692,824318,Freddie Freeman,Los Angeles Dodgers,Los Angeles Dodgers@Colorado Rockies,Kyle Freeland,Coors Field,0.0,0.0,0.0015,0.0,0.0,0.0,390,0.0,0.0,True
-2026-08-20,694673,822861,Abimelec Ortiz,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,0.0577,1.0,0.1731,1.1731,1,,,False
-2026-08-20,621566,824589,Matt Olson,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,0.0249,1.0,0.0747,1.0747,2,,,False
-2026-08-20,808959,824589,Munetaka Murakami,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,0.0189,1.0,0.0567,1.0567,3,,,False
-2026-08-20,663757,824802,Trent Grisham,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,0.0411,0.888,0.1233,0.9975,4,,,False
-2026-08-20,676475,824474,Alec Burleson,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,0.05,0.855,0.1499,0.9832,5,,,False
-2026-08-20,691406,822934,Junior Caminero,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.25,0.0,-0.0231,0.839,0.1634,0.9761,6,,,False
-2026-08-20,663886,824474,Tyler Stephenson,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,0.0068,0.932,0.0204,0.951,7,,,False
-2026-08-20,624413,824802,Pete Alonso,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,0.0153,0.905,0.0459,0.9465,8,,,False
-2026-08-20,592626,822861,Joc Pederson,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0188,1.0,-0.0564,0.9436,9,,,False
-2026-08-20,694212,824802,Samuel Basallo,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,0.0,0.932,0.0,0.932,10,,,False
-2026-08-20,678218,822934,Brandon Valenzuela,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.25,0.0,-0.0164,0.769,0.1886,0.914,11,,,False
-2026-08-20,678246,824589,Miguel Vargas,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,0.0206,0.855,0.0618,0.9078,12,,,False
-2026-08-20,695506,824074,Jac Caglianone,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.1009,0.699,0.2499,0.8737,13,,,False
-2026-08-20,701358,824153,Cam Smith,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,0.0352,0.769,0.1056,0.8502,14,,,False
-2026-08-20,660670,824589,Ronald Acuña Jr.,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,0.0193,0.796,0.0579,0.8421,15,,,False
-2026-08-20,680869,824074,Zack Gelof,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,0.0375,0.754,0.1125,0.8388,16,,,False
-2026-08-20,671732,824074,Lawrence Butler,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0182,0.824,-0.0546,0.779,17,,,False
-2026-08-20,553993,824474,Eugenio Suárez,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,-0.011,0.769,-0.033,0.7436,18,,,False
-2026-08-20,641343,823747,Jake Bauers,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,0.0357,0.669,0.107,0.7406,19,,,False
-2026-08-20,641933,824802,Tyler O'Neill,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,0.0058,0.721,0.0173,0.7335,20,,,False
-2026-08-20,622268,824074,Donovan Walton,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0086,0.744,-0.0258,0.7248,21,,,False
-2026-08-20,672275,824395,Patrick Bailey,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,-0.0254,0.744,-0.0762,0.6873,22,,,False
-2026-08-20,682674,824395,Victor Bericoto,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0359,0.744,-0.1077,0.6639,23,,,False
-2026-08-20,643217,824589,Andrew Benintendi,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,-0.0044,0.659,-0.0132,0.6503,24,,,False
-2026-08-20,691777,824074,Max Muncy,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.007,0.659,-0.0209,0.6452,25,,,False
-2026-08-20,573262,824589,Mike Yastrzemski,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.0097,0.659,-0.0291,0.6398,26,,,False
-2026-08-20,694192,823747,Jackson Chourio,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,0.0203,0.603,0.0609,0.6397,27,,,False
-2026-08-20,672386,822934,Alejandro Kirk,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.25,0.0,0.0478,0.444,0.4293,0.6346,28,,,False
-2026-08-20,682987,824802,Spencer Jones,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,0.0302,0.577,0.0906,0.6293,29,,,False
-2026-08-20,680574,824474,Matt McLain,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,0.0272,0.577,0.0816,0.6241,30,,,False
-2026-08-20,657041,824589,Lane Thomas,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,0.0149,0.592,0.0448,0.6185,31,,,False
-2026-08-20,695734,822861,Daylen Lile,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,0.0175,0.57,0.0525,0.5999,32,,,False
-2026-08-20,668227,823747,Randy Arozarena,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,0.0229,0.559,0.0687,0.5974,33,,,False
-2026-08-20,663743,822934,Nick Fortes,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.25,0.0,-0.0123,0.496,0.2038,0.5971,34,,,False
-2026-08-20,663586,824589,Austin Riley,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.0067,0.607,-0.0201,0.5948,35,,,False
-2026-08-20,650490,822934,Yandy Díaz,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.25,0.0,0.0159,0.446,0.3096,0.5841,36,,,False
-2026-08-20,691723,824802,Coby Mayo,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0173,0.607,-0.0519,0.5755,37,,,False
-2026-08-20,687952,824802,Christian Encarnacion-Strand,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0047,0.577,-0.014,0.5689,38,,,False
-2026-08-20,676356,822934,Jonny DeLuca,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.25,0.0,0.0018,0.452,0.2569,0.5681,39,,,False
-2026-08-20,668723,822934,Ryan Vilade,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.25,0.0,-0.0038,0.452,0.2358,0.5586,40,,,False
-2026-08-20,701398,824474,Sal Stewart,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,-0.0041,0.531,-0.0122,0.5245,41,,,False
-2026-08-20,686475,824074,Tyler Tolbert,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.0272,0.481,0.0815,0.5202,42,,,False
-2026-08-20,678545,824395,Osleivis Basabe,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,0.0205,0.481,0.0615,0.5106,43,,,False
-2026-08-20,666211,824153,Taylor Trammell,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,-0.0073,0.513,-0.0218,0.5018,44,,,False
-2026-08-20,805367,824589,Chase Meidroth,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,0.0276,0.462,0.0829,0.5003,45,,,False
-2026-08-20,666139,824153,Josh Lowe,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,0.0029,0.496,0.0087,0.5003,46,,,False
-2026-08-20,806146,824802,George Lombard Jr.,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,0.0028,0.496,0.0085,0.5002,47,,,False
-2026-08-20,687401,823747,Joey Ortiz,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.0005,0.496,-0.0014,0.4953,48,,,False
-2026-08-20,805811,824395,Bryce Eldridge,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0051,0.502,-0.0153,0.4943,49,,,False
-2026-08-20,677594,823747,Julio Rodríguez,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,0.0118,0.471,0.0355,0.4877,50,,,False
-2026-08-20,665953,822861,Andrés Chaparro,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,0.0739,0.394,0.2216,0.4813,51,,,False
-2026-08-20,703607,824074,Henry Bolte,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,0.0001,0.462,0.0002,0.4621,52,,,False
-2026-08-20,666176,824395,Jo Adell,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,0.0241,0.427,0.0724,0.4579,53,,,False
-2026-08-20,681297,824802,Colton Cowser,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0234,0.481,-0.0703,0.4472,54,,,False
-2026-08-20,663494,824474,Bryan Torres,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,-0.0238,0.481,-0.0713,0.4467,55,,,False
-2026-08-20,642708,824802,Amed Rosario,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,-0.0457,0.513,-0.137,0.4427,56,,,False
-2026-08-20,665161,824153,Jeremy Peña,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,-0.0139,0.462,-0.0418,0.4427,57,,,False
-2026-08-20,686681,824074,Michael Massey,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,-0.0018,0.444,-0.0054,0.4416,58,,,False
-2026-08-20,646240,824395,Rafael Devers,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0157,0.462,-0.0472,0.4402,59,,,False
-2026-08-20,622761,822934,Jorge Mateo,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.25,0.0,0.0,0.351,0.2501,0.4388,60,,,False
-2026-08-20,642350,824153,Jose Siri,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0074,0.44,-0.0223,0.4302,61,,,False
-2026-08-20,807727,822934,Charles McAdoo,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.25,0.0,0.0199,0.323,0.3248,0.4279,62,,,False
-2026-08-20,663662,822934,Daz Cameron,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.25,0.0,0.0,0.34,0.25,0.425,63,,,False
-2026-08-20,673237,824153,Yainer Diaz,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,-0.0038,0.427,-0.0115,0.4221,64,,,False
-2026-08-20,545341,824589,Randal Grichuk,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,0.0214,0.393,0.0641,0.4182,65,,,False
-2026-08-20,607043,822861,Brandon Nimmo,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0046,0.412,-0.0138,0.4063,66,,,False
-2026-08-20,663728,823747,Cal Raleigh,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,-0.0338,0.452,-0.1013,0.4062,67,,,False
-2026-08-20,677951,824074,Bobby Witt Jr.,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.0362,0.366,0.1085,0.4057,68,,,False
-2026-08-20,663993,824395,Nathaniel Lowe,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,0.0423,0.358,0.1268,0.4034,69,,,False
-2026-08-20,691781,822861,Brady House,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,-0.0129,0.416,-0.0387,0.3999,70,,,False
-2026-08-20,677592,824474,Everson Pereira,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,-0.0395,0.452,-0.1186,0.3984,71,,,False
-2026-08-20,687551,824395,Drew Gilbert,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0252,0.427,-0.0756,0.3947,72,,,False
-2026-08-20,695600,824074,Carter Jensen,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.0234,0.366,0.0702,0.3917,73,,,False
-2026-08-20,695491,824474,Joshua Báez,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,-0.0134,0.406,-0.0401,0.3897,74,,,False
-2026-08-20,676369,824153,Nelson Velázquez,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,0.0,0.384,0.0,0.384,75,,,False
-2026-08-20,700652,822934,Kenny Piper,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.25,0.0,0.0,0.298,0.25,0.3725,76,,,False
-2026-08-20,667472,824474,Dane Myers,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,-0.0033,0.375,-0.0099,0.3713,77,,,False
-2026-08-20,665750,824802,Leody Taveras,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0132,0.385,-0.0395,0.3698,78,,,False
-2026-08-20,608369,822861,Corey Seager,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,0.0072,0.358,0.0215,0.3657,79,,,False
-2026-08-20,592885,823747,Christian Yelich,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.0101,0.375,-0.0304,0.3636,80,,,False
-2026-08-20,518595,824153,Travis d'Arnaud,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0156,0.381,-0.0467,0.3632,81,,,False
-2026-08-20,695657,824589,Colson Montgomery,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,-0.0207,0.375,-0.0621,0.3517,82,,,False
-2026-08-20,806198,823747,Cooper Pratt,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.0104,0.358,-0.0313,0.3468,83,,,False
-2026-08-20,808982,824395,Jung Hoo Lee,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0078,0.355,-0.0234,0.3467,84,,,False
-2026-08-20,700250,824802,Ben Rice,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,-0.0195,0.366,-0.0585,0.3446,85,,,False
-2026-08-20,694671,822861,Wyatt Langford,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,0.0136,0.327,0.0407,0.3403,86,,,False
-2026-08-20,801126,823747,Brock Rodden,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,0.0039,0.333,0.0117,0.3369,87,,,False
-2026-08-20,669394,822861,Jake Burger,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0053,0.342,-0.0158,0.3366,88,,,False
-2026-08-20,647304,823747,Josh Naylor,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,0.0295,0.308,0.0886,0.3353,89,,,False
-2026-08-20,682928,822861,CJ Abrams,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,0.0066,0.327,0.0199,0.3335,90,,,False
-2026-08-20,545361,824153,Mike Trout,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0172,0.35,-0.0517,0.3319,91,,,False
-2026-08-20,668709,824474,JJ Bleday,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,-0.0143,0.342,-0.043,0.3273,92,,,False
-2026-08-20,668670,824589,Jake Rogers,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,0.0137,0.314,0.0411,0.3269,93,,,False
-2026-08-20,661531,824074,Brian Serven,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0217,0.347,-0.0651,0.3244,94,,,False
-2026-08-20,687605,822861,Andrew Pinckney,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,0.0,0.324,0.0,0.324,95,,,False
-2026-08-20,572233,824153,Christian Walker,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,-0.0054,0.327,-0.0162,0.3217,96,,,False
-2026-08-20,643446,824074,Jeff McNeil,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0031,0.321,-0.0093,0.318,97,,,False
-2026-08-20,689414,822934,Liam Hicks,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.0,0.0,0.0034,0.314,0.0102,0.3172,98,,,False
-2026-08-20,677588,822861,José Tena,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,-0.0084,0.323,-0.0251,0.3149,99,,,False
-2026-08-20,695670,822861,Harry Ford,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,-0.0123,0.323,-0.0368,0.3111,100,,,False
-2026-08-20,571912,824074,Luke Maile,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.0,0.31,0.0,0.31,101,,,False
-2026-08-20,670764,822934,Taylor Walls,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.0,0.0,-0.0165,0.321,-0.0495,0.3051,102,,,False
-2026-08-20,681047,824802,Christian Franklin,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0134,0.315,-0.0403,0.3023,103,,,False
-2026-08-20,668800,824395,Andrew Knizner,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,0.0,0.301,0.0,0.301,104,,,False
-2026-08-20,677943,824474,Will Banfield,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,0.0,0.3,0.0,0.3,105,,,False
-2026-08-20,813841,824395,Jonah Cox,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0347,0.33,-0.1042,0.2956,106,,,False
-2026-08-20,806367,824395,Turner Hill,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,0.0,0.295,0.0,0.295,107,,,False
-2026-08-20,690984,824395,Petey Halpin,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,-0.0289,0.321,-0.0866,0.2932,108,,,False
-2026-08-20,682829,824474,Elly De La Cruz,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,-0.0042,0.296,-0.0125,0.2923,109,,,False
-2026-08-20,671277,824802,Luis García Jr.,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,-0.0125,0.302,-0.0374,0.2907,110,,,False
-2026-08-20,691011,824589,Drew Romo,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,-0.0046,0.294,-0.0139,0.2899,111,,,False
-2026-08-20,699625,824474,Jimmy Crooks,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,-0.0471,0.337,-0.1412,0.2894,112,,,False
-2026-08-20,681807,824395,David Fry,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,0.0,0.286,0.0,0.286,113,,,False
-2026-08-20,661388,823747,William Contreras,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.0156,0.296,-0.047,0.2821,114,,,False
-2026-08-20,643376,822861,Danny Jansen,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,0.0,0.278,0.0,0.278,115,,,False
-2026-08-20,800050,824395,Chase DeLauter,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,0.0135,0.265,0.0404,0.2757,116,,,False
-2026-08-20,680716,823747,Jonathan Ornelas,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.0104,0.284,-0.0313,0.2751,117,,,False
-2026-08-20,671083,824395,Buddy Kennedy,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0234,0.292,-0.0702,0.2715,118,,,False
-2026-08-20,691023,824474,Jordan Walker,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,0.013,0.261,0.0391,0.2712,119,,,False
-2026-08-20,642215,823747,Weston Wilson,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,-0.0155,0.282,-0.0465,0.2689,120,,,False
-2026-08-20,683002,824802,Gunnar Henderson,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0314,0.296,-0.0943,0.2681,121,,,False
-2026-08-20,669911,824474,Michael Toglia,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,-0.0253,0.29,-0.0759,0.268,122,,,False
-2026-08-20,670623,824153,Isaac Paredes,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,0.009,0.261,0.0268,0.268,123,,,False
-2026-08-20,695720,824074,Tommy White,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0379,0.302,-0.1136,0.2677,124,,,False
-2026-08-20,660821,822934,Jesús Sánchez,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.0,0.0,0.018,0.248,0.054,0.2614,125,,,False
-2026-08-20,683227,822861,Cody Freeman,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0067,0.265,-0.02,0.2597,126,,,False
-2026-08-20,702284,823747,Cole Young,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,-0.0056,0.261,-0.0169,0.2566,127,,,False
-2026-08-20,686780,824474,Pedro Pagés,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,0.0,0.256,0.0,0.256,128,,,False
-2026-08-20,673490,824589,Ha-Seong Kim,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,0.0,0.255,0.0,0.255,129,,,False
-2026-08-20,686668,824589,Brenton Doyle,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,-0.0048,0.258,-0.0143,0.2543,130,,,False
-2026-08-20,669221,824589,Sean Murphy,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.011,0.263,-0.0331,0.2543,131,,,False
-2026-08-20,679822,822861,Justin Foscue,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0031,0.256,-0.0094,0.2536,132,,,False
-2026-08-20,664728,824074,Kyle Isbel,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,-0.0035,0.256,-0.0105,0.2533,133,,,False
-2026-08-20,699302,824474,Héctor Rodríguez,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,-0.0202,0.265,-0.0608,0.2489,134,,,False
-2026-08-20,650968,824802,Yohel Pozo,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,0.0,0.247,0.0,0.247,135,,,False
-2026-08-20,672284,822861,Jarred Kelenic,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0019,0.248,-0.0056,0.2466,136,,,False
-2026-08-20,671056,824474,Iván Herrera,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,0.0024,0.244,0.0074,0.2458,137,,,False
-2026-08-20,645305,824802,Ali Sánchez,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,0.0063,0.241,0.0191,0.2456,138,,,False
-2026-08-20,669224,824802,Austin Wells,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,-0.014,0.256,-0.0422,0.2452,139,,,False
-2026-08-20,645277,824589,Ozzie Albies,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.0144,0.256,-0.0434,0.2449,140,,,False
-2026-08-20,553869,822861,Elias Díaz,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0163,0.256,-0.0488,0.2435,141,,,False
-2026-08-20,670231,824074,John Rave,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.0041,0.24,0.0125,0.243,142,,,False
-2026-08-20,665862,824802,Jazz Chisholm Jr.,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,0.001,0.24,0.0029,0.2407,143,,,False
-2026-08-20,676609,824802,José Caballero,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,0.0042,0.233,0.0124,0.2359,144,,,False
-2026-08-20,595978,824395,Austin Hedges,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,0.0021,0.23,0.0061,0.2314,145,,,False
-2026-08-20,680700,822934,Richie Palacios,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.0,0.0,-0.0078,0.233,-0.0236,0.2275,146,,,False
-2026-08-20,670770,824474,TJ Friedl,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,-0.0182,0.24,-0.0546,0.2269,147,,,False
-2026-08-20,624431,824474,Jose Trevino,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,0.0091,0.22,0.0273,0.226,148,,,False
-2026-08-20,701852,824395,Drew Cavanaugh,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.026,0.245,-0.078,0.2259,149,,,False
-2026-08-20,640902,823747,Jhonny Pereda,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,0.0,0.22,0.0,0.22,150,,,False
-2026-08-20,687637,824802,Dylan Beavers,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0376,0.248,-0.1129,0.22,151,,,False
-2026-08-20,671976,824589,Tristan Peters,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,0.0174,0.208,0.0524,0.2189,152,,,False
-2026-08-20,683734,823747,Andrew Vaughn,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.0027,0.22,-0.0082,0.2182,153,,,False
-2026-08-20,694197,824395,Angel Genao,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,-0.0136,0.226,-0.0407,0.2168,154,,,False
-2026-08-20,663647,824474,Ke'Bryan Hayes,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,0.0022,0.214,0.0065,0.2154,155,,,False
-2026-08-20,665966,824802,Carlos Narváez,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0456,0.248,-0.1367,0.2141,156,,,False
-2026-08-20,641857,824802,Ryan McMahon,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,-0.0243,0.226,-0.073,0.2095,157,,,False
-2026-08-20,672960,822934,Kazuma Okamoto,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.25,0.0,0.0107,0.16,0.29,0.2064,158,,,False
-2026-08-20,696285,822861,Jacob Young,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,0.0504,0.179,0.1514,0.2061,159,,,False
-2026-08-20,682657,824395,Angel Martínez,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,-0.0074,0.202,-0.0223,0.1975,160,,,False
-2026-08-20,624428,824153,Adam Frazier,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0152,0.206,-0.0456,0.1966,161,,,False
-2026-08-20,642715,824395,Willy Adames,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0041,0.197,-0.0122,0.1946,162,,,False
-2026-08-20,694203,824153,Denzer Guzman,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0426,0.22,-0.1277,0.1919,163,,,False
-2026-08-20,668930,823747,Brice Turang,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.006,0.192,-0.0182,0.1885,164,,,False
-2026-08-20,502671,824802,Paul Goldschmidt,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,-0.0195,0.197,-0.0584,0.1855,165,,,False
-2026-08-20,691458,824474,Blaze Jordan,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,0.0092,0.179,0.0274,0.1839,166,,,False
-2026-08-20,669397,824153,Nick Allen,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,-0.0328,0.203,-0.0985,0.183,167,,,False
-2026-08-20,695731,824589,Braden Montgomery,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,0.008,0.175,0.024,0.1792,168,,,False
-2026-08-20,800325,823747,Luis Lara,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.0302,0.192,-0.0906,0.1746,169,,,False
-2026-08-20,656775,822934,Cedric Mullins,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.0,0.0,-0.0172,0.183,-0.0514,0.1736,170,,,False
-2026-08-20,666126,824074,Carlos Cortes,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0373,0.192,-0.112,0.1705,171,,,False
-2026-08-20,670541,824153,Yordan Alvarez,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,0.0229,0.154,0.0688,0.1646,172,,,False
-2026-08-20,691026,824474,Masyn Winn,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,0.0011,0.164,0.003,0.1645,173,,,False
-2026-08-20,514888,824153,Jose Altuve,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,0.0217,0.151,0.0649,0.1608,174,,,False
-2026-08-20,686611,822861,Dylan Crews,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,-0.0013,0.16,-0.0038,0.1594,175,,,False
-2026-08-20,687263,824153,Zach Neto,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0263,0.171,-0.0789,0.1575,176,,,False
-2026-08-20,665926,822934,Andrés Giménez,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.0,0.0,0.0168,0.148,0.0507,0.1555,177,,,False
-2026-08-20,623168,824153,Tyler Heineman,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0165,0.163,-0.0497,0.1549,178,,,False
-2026-08-20,677649,822861,Ezequiel Duran,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0112,0.16,-0.0338,0.1546,179,,,False
-2026-08-20,803011,824589,Sam Antonacci,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,0.0018,0.151,0.0053,0.1518,180,,,False
-2026-08-20,702616,824802,Jackson Holliday,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0141,0.157,-0.042,0.1504,181,,,False
-2026-08-20,662139,824153,Daulton Varsho,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,-0.0341,0.167,-0.1024,0.1499,182,,,False
-2026-08-20,677587,824395,Brayan Rocchio,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,-0.022,0.16,-0.0663,0.1494,183,,,False
-2026-08-20,521692,824074,Salvador Perez,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.0014,0.148,0.0041,0.1486,184,,,False
-2026-08-20,685133,824153,Wade Meckler,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0322,0.164,-0.0963,0.1482,185,,,False
-2026-08-20,686527,823747,Dominic Canzone,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,-0.013,0.148,-0.0392,0.1422,186,,,False
-2026-08-20,641680,824074,Jonah Heim,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0142,0.148,-0.0426,0.1417,187,,,False
-2026-08-20,694384,824153,Nolan Schanuel,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,0.0026,0.14,0.0079,0.1411,188,,,False
-2026-08-20,680757,824395,Steven Kwan,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,0.0054,0.137,0.0161,0.1392,189,,,False
-2026-08-20,676391,822934,Ernie Clement,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.25,0.0,-0.0384,0.124,0.1056,0.1371,190,,,False
-2026-08-20,701675,824474,Nathan Church,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,-0.0418,0.154,-0.1253,0.1347,191,,,False
-2026-08-20,686469,824074,Vinnie Pasquantino,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.0377,0.12,0.1133,0.1336,192,,,False
-2026-08-20,802139,824474,JJ Wetherholt,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,-0.0022,0.133,-0.0068,0.1321,193,,,False
-2026-08-20,671739,824589,Michael Harris II,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.0017,0.13,-0.0054,0.1293,194,,,False
-2026-08-20,664770,822934,Nathan Lukes,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.0,0.0,-0.0288,0.137,-0.0861,0.1252,195,,,False
-2026-08-20,666018,822934,Jonathan Aranda,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.0,0.0,-0.0044,0.126,-0.0135,0.1243,196,,,False
-2026-08-20,686948,824589,Drake Baldwin,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.015,0.113,-0.0451,0.1079,197,,,False
-2026-08-20,665877,824474,José Fermín,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,-0.0313,0.0,0.0,0.0,198,,,False
-2026-08-20,608070,824395,José Ramírez,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,0.0008,0.0,0.0,0.0,199,,,False
-2026-08-20,683953,824395,Travis Bazzana,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,-0.0198,0.0,0.0,0.0,200,,,False
-2026-08-20,683766,824395,Christian Koss,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0248,0.0,0.0,0.0,201,,,False
-2026-08-20,802415,822934,Chandler Simpson,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.0,0.0,-0.0153,0.0,0.0,0.0,202,,,False
-2026-08-20,703520,822934,Brett Bateman,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.0,0.0,0.0043,0.0,0.0,0.0,203,,,False
-2026-08-20,543807,822934,George Springer,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.25,0.0,-0.0006,0.0,0.0,0.0,204,,,False
-2026-08-20,669701,822934,Josh Smith,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.0,0.0,0.0,0.0,0.0,0.0,205,,,False
-2026-08-20,664702,822934,Myles Straw,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.25,0.0,0.012,0.0,0.0,0.0,206,,,False
-2026-08-20,686555,824074,Isaac Collins,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.006,0.0,0.0,0.0,207,,,False
-2026-08-20,672580,824074,Maikel Garcia,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.0414,0.0,0.0,0.0,208,,,False
-2026-08-20,679845,824074,Nick Loftin,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,-0.0092,0.0,0.0,0.0,209,,,False
-2026-08-20,675961,824074,Alika Williams,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0137,0.0,0.0,0.0,210,,,False
-2026-08-20,687231,824074,Darell Hernaiz,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,0.0,0.0,0.0,0.0,211,,,False
-2026-08-20,805779,824074,Jacob Wilson,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0171,0.0,0.0,0.0,212,,,False
-2026-08-20,682668,824589,Luisangel Acuña,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,-0.0196,0.0,0.0,0.0,213,,,False
-2026-08-20,642086,824589,Dominic Smith,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.0174,0.0,0.0,0.0,214,,,False
-2026-08-20,805347,824589,Jim Jarvis,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.0229,0.0,0.0,0.0,215,,,False
-2026-08-20,643289,824589,Mauricio Dubón,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.016,0.0,0.0,0.0,216,,,False
-2026-08-20,666152,823747,David Hamilton,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.0276,0.0,0.0,0.0,217,,,False
-2026-08-20,669003,823747,Garrett Mitchell,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,0.004,0.0,0.0,0.0,218,,,False
-2026-08-20,596142,823747,Gary Sánchez,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,0.046,0.0,0.0,0.0,219,,,False
-2026-08-20,680977,823747,Brendan Donovan,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,0.0044,0.0,0.0,0.0,220,,,False
-2026-08-20,660844,823747,Leo Rivas,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,0.0,0.0,0.0,0.0,221,,,False
-2026-08-20,621493,823747,Taylor Ward,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,-0.0165,0.0,0.0,0.0,222,,,False
-2026-08-20,645302,823747,Victor Robles,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,0.0054,0.0,0.0,0.0,223,,,False
-2026-08-20,671218,824802,Heliot Ramos,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,-0.0211,0.0,0.0,0.0,224,,,False
-2026-08-20,694497,822861,Evan Carter,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0265,0.0,0.0,0.0,225,,,False
-2026-08-20,670032,822861,Nicky Lopez,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0258,0.0,0.0,0.0,226,,,False
-2026-08-20,678391,822861,Jorbit Vivas,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,0.0027,0.0,0.0,0.0,227,,,False
-2026-08-20,660688,822861,Keibert Ruiz,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,0.0422,0.0,0.0,0.0,228,,,False
-2026-08-20,683083,822861,Nasim Nuñez,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,-0.0231,0.0,0.0,0.0,229,,,False
-2026-08-20,543877,824153,Christian Vázquez,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,0.047,0.0,0.0,0.0,230,,,False
-2026-08-20,664774,824153,LaMonte Wade Jr.,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,0.0005,0.0,0.0,0.0,231,,,False
-2026-08-20,694208,824153,Moisés Ballesteros,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0488,0.0,0.0,0.0,232,,,False
-2026-08-20,672724,824153,Oswald Peraza,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0425,0.0,0.0,0.0,233,,,False
-2026-08-20,687093,824153,Vaughn Grissom,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0296,0.0,0.0,0.0,234,,,False
+2026-08-20,694673,822861,Abimelec Ortiz,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,0.0577,1.0,0.1731,1.1731,1,0.0,0.0,True
+2026-08-20,621566,824589,Matt Olson,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,0.0249,1.0,0.0747,1.0747,2,0.0,0.0,True
+2026-08-20,808959,824589,Munetaka Murakami,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,0.0189,1.0,0.0567,1.0567,3,0.0,0.0,True
+2026-08-20,663757,824802,Trent Grisham,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,0.0411,0.888,0.1233,0.9975,4,0.0,0.0,True
+2026-08-20,676475,824474,Alec Burleson,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,0.05,0.855,0.1499,0.9832,5,0.0,0.0,True
+2026-08-20,691406,822934,Junior Caminero,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.25,0.0,-0.0231,0.839,0.1634,0.9761,6,0.0,0.0,True
+2026-08-20,663886,824474,Tyler Stephenson,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,0.0068,0.932,0.0204,0.951,7,0.0,0.0,True
+2026-08-20,624413,824802,Pete Alonso,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,0.0153,0.905,0.0459,0.9465,8,0.0,0.0,True
+2026-08-20,592626,822861,Joc Pederson,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0188,1.0,-0.0564,0.9436,9,0.0,0.0,True
+2026-08-20,694212,824802,Samuel Basallo,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,0.0,0.932,0.0,0.932,10,0.0,0.0,True
+2026-08-20,678218,822934,Brandon Valenzuela,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.25,0.0,-0.0164,0.769,0.1886,0.914,11,0.0,0.0,True
+2026-08-20,678246,824589,Miguel Vargas,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,0.0206,0.855,0.0618,0.9078,12,0.0,0.0,True
+2026-08-20,695506,824074,Jac Caglianone,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.1009,0.699,0.2499,0.8737,13,0.0,0.0,True
+2026-08-20,701358,824153,Cam Smith,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,0.0352,0.769,0.1056,0.8502,14,0.0,0.0,True
+2026-08-20,660670,824589,Ronald Acuña Jr.,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,0.0193,0.796,0.0579,0.8421,15,0.0,0.0,True
+2026-08-20,680869,824074,Zack Gelof,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,0.0375,0.754,0.1125,0.8388,16,0.0,0.0,True
+2026-08-20,671732,824074,Lawrence Butler,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0182,0.824,-0.0546,0.779,17,0.0,0.0,True
+2026-08-20,553993,824474,Eugenio Suárez,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,-0.011,0.769,-0.033,0.7436,18,0.0,0.0,True
+2026-08-20,641343,823747,Jake Bauers,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,0.0357,0.669,0.107,0.7406,19,0.0,0.0,True
+2026-08-20,641933,824802,Tyler O'Neill,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,0.0058,0.721,0.0173,0.7335,20,0.0,0.0,True
+2026-08-20,622268,824074,Donovan Walton,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0086,0.744,-0.0258,0.7248,21,0.0,0.0,True
+2026-08-20,672275,824395,Patrick Bailey,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,-0.0254,0.744,-0.0762,0.6873,22,0.0,0.0,True
+2026-08-20,682674,824395,Victor Bericoto,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0359,0.744,-0.1077,0.6639,23,0.0,0.0,True
+2026-08-20,643217,824589,Andrew Benintendi,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,-0.0044,0.659,-0.0132,0.6503,24,0.0,0.0,True
+2026-08-20,691777,824074,Max Muncy,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.007,0.659,-0.0209,0.6452,25,0.0,0.0,True
+2026-08-20,573262,824589,Mike Yastrzemski,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.0097,0.659,-0.0291,0.6398,26,0.0,0.0,True
+2026-08-20,694192,823747,Jackson Chourio,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,0.0203,0.603,0.0609,0.6397,27,0.0,0.0,True
+2026-08-20,672386,822934,Alejandro Kirk,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.25,0.0,0.0478,0.444,0.4293,0.6346,28,0.0,0.0,True
+2026-08-20,682987,824802,Spencer Jones,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,0.0302,0.577,0.0906,0.6293,29,1.0,1.0,True
+2026-08-20,680574,824474,Matt McLain,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,0.0272,0.577,0.0816,0.6241,30,1.0,1.0,True
+2026-08-20,657041,824589,Lane Thomas,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,0.0149,0.592,0.0448,0.6185,31,0.0,0.0,True
+2026-08-20,695734,822861,Daylen Lile,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,0.0175,0.57,0.0525,0.5999,32,0.0,0.0,True
+2026-08-20,668227,823747,Randy Arozarena,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,0.0229,0.559,0.0687,0.5974,33,0.0,0.0,True
+2026-08-20,663743,822934,Nick Fortes,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.25,0.0,-0.0123,0.496,0.2038,0.5971,34,0.0,0.0,True
+2026-08-20,663586,824589,Austin Riley,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.0067,0.607,-0.0201,0.5948,35,0.0,0.0,True
+2026-08-20,650490,822934,Yandy Díaz,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.25,0.0,0.0159,0.446,0.3096,0.5841,36,0.0,0.0,True
+2026-08-20,691723,824802,Coby Mayo,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0173,0.607,-0.0519,0.5755,37,0.0,0.0,True
+2026-08-20,687952,824802,Christian Encarnacion-Strand,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0047,0.577,-0.014,0.5689,38,0.0,0.0,True
+2026-08-20,676356,822934,Jonny DeLuca,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.25,0.0,0.0018,0.452,0.2569,0.5681,39,0.0,0.0,True
+2026-08-20,668723,822934,Ryan Vilade,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.25,0.0,-0.0038,0.452,0.2358,0.5586,40,0.0,0.0,True
+2026-08-20,701398,824474,Sal Stewart,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,-0.0041,0.531,-0.0122,0.5245,41,0.0,0.0,True
+2026-08-20,686475,824074,Tyler Tolbert,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.0272,0.481,0.0815,0.5202,42,0.0,0.0,True
+2026-08-20,678545,824395,Osleivis Basabe,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,0.0205,0.481,0.0615,0.5106,43,0.0,0.0,True
+2026-08-20,666211,824153,Taylor Trammell,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,-0.0073,0.513,-0.0218,0.5018,44,0.0,0.0,True
+2026-08-20,805367,824589,Chase Meidroth,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,0.0276,0.462,0.0829,0.5003,45,0.0,0.0,True
+2026-08-20,666139,824153,Josh Lowe,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,0.0029,0.496,0.0087,0.5003,46,0.0,0.0,True
+2026-08-20,806146,824802,George Lombard Jr.,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,0.0028,0.496,0.0085,0.5002,47,0.0,0.0,True
+2026-08-20,687401,823747,Joey Ortiz,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.0005,0.496,-0.0014,0.4953,48,0.0,0.0,True
+2026-08-20,805811,824395,Bryce Eldridge,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0051,0.502,-0.0153,0.4943,49,0.0,0.0,True
+2026-08-20,677594,823747,Julio Rodríguez,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,0.0118,0.471,0.0355,0.4877,50,0.0,0.0,True
+2026-08-20,665953,822861,Andrés Chaparro,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,0.0739,0.394,0.2216,0.4813,51,0.0,0.0,True
+2026-08-20,703607,824074,Henry Bolte,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,0.0001,0.462,0.0002,0.4621,52,0.0,0.0,True
+2026-08-20,666176,824395,Jo Adell,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,0.0241,0.427,0.0724,0.4579,53,0.0,0.0,True
+2026-08-20,681297,824802,Colton Cowser,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0234,0.481,-0.0703,0.4472,54,0.0,0.0,True
+2026-08-20,663494,824474,Bryan Torres,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,-0.0238,0.481,-0.0713,0.4467,55,0.0,0.0,True
+2026-08-20,642708,824802,Amed Rosario,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,-0.0457,0.513,-0.137,0.4427,56,0.0,0.0,True
+2026-08-20,665161,824153,Jeremy Peña,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,-0.0139,0.462,-0.0418,0.4427,57,0.0,0.0,True
+2026-08-20,686681,824074,Michael Massey,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,-0.0018,0.444,-0.0054,0.4416,58,0.0,0.0,True
+2026-08-20,646240,824395,Rafael Devers,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0157,0.462,-0.0472,0.4402,59,0.0,0.0,True
+2026-08-20,622761,822934,Jorge Mateo,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.25,0.0,0.0,0.351,0.2501,0.4388,60,0.0,0.0,True
+2026-08-20,642350,824153,Jose Siri,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0074,0.44,-0.0223,0.4302,61,0.0,0.0,True
+2026-08-20,807727,822934,Charles McAdoo,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.25,0.0,0.0199,0.323,0.3248,0.4279,62,0.0,0.0,True
+2026-08-20,663662,822934,Daz Cameron,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.25,0.0,0.0,0.34,0.25,0.425,63,1.0,1.0,True
+2026-08-20,673237,824153,Yainer Diaz,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,-0.0038,0.427,-0.0115,0.4221,64,0.0,0.0,True
+2026-08-20,545341,824589,Randal Grichuk,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,0.0214,0.393,0.0641,0.4182,65,0.0,0.0,True
+2026-08-20,607043,822861,Brandon Nimmo,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0046,0.412,-0.0138,0.4063,66,0.0,0.0,True
+2026-08-20,663728,823747,Cal Raleigh,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,-0.0338,0.452,-0.1013,0.4062,67,0.0,0.0,True
+2026-08-20,677951,824074,Bobby Witt Jr.,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.0362,0.366,0.1085,0.4057,68,1.0,1.0,True
+2026-08-20,663993,824395,Nathaniel Lowe,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,0.0423,0.358,0.1268,0.4034,69,0.0,0.0,True
+2026-08-20,691781,822861,Brady House,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,-0.0129,0.416,-0.0387,0.3999,70,0.0,0.0,True
+2026-08-20,677592,824474,Everson Pereira,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,-0.0395,0.452,-0.1186,0.3984,71,0.0,0.0,True
+2026-08-20,687551,824395,Drew Gilbert,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0252,0.427,-0.0756,0.3947,72,0.0,0.0,True
+2026-08-20,695600,824074,Carter Jensen,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.0234,0.366,0.0702,0.3917,73,0.0,0.0,True
+2026-08-20,695491,824474,Joshua Báez,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,-0.0134,0.406,-0.0401,0.3897,74,0.0,0.0,True
+2026-08-20,676369,824153,Nelson Velázquez,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,0.0,0.384,0.0,0.384,75,0.0,0.0,True
+2026-08-20,700652,822934,Kenny Piper,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.25,0.0,0.0,0.298,0.25,0.3725,76,0.0,0.0,True
+2026-08-20,667472,824474,Dane Myers,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,-0.0033,0.375,-0.0099,0.3713,77,0.0,0.0,True
+2026-08-20,665750,824802,Leody Taveras,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0132,0.385,-0.0395,0.3698,78,0.0,0.0,True
+2026-08-20,608369,822861,Corey Seager,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,0.0072,0.358,0.0215,0.3657,79,1.0,1.0,True
+2026-08-20,592885,823747,Christian Yelich,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.0101,0.375,-0.0304,0.3636,80,0.0,0.0,True
+2026-08-20,518595,824153,Travis d'Arnaud,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0156,0.381,-0.0467,0.3632,81,0.0,0.0,True
+2026-08-20,695657,824589,Colson Montgomery,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,-0.0207,0.375,-0.0621,0.3517,82,0.0,0.0,True
+2026-08-20,806198,823747,Cooper Pratt,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.0104,0.358,-0.0313,0.3468,83,0.0,0.0,True
+2026-08-20,808982,824395,Jung Hoo Lee,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0078,0.355,-0.0234,0.3467,84,0.0,0.0,True
+2026-08-20,700250,824802,Ben Rice,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,-0.0195,0.366,-0.0585,0.3446,85,0.0,0.0,True
+2026-08-20,694671,822861,Wyatt Langford,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,0.0136,0.327,0.0407,0.3403,86,0.0,0.0,True
+2026-08-20,801126,823747,Brock Rodden,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,0.0039,0.333,0.0117,0.3369,87,0.0,0.0,True
+2026-08-20,669394,822861,Jake Burger,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0053,0.342,-0.0158,0.3366,88,0.0,0.0,True
+2026-08-20,647304,823747,Josh Naylor,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,0.0295,0.308,0.0886,0.3353,89,0.0,0.0,True
+2026-08-20,682928,822861,CJ Abrams,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,0.0066,0.327,0.0199,0.3335,90,0.0,0.0,True
+2026-08-20,545361,824153,Mike Trout,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0172,0.35,-0.0517,0.3319,91,0.0,0.0,True
+2026-08-20,668709,824474,JJ Bleday,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,-0.0143,0.342,-0.043,0.3273,92,0.0,0.0,True
+2026-08-20,668670,824589,Jake Rogers,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,0.0137,0.314,0.0411,0.3269,93,0.0,0.0,True
+2026-08-20,661531,824074,Brian Serven,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0217,0.347,-0.0651,0.3244,94,0.0,0.0,True
+2026-08-20,687605,822861,Andrew Pinckney,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,0.0,0.324,0.0,0.324,95,0.0,0.0,True
+2026-08-20,572233,824153,Christian Walker,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,-0.0054,0.327,-0.0162,0.3217,96,0.0,0.0,True
+2026-08-20,643446,824074,Jeff McNeil,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0031,0.321,-0.0093,0.318,97,0.0,0.0,True
+2026-08-20,689414,822934,Liam Hicks,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.0,0.0,0.0034,0.314,0.0102,0.3172,98,0.0,0.0,True
+2026-08-20,677588,822861,José Tena,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,-0.0084,0.323,-0.0251,0.3149,99,0.0,0.0,True
+2026-08-20,695670,822861,Harry Ford,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,-0.0123,0.323,-0.0368,0.3111,100,0.0,0.0,True
+2026-08-20,571912,824074,Luke Maile,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.0,0.31,0.0,0.31,101,0.0,0.0,True
+2026-08-20,670764,822934,Taylor Walls,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.0,0.0,-0.0165,0.321,-0.0495,0.3051,102,0.0,0.0,True
+2026-08-20,681047,824802,Christian Franklin,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0134,0.315,-0.0403,0.3023,103,0.0,0.0,True
+2026-08-20,668800,824395,Andrew Knizner,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,0.0,0.301,0.0,0.301,104,0.0,0.0,True
+2026-08-20,677943,824474,Will Banfield,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,0.0,0.3,0.0,0.3,105,0.0,0.0,True
+2026-08-20,813841,824395,Jonah Cox,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0347,0.33,-0.1042,0.2956,106,0.0,0.0,True
+2026-08-20,806367,824395,Turner Hill,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,0.0,0.295,0.0,0.295,107,0.0,0.0,True
+2026-08-20,690984,824395,Petey Halpin,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,-0.0289,0.321,-0.0866,0.2932,108,0.0,0.0,True
+2026-08-20,682829,824474,Elly De La Cruz,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,-0.0042,0.296,-0.0125,0.2923,109,0.0,0.0,True
+2026-08-20,671277,824802,Luis García Jr.,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,-0.0125,0.302,-0.0374,0.2907,110,1.0,1.0,True
+2026-08-20,691011,824589,Drew Romo,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,-0.0046,0.294,-0.0139,0.2899,111,0.0,0.0,True
+2026-08-20,699625,824474,Jimmy Crooks,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,-0.0471,0.337,-0.1412,0.2894,112,0.0,0.0,True
+2026-08-20,681807,824395,David Fry,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,0.0,0.286,0.0,0.286,113,0.0,0.0,True
+2026-08-20,661388,823747,William Contreras,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.0156,0.296,-0.047,0.2821,114,0.0,0.0,True
+2026-08-20,643376,822861,Danny Jansen,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,0.0,0.278,0.0,0.278,115,0.0,0.0,True
+2026-08-20,800050,824395,Chase DeLauter,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,0.0135,0.265,0.0404,0.2757,116,0.0,0.0,True
+2026-08-20,680716,823747,Jonathan Ornelas,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.0104,0.284,-0.0313,0.2751,117,0.0,0.0,True
+2026-08-20,671083,824395,Buddy Kennedy,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0234,0.292,-0.0702,0.2715,118,0.0,0.0,True
+2026-08-20,691023,824474,Jordan Walker,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,0.013,0.261,0.0391,0.2712,119,1.0,1.0,True
+2026-08-20,642215,823747,Weston Wilson,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,-0.0155,0.282,-0.0465,0.2689,120,0.0,0.0,True
+2026-08-20,683002,824802,Gunnar Henderson,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0314,0.296,-0.0943,0.2681,121,0.0,0.0,True
+2026-08-20,669911,824474,Michael Toglia,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,-0.0253,0.29,-0.0759,0.268,122,0.0,0.0,True
+2026-08-20,670623,824153,Isaac Paredes,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,0.009,0.261,0.0268,0.268,123,0.0,0.0,True
+2026-08-20,695720,824074,Tommy White,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0379,0.302,-0.1136,0.2677,124,0.0,0.0,True
+2026-08-20,660821,822934,Jesús Sánchez,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.0,0.0,0.018,0.248,0.054,0.2614,125,0.0,0.0,True
+2026-08-20,683227,822861,Cody Freeman,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0067,0.265,-0.02,0.2597,126,0.0,0.0,True
+2026-08-20,702284,823747,Cole Young,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,-0.0056,0.261,-0.0169,0.2566,127,0.0,0.0,True
+2026-08-20,686780,824474,Pedro Pagés,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,0.0,0.256,0.0,0.256,128,0.0,0.0,True
+2026-08-20,673490,824589,Ha-Seong Kim,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,0.0,0.255,0.0,0.255,129,0.0,0.0,True
+2026-08-20,686668,824589,Brenton Doyle,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,-0.0048,0.258,-0.0143,0.2543,130,0.0,0.0,True
+2026-08-20,669221,824589,Sean Murphy,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.011,0.263,-0.0331,0.2543,131,0.0,0.0,True
+2026-08-20,679822,822861,Justin Foscue,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0031,0.256,-0.0094,0.2536,132,0.0,0.0,True
+2026-08-20,664728,824074,Kyle Isbel,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,-0.0035,0.256,-0.0105,0.2533,133,0.0,0.0,True
+2026-08-20,699302,824474,Héctor Rodríguez,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,-0.0202,0.265,-0.0608,0.2489,134,0.0,0.0,True
+2026-08-20,650968,824802,Yohel Pozo,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,0.0,0.247,0.0,0.247,135,0.0,0.0,True
+2026-08-20,672284,822861,Jarred Kelenic,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0019,0.248,-0.0056,0.2466,136,0.0,0.0,True
+2026-08-20,671056,824474,Iván Herrera,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,0.0024,0.244,0.0074,0.2458,137,0.0,0.0,True
+2026-08-20,645305,824802,Ali Sánchez,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,0.0063,0.241,0.0191,0.2456,138,0.0,0.0,True
+2026-08-20,669224,824802,Austin Wells,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,-0.014,0.256,-0.0422,0.2452,139,0.0,0.0,True
+2026-08-20,645277,824589,Ozzie Albies,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.0144,0.256,-0.0434,0.2449,140,0.0,0.0,True
+2026-08-20,553869,822861,Elias Díaz,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0163,0.256,-0.0488,0.2435,141,0.0,0.0,True
+2026-08-20,670231,824074,John Rave,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.0041,0.24,0.0125,0.243,142,0.0,0.0,True
+2026-08-20,665862,824802,Jazz Chisholm Jr.,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,0.001,0.24,0.0029,0.2407,143,0.0,0.0,True
+2026-08-20,676609,824802,José Caballero,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,0.0042,0.233,0.0124,0.2359,144,0.0,0.0,True
+2026-08-20,595978,824395,Austin Hedges,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,0.0021,0.23,0.0061,0.2314,145,0.0,0.0,True
+2026-08-20,680700,822934,Richie Palacios,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.0,0.0,-0.0078,0.233,-0.0236,0.2275,146,0.0,0.0,True
+2026-08-20,670770,824474,TJ Friedl,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,-0.0182,0.24,-0.0546,0.2269,147,0.0,0.0,True
+2026-08-20,624431,824474,Jose Trevino,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,0.0091,0.22,0.0273,0.226,148,0.0,0.0,True
+2026-08-20,701852,824395,Drew Cavanaugh,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.026,0.245,-0.078,0.2259,149,0.0,0.0,True
+2026-08-20,640902,823747,Jhonny Pereda,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,0.0,0.22,0.0,0.22,150,0.0,0.0,True
+2026-08-20,687637,824802,Dylan Beavers,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0376,0.248,-0.1129,0.22,151,1.0,1.0,True
+2026-08-20,671976,824589,Tristan Peters,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,0.0174,0.208,0.0524,0.2189,152,0.0,0.0,True
+2026-08-20,683734,823747,Andrew Vaughn,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.0027,0.22,-0.0082,0.2182,153,0.0,0.0,True
+2026-08-20,694197,824395,Angel Genao,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,-0.0136,0.226,-0.0407,0.2168,154,0.0,0.0,True
+2026-08-20,663647,824474,Ke'Bryan Hayes,Cincinnati Reds,St. Louis Cardinals@Cincinnati Reds,Michael McGreevy,Great American Ball Park,0.0,0.0,0.0022,0.214,0.0065,0.2154,155,0.0,0.0,True
+2026-08-20,665966,824802,Carlos Narváez,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0456,0.248,-0.1367,0.2141,156,0.0,0.0,True
+2026-08-20,641857,824802,Ryan McMahon,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,-0.0243,0.226,-0.073,0.2095,157,0.0,0.0,True
+2026-08-20,672960,822934,Kazuma Okamoto,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.25,0.0,0.0107,0.16,0.29,0.2064,158,1.0,1.0,True
+2026-08-20,696285,822861,Jacob Young,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,0.0504,0.179,0.1514,0.2061,159,0.0,0.0,True
+2026-08-20,682657,824395,Angel Martínez,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,-0.0074,0.202,-0.0223,0.1975,160,0.0,0.0,True
+2026-08-20,624428,824153,Adam Frazier,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0152,0.206,-0.0456,0.1966,161,0.0,0.0,True
+2026-08-20,642715,824395,Willy Adames,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0041,0.197,-0.0122,0.1946,162,1.0,1.0,True
+2026-08-20,694203,824153,Denzer Guzman,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0426,0.22,-0.1277,0.1919,163,1.0,1.0,True
+2026-08-20,668930,823747,Brice Turang,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.006,0.192,-0.0182,0.1885,164,0.0,0.0,True
+2026-08-20,502671,824802,Paul Goldschmidt,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,-0.0195,0.197,-0.0584,0.1855,165,0.0,0.0,True
+2026-08-20,691458,824474,Blaze Jordan,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,0.0092,0.179,0.0274,0.1839,166,0.0,0.0,True
+2026-08-20,669397,824153,Nick Allen,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,-0.0328,0.203,-0.0985,0.183,167,0.0,0.0,True
+2026-08-20,695731,824589,Braden Montgomery,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,0.008,0.175,0.024,0.1792,168,0.0,0.0,True
+2026-08-20,800325,823747,Luis Lara,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.0302,0.192,-0.0906,0.1746,169,0.0,0.0,True
+2026-08-20,656775,822934,Cedric Mullins,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.0,0.0,-0.0172,0.183,-0.0514,0.1736,170,0.0,0.0,True
+2026-08-20,666126,824074,Carlos Cortes,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0373,0.192,-0.112,0.1705,171,0.0,0.0,True
+2026-08-20,670541,824153,Yordan Alvarez,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,0.0229,0.154,0.0688,0.1646,172,0.0,0.0,True
+2026-08-20,691026,824474,Masyn Winn,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,0.0011,0.164,0.003,0.1645,173,0.0,0.0,True
+2026-08-20,514888,824153,Jose Altuve,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,0.0217,0.151,0.0649,0.1608,174,0.0,0.0,True
+2026-08-20,686611,822861,Dylan Crews,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,-0.0013,0.16,-0.0038,0.1594,175,0.0,0.0,True
+2026-08-20,687263,824153,Zach Neto,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0263,0.171,-0.0789,0.1575,176,1.0,1.0,True
+2026-08-20,665926,822934,Andrés Giménez,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.0,0.0,0.0168,0.148,0.0507,0.1555,177,0.0,0.0,True
+2026-08-20,623168,824153,Tyler Heineman,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0165,0.163,-0.0497,0.1549,178,0.0,0.0,True
+2026-08-20,677649,822861,Ezequiel Duran,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0112,0.16,-0.0338,0.1546,179,0.0,0.0,True
+2026-08-20,803011,824589,Sam Antonacci,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,0.0018,0.151,0.0053,0.1518,180,0.0,0.0,True
+2026-08-20,702616,824802,Jackson Holliday,Baltimore Orioles,New York Yankees@Baltimore Orioles,Gerrit Cole,Oriole Park at Camden Yards,0.0,0.0,-0.0141,0.157,-0.042,0.1504,181,0.0,0.0,True
+2026-08-20,662139,824153,Daulton Varsho,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,-0.0341,0.167,-0.1024,0.1499,182,0.0,0.0,True
+2026-08-20,677587,824395,Brayan Rocchio,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,-0.022,0.16,-0.0663,0.1494,183,0.0,0.0,True
+2026-08-20,521692,824074,Salvador Perez,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.0014,0.148,0.0041,0.1486,184,0.0,0.0,True
+2026-08-20,685133,824153,Wade Meckler,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0322,0.164,-0.0963,0.1482,185,0.0,0.0,True
+2026-08-20,686527,823747,Dominic Canzone,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,-0.013,0.148,-0.0392,0.1422,186,0.0,0.0,True
+2026-08-20,641680,824074,Jonah Heim,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0142,0.148,-0.0426,0.1417,187,0.0,0.0,True
+2026-08-20,694384,824153,Nolan Schanuel,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,0.0026,0.14,0.0079,0.1411,188,0.0,0.0,True
+2026-08-20,680757,824395,Steven Kwan,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,0.0054,0.137,0.0161,0.1392,189,0.0,0.0,True
+2026-08-20,676391,822934,Ernie Clement,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.25,0.0,-0.0384,0.124,0.1056,0.1371,190,0.0,0.0,True
+2026-08-20,701675,824474,Nathan Church,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,-0.0418,0.154,-0.1253,0.1347,191,0.0,0.0,True
+2026-08-20,686469,824074,Vinnie Pasquantino,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.0377,0.12,0.1133,0.1336,192,0.0,0.0,True
+2026-08-20,802139,824474,JJ Wetherholt,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,-0.0022,0.133,-0.0068,0.1321,193,0.0,0.0,True
+2026-08-20,671739,824589,Michael Harris II,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.0017,0.13,-0.0054,0.1293,194,0.0,0.0,True
+2026-08-20,664770,822934,Nathan Lukes,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.0,0.0,-0.0288,0.137,-0.0861,0.1252,195,1.0,1.0,True
+2026-08-20,666018,822934,Jonathan Aranda,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.0,0.0,-0.0044,0.126,-0.0135,0.1243,196,0.0,0.0,True
+2026-08-20,686948,824589,Drake Baldwin,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.015,0.113,-0.0451,0.1079,197,0.0,0.0,True
+2026-08-20,665877,824474,José Fermín,St. Louis Cardinals,St. Louis Cardinals@Cincinnati Reds,Brady Singer,Great American Ball Park,0.0,0.0,-0.0313,0.0,0.0,0.0,198,0.0,0.0,True
+2026-08-20,608070,824395,José Ramírez,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,0.0008,0.0,0.0,0.0,199,0.0,0.0,True
+2026-08-20,683953,824395,Travis Bazzana,Cleveland Guardians,San Francisco Giants@Cleveland Guardians,Landen Roupp,Progressive Field,0.0,0.0,-0.0198,0.0,0.0,0.0,200,0.0,0.0,True
+2026-08-20,683766,824395,Christian Koss,San Francisco Giants,San Francisco Giants@Cleveland Guardians,Gavin Williams,Progressive Field,0.0,0.0,-0.0248,0.0,0.0,0.0,201,0.0,0.0,True
+2026-08-20,802415,822934,Chandler Simpson,Tampa Bay Rays,Toronto Blue Jays@Tampa Bay Rays,Shane Bieber,Tropicana Field,0.0,0.0,-0.0153,0.0,0.0,0.0,202,0.0,0.0,True
+2026-08-20,703520,822934,Brett Bateman,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.0,0.0,0.0043,0.0,0.0,0.0,203,0.0,0.0,True
+2026-08-20,543807,822934,George Springer,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.25,0.0,-0.0006,0.0,0.0,0.0,204,0.0,0.0,True
+2026-08-20,669701,822934,Josh Smith,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.0,0.0,0.0,0.0,0.0,0.0,205,0.0,0.0,True
+2026-08-20,664702,822934,Myles Straw,Toronto Blue Jays,Toronto Blue Jays@Tampa Bay Rays,Ian Seymour,Tropicana Field,0.25,0.0,0.012,0.0,0.0,0.0,206,0.0,0.0,True
+2026-08-20,686555,824074,Isaac Collins,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.006,0.0,0.0,0.0,207,0.0,0.0,True
+2026-08-20,672580,824074,Maikel Garcia,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,0.0414,0.0,0.0,0.0,208,0.0,0.0,True
+2026-08-20,679845,824074,Nick Loftin,Kansas City Royals,Athletics@Kansas City Royals,Gage Jump,Kauffman Stadium,0.0,0.0,-0.0092,0.0,0.0,0.0,209,0.0,0.0,True
+2026-08-20,675961,824074,Alika Williams,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0137,0.0,0.0,0.0,210,0.0,0.0,True
+2026-08-20,687231,824074,Darell Hernaiz,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,0.0,0.0,0.0,0.0,211,0.0,0.0,True
+2026-08-20,805779,824074,Jacob Wilson,Athletics,Athletics@Kansas City Royals,Randy Dobnak,Kauffman Stadium,0.0,0.0,-0.0171,0.0,0.0,0.0,212,0.0,0.0,True
+2026-08-20,682668,824589,Luisangel Acuña,Chicago White Sox,Atlanta Braves@Chicago White Sox,Grant Holmes,Rate Field,0.0,0.0,-0.0196,0.0,0.0,0.0,213,0.0,0.0,True
+2026-08-20,642086,824589,Dominic Smith,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.0174,0.0,0.0,0.0,214,0.0,0.0,True
+2026-08-20,805347,824589,Jim Jarvis,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.0229,0.0,0.0,0.0,215,0.0,0.0,True
+2026-08-20,643289,824589,Mauricio Dubón,Atlanta Braves,Atlanta Braves@Chicago White Sox,Anthony Kay,Rate Field,0.0,0.0,-0.016,0.0,0.0,0.0,216,0.0,0.0,True
+2026-08-20,666152,823747,David Hamilton,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,-0.0276,0.0,0.0,0.0,217,0.0,0.0,True
+2026-08-20,669003,823747,Garrett Mitchell,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,0.004,0.0,0.0,0.0,218,1.0,1.0,True
+2026-08-20,596142,823747,Gary Sánchez,Milwaukee Brewers,Seattle Mariners@Milwaukee Brewers,George Kirby,American Family Field,0.0,0.0,0.046,0.0,0.0,0.0,219,0.0,0.0,True
+2026-08-20,680977,823747,Brendan Donovan,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,0.0044,0.0,0.0,0.0,220,0.0,0.0,True
+2026-08-20,660844,823747,Leo Rivas,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,0.0,0.0,0.0,0.0,221,0.0,0.0,True
+2026-08-20,621493,823747,Taylor Ward,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,-0.0165,0.0,0.0,0.0,222,0.0,0.0,True
+2026-08-20,645302,823747,Victor Robles,Seattle Mariners,Seattle Mariners@Milwaukee Brewers,Robert Gasser,American Family Field,0.0,0.0,0.0054,0.0,0.0,0.0,223,0.0,0.0,True
+2026-08-20,671218,824802,Heliot Ramos,New York Yankees,New York Yankees@Baltimore Orioles,Kyle Bradish,Oriole Park at Camden Yards,0.0,0.0,-0.0211,0.0,0.0,0.0,224,0.0,0.0,True
+2026-08-20,694497,822861,Evan Carter,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0265,0.0,0.0,0.0,225,0.0,0.0,True
+2026-08-20,670032,822861,Nicky Lopez,Texas Rangers,Washington Nationals@Texas Rangers,Andrew Alvarez,Globe Life Field,0.0,0.0,-0.0258,0.0,0.0,0.0,226,0.0,0.0,True
+2026-08-20,678391,822861,Jorbit Vivas,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,0.0027,0.0,0.0,0.0,227,0.0,0.0,True
+2026-08-20,660688,822861,Keibert Ruiz,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,0.0422,0.0,0.0,0.0,228,0.0,0.0,True
+2026-08-20,683083,822861,Nasim Nuñez,Washington Nationals,Washington Nationals@Texas Rangers,Jacob deGrom,Globe Life Field,0.0,0.0,-0.0231,0.0,0.0,0.0,229,0.0,0.0,True
+2026-08-20,543877,824153,Christian Vázquez,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,0.047,0.0,0.0,0.0,230,0.0,0.0,True
+2026-08-20,664774,824153,LaMonte Wade Jr.,Houston Astros,Los Angeles Angels@Houston Astros,Grayson Rodriguez,Daikin Park,0.0,0.0,0.0005,0.0,0.0,0.0,231,0.0,0.0,True
+2026-08-20,694208,824153,Moisés Ballesteros,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0488,0.0,0.0,0.0,232,0.0,0.0,True
+2026-08-20,672724,824153,Oswald Peraza,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0425,0.0,0.0,0.0,233,0.0,0.0,True
+2026-08-20,687093,824153,Vaughn Grissom,Los Angeles Angels,Los Angeles Angels@Houston Astros,Peter Lambert,Daikin Park,0.0,0.0,-0.0296,0.0,0.0,0.0,234,0.0,0.0,True

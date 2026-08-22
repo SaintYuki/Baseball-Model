@@ -1818,18 +1818,42 @@ game_pk,temp,condition,wind,venue
 823341,79.0,Clear,"5 mph, Out To LF",PNC Park
 822938,72.0,Dome,"0 mph, None",Tropicana Field
 822859,74.0,Roof Closed,"0 mph, None",Globe Life Field
-824801,86,Partly Cloudy,"5 mph, Out To RF",Oriole Park at Camden Yards
-824722,85,Partly Cloudy,"4 mph, Out To RF",Fenway Park
-824640,75,Partly Cloudy,"8 mph, In From CF",Wrigley Field
-824476,79,Partly Cloudy,"3 mph, R To L",Great American Ball Park
-824394,77,Partly Cloudy,"3 mph, Calm",Progressive Field
-824318,89,Cloudy,"7 mph, In From CF",Coors Field
-824155,73,Roof Closed,"0 mph, None",Daikin Park
-824076,82,Clear,"2 mph, L To R",Kauffman Stadium
-823748,72,Partly Cloudy,"6 mph, In From LF",American Family Field
-823664,77,Partly Cloudy,"3 mph, In From CF",Target Field
-823587,85,Sunny,"7 mph, Out To RF",Citi Field
-823424,85,Partly Cloudy,"9 mph, L To R",Citizens Bank Park
-823342,75,Partly Cloudy,"10 mph, Out To LF",PNC Park
-822937,72,Dome,"0 mph, None",Tropicana Field
-822860,74,Roof Closed,"0 mph, None",Globe Life Field
+824801,86.0,Partly Cloudy,"5 mph, Out To RF",Oriole Park at Camden Yards
+824722,85.0,Partly Cloudy,"4 mph, Out To RF",Fenway Park
+824640,75.0,Partly Cloudy,"8 mph, In From CF",Wrigley Field
+824476,79.0,Partly Cloudy,"3 mph, R To L",Great American Ball Park
+824394,77.0,Partly Cloudy,"3 mph, Calm",Progressive Field
+824318,89.0,Cloudy,"7 mph, In From CF",Coors Field
+824155,73.0,Roof Closed,"0 mph, None",Daikin Park
+824076,82.0,Clear,"2 mph, L To R",Kauffman Stadium
+823748,72.0,Partly Cloudy,"6 mph, In From LF",American Family Field
+823664,77.0,Partly Cloudy,"3 mph, In From CF",Target Field
+823587,85.0,Sunny,"7 mph, Out To RF",Citi Field
+823424,85.0,Partly Cloudy,"9 mph, L To R",Citizens Bank Park
+823342,75.0,Partly Cloudy,"10 mph, Out To LF",PNC Park
+822937,72.0,Dome,"0 mph, None",Tropicana Field
+822860,74.0,Roof Closed,"0 mph, None",Globe Life Field
+825045,75,Roof Closed,"0 mph, None",Chase Field
+824800,77,Partly Cloudy,"3 mph, In From RF",Oriole Park at Camden Yards
+824721,69,Overcast,"5 mph, In From CF",Fenway Park
+824559,77,Cloudy,"6 mph, R To L",Rate Field
+824317,88,Partly Cloudy,"5 mph, R To L",Coors Field
+824152,73,Roof Closed,"0 mph, None",Daikin Park
+824072,81,Partly Cloudy,"2 mph, R To L",Kauffman Stadium
+823911,83,Clear,"2 mph, L To R",UNIQLO Field at Dodger Stadium
+823830,72,Roof Closed,"0 mph, None",loanDepot park
+823746,75,Roof Closed,"0 mph, None",American Family Field
+823510,75,Partly Cloudy,"8 mph, In From LF",Yankee Stadium
+823420,82,Partly Cloudy,"4 mph, Varies",Citizens Bank Park
+823262,79,Partly Cloudy,"6 mph, L To R",Petco Park
+823101,78,Partly Cloudy,"4 mph, Out To CF",T-Mobile Park
+822857,74,Roof Closed,"0 mph, None",Globe Life Field
+824802,74,Cloudy,"8 mph, In From LF",Oriole Park at Camden Yards
+824589,76,Sunny,"13 mph, L To R",Rate Field
+824474,75,Partly Cloudy,"3 mph, Out To CF",Great American Ball Park
+824395,76,Partly Cloudy,"7 mph, In From RF",Progressive Field
+824153,73,Roof Closed,"0 mph, None",Daikin Park
+824074,80,Sunny,"3 mph, In From RF",Kauffman Stadium
+823747,78,Sunny,"7 mph, In From CF",American Family Field
+822934,72,Dome,"0 mph, None",Tropicana Field
+822861,74,Roof Closed,"0 mph, None",Globe Life Field

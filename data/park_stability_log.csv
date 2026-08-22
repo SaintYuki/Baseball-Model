@@ -359,3 +359,63 @@ Truist Park,R,no (CI overlaps baseline),-0.3152301841936883,2026-08-20
 Angel Stadium,R,yes,-0.3391492256442319,2026-08-20
 PNC Park,R,yes,-0.478354273749534,2026-08-20
 Busch Stadium,R,yes,-0.5420757123795229,2026-08-20
+Wrigley Field,L,yes,0.3828723327902184,2026-08-22
+Yankee Stadium,L,no (CI overlaps baseline),0.3022443583097816,2026-08-22
+T-Mobile Park,L,no (CI overlaps baseline),0.2994031676967459,2026-08-22
+Nationals Park,L,no (CI overlaps baseline),0.2775426633854327,2026-08-22
+Sutter Health Park,L,no (CI overlaps baseline),0.2197390768641143,2026-08-22
+Truist Park,L,no (CI overlaps baseline),0.1914093574243185,2026-08-22
+Rogers Centre,L,no (CI overlaps baseline),0.1363359884323205,2026-08-22
+PNC Park,L,no (CI overlaps baseline),0.1326446375640884,2026-08-22
+Citizens Bank Park,L,no (CI overlaps baseline),0.1260250846684976,2026-08-22
+Daikin Park,L,no (CI overlaps baseline),0.103563224149076,2026-08-22
+Tropicana Field,L,no (CI overlaps baseline),0.0972149894962235,2026-08-22
+Oriole Park at Camden Yards,L,no (CI overlaps baseline),0.0913838693602049,2026-08-22
+Great American Ball Park,L,no (CI overlaps baseline),0.0661861909006995,2026-08-22
+loanDepot park,L,no (CI overlaps baseline),0.0586839065322541,2026-08-22
+Globe Life Field,L,no (CI overlaps baseline),0.0558706195249341,2026-08-22
+Coors Field,L,no (CI overlaps baseline),0.0386275269449469,2026-08-22
+American Family Field,L,no (CI overlaps baseline),0.0277010157100399,2026-08-22
+Progressive Field,L,no (CI overlaps baseline),0.0044160004172408,2026-08-22
+Chase Field,L,no (CI overlaps baseline),-0.0179723241489642,2026-08-22
+Citi Field,L,no (CI overlaps baseline),-0.0260129094973028,2026-08-22
+UNIQLO Field at Dodger Stadium,L,no (CI overlaps baseline),-0.1114120149012709,2026-08-22
+Fenway Park,L,no (CI overlaps baseline),-0.1203857068901802,2026-08-22
+Rate Field,L,no (CI overlaps baseline),-0.1718413596918396,2026-08-22
+Oracle Park,L,no (CI overlaps baseline),-0.2360022002535812,2026-08-22
+Comerica Park,L,no (CI overlaps baseline),-0.2776625157470688,2026-08-22
+Target Field,L,no (CI overlaps baseline),-0.279532384918463,2026-08-22
+Kauffman Stadium,L,no (CI overlaps baseline),-0.3086874719007864,2026-08-22
+Petco Park,L,no (CI overlaps baseline),-0.335317109452699,2026-08-22
+Busch Stadium,L,yes,-0.3462889100589007,2026-08-22
+Angel Stadium,L,yes,-0.3807491027100873,2026-08-22
+Tropicana Field,R,yes,1.003810209570021,2026-08-22
+Daikin Park,R,no (CI overlaps baseline),0.5206600697036918,2026-08-22
+Chase Field,R,no (CI overlaps baseline),0.2816268032099105,2026-08-22
+Globe Life Field,R,no (CI overlaps baseline),0.2671942330489878,2026-08-22
+T-Mobile Park,R,no (CI overlaps baseline),0.2153961915650515,2026-08-22
+loanDepot park,R,no (CI overlaps baseline),0.2103213602685121,2026-08-22
+Comerica Park,R,no (CI overlaps baseline),0.1857490254128948,2026-08-22
+Sutter Health Park,R,no (CI overlaps baseline),0.1624162852511221,2026-08-22
+American Family Field,R,no (CI overlaps baseline),0.1612612009838596,2026-08-22
+Nationals Park,R,no (CI overlaps baseline),0.1486056499905894,2026-08-22
+Great American Ball Park,R,no (CI overlaps baseline),0.0327537231836654,2026-08-22
+Citi Field,R,no (CI overlaps baseline),0.0226544289036771,2026-08-22
+Progressive Field,R,no (CI overlaps baseline),0.0226067168737567,2026-08-22
+Coors Field,R,no (CI overlaps baseline),0.0074933424380256,2026-08-22
+Kauffman Stadium,R,no (CI overlaps baseline),-0.0275647436984896,2026-08-22
+UNIQLO Field at Dodger Stadium,R,no (CI overlaps baseline),-0.0337667419742551,2026-08-22
+Yankee Stadium,R,no (CI overlaps baseline),-0.0386241943625765,2026-08-22
+Wrigley Field,R,no (CI overlaps baseline),-0.0624692715925154,2026-08-22
+Citizens Bank Park,R,no (CI overlaps baseline),-0.1250233911770625,2026-08-22
+Rate Field,R,no (CI overlaps baseline),-0.1313690044439602,2026-08-22
+Petco Park,R,no (CI overlaps baseline),-0.1670845376126978,2026-08-22
+Rogers Centre,R,no (CI overlaps baseline),-0.1770688561413224,2026-08-22
+Fenway Park,R,no (CI overlaps baseline),-0.1986459629765419,2026-08-22
+Oriole Park at Camden Yards,R,no (CI overlaps baseline),-0.208729809267254,2026-08-22
+Target Field,R,no (CI overlaps baseline),-0.2095929077045298,2026-08-22
+Oracle Park,R,no (CI overlaps baseline),-0.2137488812286134,2026-08-22
+Truist Park,R,no (CI overlaps baseline),-0.2996061259535637,2026-08-22
+Angel Stadium,R,yes,-0.3279411384021119,2026-08-22
+PNC Park,R,yes,-0.4845650167836181,2026-08-22
+Busch Stadium,R,yes,-0.5367486570846554,2026-08-22
