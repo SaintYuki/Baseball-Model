@@ -1,0 +1,3 @@
+factor_type,stand,key,pred_bad,pred_mid,pred_good,factor,factor_ci_low,factor_ci_high,significant
+matchup,L,"bad(batter_rv=-0.033,pitcher_rv=-0.032) vs good(batter_rv=0.038,pitcher_rv=0.028)",0.3971074551469752,0.3956680830234149,0.39397780578437863,-0.007881114600173489,-0.2620425484413138,0.33356379761612476,no (CIs overlap)
+matchup,R,"bad(batter_rv=-0.033,pitcher_rv=-0.033) vs good(batter_rv=0.036,pitcher_rv=0.027)",0.3589110265923817,0.36640924761200744,0.3755773665356469,0.04643585375880144,-0.25373485601215406,0.47068667282843446,no (CIs overlap)

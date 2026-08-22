@@ -63,6 +63,15 @@ HIT_EVENTS = {"single", "double", "triple", "home_run"}  # Statcast's events col
                                                           # the first time this runs for real,
                                                           # same as every other new integration.
 
+# --- Path 2, prop 2: total bases ---
+# Same "own constants, even though starting equal" reasoning as hits above. The window here
+# governs the TRAILING per-batted-ball feature (batter_tb_rate) — a genuinely per-batted-ball
+# quantity, unlike the 2+ TB *outcome* itself, which is a whole-game fact (see calibrate_tb_model.py).
+TB_RATE_WINDOW_DAYS = 21
+MIN_PRIOR_BATTED_BALLS_FOR_TB = 30
+TOTAL_BASES_BY_EVENT = {"single": 1, "double": 2, "triple": 3, "home_run": 4}  # everything else
+                                                                                 # (outs, etc.) is 0
+
 PITCH_MATCHUP_WINDOW_DAYS = 21
 MIN_PITCHES_FOR_TRUST = 15  # per (player, pitch_type) — same threshold as live pitch_matchup.py
 
@@ -173,6 +182,38 @@ def add_batter_hit_rate(df: pd.DataFrame, window_days: int = HIT_RATE_WINDOW_DAY
                                min_prior_batted_balls, "batter_hit_rate", return_count=True)
 
 
+def add_batter_tb_rate(df: pd.DataFrame, window_days: int = TB_RATE_WINDOW_DAYS,
+                        min_prior_batted_balls: int = MIN_PRIOR_BATTED_BALLS_FOR_TB) -> pd.DataFrame:
+    """Point-in-time trailing TOTAL BASES rate per batter — average total
+    bases per batted ball over the trailing window (single=1, double=2,
+    triple=3, HR=4, everything else 0). This is a per-batted-ball quantity,
+    same rolling machinery as add_batter_hit_rate/add_batter_power, just
+    averaging a 0-4 valued column instead of a 0/1 indicator.
+
+    IMPORTANT — READ BEFORE USING THIS FOR THE TOTAL-BASES PROP: this
+    feature is a fine predictor input, but it is NOT the same shape as the
+    actual "2+ total bases" outcome the real betting line asks about. A
+    batter can reach 2+ TB in a game via one extra-base hit OR via two
+    singles — the outcome is a whole-GAME fact, not a per-batted-ball one.
+    calibrate_tb_model.py handles that aggregation separately; this
+    function only produces the trailing-form INPUT feature, same role
+    batter_hit_rate/batter_power play for their props."""
+    required = {"batter", "game_date", "events"}
+    missing = required - set(df.columns)
+    if missing:
+        raise ValueError(
+            f"Missing required column(s) {missing} for point-in-time TB rate. "
+            f"Available columns: {sorted(df.columns)[:30]}..."
+        )
+
+    df = df.copy()
+    df["total_bases"] = df["events"].map(TOTAL_BASES_BY_EVENT).fillna(0).astype(int)
+    df["game_date"] = pd.to_datetime(df["game_date"])
+
+    return _trailing_by_group(df, ["batter"], "total_bases", window_days,
+                               min_prior_batted_balls, "batter_tb_rate", return_count=True)
+
+
 def pull_full_pitch_data(start_dt: str, end_dt: str) -> pd.DataFrame:
     """Every pitch, not just balls in play — needed for the matchup signal.
     Should hit pybaseball's cache rather than re-downloading, since
@@ -275,6 +316,29 @@ if __name__ == "__main__":
         ["game_date", "batter_hit_rate", "batter_hit_rate_n"]
     ].drop_duplicates("game_date").sort_values("game_date")
     print(hit_sample.iloc[::max(1, len(hit_sample)//15)].to_string(index=False))
+
+    # --- Trailing TB-rate validation (standalone, Path 2 prop 2: total bases) ---
+    print("\n" + "=" * 78)
+    print("TRAILING TOTAL-BASES-RATE FEATURE — standalone validation (total bases pilot)")
+    print("=" * 78)
+    tb_result = add_batter_tb_rate(batted)
+    tb_coverage = tb_result["batter_tb_rate"].notna().mean()
+    print(f"{tb_coverage*100:.0f}% of rows have a usable batter_tb_rate value "
+          f"(rest are early-season / not enough prior history yet — expected, not a bug).")
+
+    valid_tb = tb_result["batter_tb_rate"].dropna()
+    if len(valid_tb):
+        print(f"Trailing TB-rate distribution: min={valid_tb.min():.3f} "
+              f"median={valid_tb.median():.3f} max={valid_tb.max():.3f} "
+              f"(real MLB slugging pct is roughly 0.39-0.42; this is TB-per-batted-ball, not "
+              f"TB-per-at-bat, so expect a somewhat higher number — same denominator distinction "
+              f"as batter_hit_rate vs BABIP)")
+
+    print("\nSame everyday player, trailing TB rate over time:")
+    tb_sample = tb_result[tb_result["batter"] == busiest_batter][
+        ["game_date", "batter_tb_rate", "batter_tb_rate_n"]
+    ].drop_duplicates("game_date").sort_values("game_date")
+    print(tb_sample.iloc[::max(1, len(tb_sample)//15)].to_string(index=False))
 
     # --- Pitch-type matchup validation (standalone, doesn't touch calibrate_model.py yet) ---
     print("\n" + "=" * 78)

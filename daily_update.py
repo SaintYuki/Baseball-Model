@@ -5,15 +5,17 @@ recalibrate the whole model (park factors, weather factors, batter power,
 matchup) on the combined history.
 
 WHAT'S NEW: also runs the Path 2 hits-prop calibration (calibrate_hits_model.py
-+ export_hits_live_factors.py) right after the HR one. No separate data pull
-needed — both calibrations read the exact same cached batted-ball files, just
-targeting a different outcome. The hits steps are SOFT (non-fatal): if
-something in the still-newer hits pipeline breaks, that should never block
-the actual daily HR picks, which is the part of this that matters most. This
-also closes a real gap — without it, the hits stability-gating streak
-(export_hits_live_factors.py's consecutive-day requirement) would only
-advance on days someone remembers to run the hits scripts by hand, which
-defeats the point of a *consecutive*-day requirement.
++ export_hits_live_factors.py) and the total-bases calibration
+(calibrate_tb_model.py + export_tb_live_factors.py) right after the HR one.
+No separate data pull needed for either — all three calibrations read the
+exact same cached batted-ball files, just targeting a different outcome.
+Both newer props' steps are SOFT (non-fatal): if something in either
+pipeline breaks, that should never block the actual daily HR picks, which
+is the part of this that matters most. This also closes a real gap —
+without it, a prop's stability-gating streak (each export_*_live_factors.py's
+consecutive-day requirement) would only advance on days someone remembers to
+run the scripts by hand, which defeats the point of a *consecutive*-day
+requirement.
 
 WHY THIS EXISTS: historical_data.py, calibrate_model.py, and
 export_live_factors.py already compose cleanly on their own —
@@ -157,5 +159,11 @@ if __name__ == "__main__":
     # pipeline breaks for some reason, that should never block today's actual HR picks.
     run_step_soft([sys.executable, "calibrate_hits_model.py"])
     run_step_soft([sys.executable, "export_hits_live_factors.py"])
+
+    # Path 2, prop 2 (total bases) — same soft/non-fatal reasoning, same shared data, no
+    # separate pull. This one's calibration is heavier (game-level aggregation instead of
+    # per-batted-ball) but the orchestration story is identical.
+    run_step_soft([sys.executable, "calibrate_tb_model.py"])
+    run_step_soft([sys.executable, "export_tb_live_factors.py"])
 
     print("\nDone.")

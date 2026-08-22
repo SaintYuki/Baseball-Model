@@ -103,6 +103,8 @@ from mlb_live_data import (
 )
 import hits_scanner
 from hits_scanner_auto import load_hit_rates, load_team_batters_hits, log_predictions_hits
+import tb_scanner
+from tb_scanner_auto import load_tb_rates, load_team_batters_tb, log_predictions_tb
 
 TRAILING_HR_RATE_ELITE = 0.13  # trailing HR-rate-per-batted-ball treated as "maxed out" (~1.0)
                                 # on the power_score dial. Raised from an initial 0.09 after
@@ -289,19 +291,25 @@ if __name__ == "__main__":
     print(f"Loaded trailing hit rates for {len(hits_trailing_by_id)} batters "
           f"(everyone else uses the league-average placeholder).\n")
 
+    tb_trailing_by_id = load_tb_rates()
+    print(f"Loaded trailing TB rates for {len(tb_trailing_by_id)} batters "
+          f"(everyone else uses the league-average placeholder).\n")
+
     todays_games = load_todays_games(target)
     print(f"Found {len(todays_games)} games.\n")
 
-    # Both HR and hits need the exact same schedule + weather for today — pulled ONCE per game
-    # here and reused for both Game objects, rather than pulling twice. Roster/handedness and
-    # the matchup layer, by contrast, DO run twice (once per prop) since they build genuinely
-    # separate Batter populations (power_score vs hit_rate) — a known, accepted cost, not
-    # something worth the coupling risk of merging right now. See hits_scanner_auto.py's
-    # docstring for the same tradeoff, made the same way.
+    # All three props need the exact same schedule + weather for today — pulled ONCE per game
+    # here and reused for every Game object, rather than pulling three times. Roster/handedness
+    # and the matchup layer, by contrast, DO run once per prop since each builds a genuinely
+    # separate Batter population (power_score vs hit_rate vs tb_rate) — a known, accepted cost,
+    # not something worth the coupling risk of merging right now. See hits_scanner_auto.py's
+    # docstring for the same tradeoff, made the same way, now paid a third time.
     slate = []
     all_batters_by_id = {}
     hits_slate = []
     hits_all_batters_by_id = {}
+    tb_slate = []
+    tb_all_batters_by_id = {}
     for g in todays_games:
         wx = load_weather(g["game_pk"])
         speed, wind_dir = categorize_wind(wx.get("wind", ""))
@@ -317,6 +325,7 @@ if __name__ == "__main__":
         )
         game = Game(**game_kwargs)
         hits_game = hits_scanner.Game(**game_kwargs)
+        tb_game = tb_scanner.Game(**game_kwargs)
 
         # home batters face the AWAY pitcher, away batters face the HOME pitcher
         home_batters = load_team_batters(g["home_id"], g["home_team"], trailing_by_id, season_by_name,
@@ -337,6 +346,15 @@ if __name__ == "__main__":
             hits_all_batters_by_id[b.mlbam_id] = b
         hits_slate.append(hits_game)
 
+        tb_home_batters = load_team_batters_tb(g["home_id"], g["home_team"], tb_trailing_by_id,
+                                                g["away_pitcher_id"], g["away_pitcher_name"])
+        tb_away_batters = load_team_batters_tb(g["away_id"], g["away_team"], tb_trailing_by_id,
+                                                g["home_pitcher_id"], g["home_pitcher_name"])
+        tb_game.batters = tb_home_batters + tb_away_batters
+        for b in tb_game.batters:
+            tb_all_batters_by_id[b.mlbam_id] = b
+        tb_slate.append(tb_game)
+
         venue_note = "" if is_known_venue(game.park) else \
             "  *** VENUE NOT IN park_factors_live.json — check for a name mismatch/rename, " \
             "currently scoring as neutral ***"
@@ -347,15 +365,19 @@ if __name__ == "__main__":
     print()
     ranked = rank_slate(slate)  # Stage 1: fast base score for everyone
     hits_ranked = hits_scanner.rank_slate(hits_slate)
+    tb_ranked = tb_scanner.rank_slate(tb_slate)
 
     apply_matchup_layer(ranked, all_batters_by_id, top_k=TOP_K_FOR_MATCHUP)
     apply_matchup_layer(hits_ranked, hits_all_batters_by_id, top_k=TOP_K_FOR_MATCHUP)
+    apply_matchup_layer(tb_ranked, tb_all_batters_by_id, top_k=TOP_K_FOR_MATCHUP)
 
     ranked = rank_slate(slate)  # re-score now that matchup_adjustment is filled in
     hits_ranked = hits_scanner.rank_slate(hits_slate)
+    tb_ranked = tb_scanner.rank_slate(tb_slate)
 
     parlays = build_parlays(ranked, n_parlays=3, legs=3)
     hits_parlays = build_parlays(hits_ranked, n_parlays=3, legs=3)
+    tb_parlays = build_parlays(tb_ranked, n_parlays=3, legs=3)
 
     value_plays = rank_value_plays(ranked, exclude_top_n=20, min_power_score=0.25, top_n=15)
     value_parlays = build_parlays(value_plays, n_parlays=2, legs=3)
@@ -363,18 +385,31 @@ if __name__ == "__main__":
     hits_value_plays = hits_scanner.rank_value_plays(hits_ranked, exclude_top_n=20, min_hit_rate=0.25, top_n=15)
     hits_value_parlays = build_parlays(hits_value_plays, n_parlays=2, legs=3)
 
+    tb_value_plays = tb_scanner.rank_value_plays(tb_ranked, exclude_top_n=20, min_tb_rate=0.3, top_n=15)
+    tb_value_parlays = build_parlays(tb_value_plays, n_parlays=2, legs=3)
+
     print_report(ranked, parlays, value_plays, value_parlays)
     hits_scanner.print_report(hits_ranked, hits_parlays, hits_value_plays, hits_value_parlays)
+    tb_scanner.print_report(tb_ranked, tb_parlays, tb_value_plays, tb_value_parlays)
 
     log_predictions(ranked, target)
     log_predictions_hits(hits_ranked, target)
+    log_predictions_tb(tb_ranked, target)
 
     os.makedirs("docs", exist_ok=True)
     html_out = render_html(
         ranked, parlays, value_plays, value_parlays, target,
-        hits_ranked=hits_ranked, hits_parlays=hits_parlays,
-        hits_value_plays=hits_value_plays, hits_value_parlays=hits_value_parlays,
+        extra_boards=[
+            {"id": "hits-board", "label": "Hits", "emoji": "&#127959;",
+             "ranked": hits_ranked, "parlays": hits_parlays,
+             "value_plays": hits_value_plays, "value_parlays": hits_value_parlays,
+             "rate_key": "hit_rate", "rate_label": "contact"},
+            {"id": "tb-board", "label": "TB", "emoji": "&#128293;",
+             "ranked": tb_ranked, "parlays": tb_parlays,
+             "value_plays": tb_value_plays, "value_parlays": tb_value_parlays,
+             "rate_key": "tb_rate", "rate_label": "slug"},
+        ],
     )
     with open("docs/index.html", "w", encoding="utf-8") as f:
         f.write(html_out)
-    print(f"\nWrote mobile-friendly report (HR + hits) to docs/index.html ({len(html_out)} chars).")
+    print(f"\nWrote mobile-friendly report (HR + Hits + TB) to docs/index.html ({len(html_out)} chars).")
